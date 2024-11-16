@@ -1,0 +1,44 @@
+
+{% extends 'news/base.html' %}
+
+{% block title %}Haberler{% endblock %}
+
+{% block content %}
+    <h1>Haberler</h1>
+    <ul>
+        {% for item in news %}
+            <li>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.content|truncatewords:30 }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:300px;">
+                {% endif %}
+                <p><em>{{ item.created_at }}</em></p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haberler</title>
+</head>
+<body>
+    <h1>Haberler</h1>
+    <ul>
+        {% for item in news %}
+            <li>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.content|truncatewords:30 }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:300px;">
+                {% endif %}
+                <p><em>{{ item.created_at }}</em></p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

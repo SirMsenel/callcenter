@@ -1,0 +1,43 @@
+{% extends 'news/base.html' %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+    <h1>Hoşgeldiniz!</h1>
+    <h2>En Son Haberler</h2>
+    <ul>
+        {% for item in news %}
+            <li>
+                <h3><a href="#">{{ item.title }}</a></h3>
+                <p>{{ item.content|truncatewords:20 }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:200px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+</head>
+<body>
+    <h1>Hoşgeldiniz!</h1>
+    <h2>En Son Haberler</h2>
+    <ul>
+        {% for item in news %}
+            <li>
+                <h3><a href="#">{{ item.title }}</a></h3>  <!-- Burada haber detayına yönlendirme yapılabilir -->
+                <p>{{ item.content|truncatewords:20 }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:200px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

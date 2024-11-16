@@ -1,0 +1,24 @@
+{% extends 'news/base.html' %}
+
+{% block title %}Arama Sonuçları{% endblock %}
+
+{% block content %}
+    <h1>Arama Sonuçları</h1>
+
+    {% if results %}
+        <ul>
+            {% for item in results %}
+                <li>
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.content|truncatewords:30 }}</p>
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:200px;">
+                    {% endif %}
+                    <p><em>{{ item.created_at }}</em></p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aramanıza uygun sonuç bulunamadı. "{{ query }}" için tekrar deneyin.</p>
+    {% endif %}
+{% endblock %}

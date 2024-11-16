@@ -1,0 +1,87 @@
+/* Menü düzenini iyileştirme */
+nav {
+    display: flex;
+    justify-content: space-between; /* Menü öğeleri ve arama formu arasındaki boşluğu dengeler */
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 15px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+/* Menü öğeleri - Normal Durum */
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 12px;
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Menü öğeleri - Hover Durumu */
+nav ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Aktif Menü Öğesi */
+nav ul li a.active {
+    color: black;
+    font-weight: bold;
+}
+
+/* Arama formunun stilini iyileştirme */
+header form.search-form {
+    display: flex;
+    align-items: center;
+}
+
+header form.search-form input[type="text"],
+header form.search-form button {
+    padding: 8px 12px;
+    margin: 0;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Arama kutusu */
+header form.search-form input[type="text"] {
+    border: 2px solid #ccc;
+    width: 200px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+header form.search-form input[type="text"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Arama butonu */
+header form.search-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header form.search-form button:hover {
+    background-color: #45a049;
+}

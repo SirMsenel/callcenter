@@ -85,3 +85,39 @@ header form.search-form button {
 header form.search-form button:hover {
     background-color: #45a049;
 }
+
+
+/* Slider alanını düzenleme */
+.carousel-item img {
+    max-height: 400px; /* Slider'ın maksimum yüksekliği */
+    object-fit: cover; /* Görüntülerin ölçeklenmesini sağlar */
+    width: 100%; /* Görüntü genişliğini korur */
+}
+
+/* Slider başlık ve açıklama alanını düzenleme */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam bir arka plan */
+    padding: 15px;
+    border-radius: 10px;
+}
+.carousel-caption h5 {
+    font-size: 1.5rem; /* Başlık boyutu */
+    margin-bottom: 10px;
+}
+.carousel-caption p {
+    font-size: 1rem; /* Açıklama boyutu */
+    margin-bottom: 15px;
+}
+.carousel-caption a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Slider görsellerini aynı boyutta göster */
+.carousel-item img {
+    width: 100%; /* Genişlik alanını doldur */
+    height: 400px; /* Sabit yükseklik */
+    object-fit: cover; /* Görselleri kırparak ölçekle */
+    object-position: center; /* Ortalayarak göster */
+}

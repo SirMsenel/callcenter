@@ -1,44 +1,21 @@
-
-{% extends 'news/base.html' %}
-
-{% block title %}Haberler{% endblock %}
+{% extends "news/base.html" %}
 
 {% block content %}
-    <h1>Haberler</h1>
-    <ul>
-        {% for item in news %}
-            <li>
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.content|truncatewords:30 }}</p>
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:300px;">
-                {% endif %}
-                <p><em>{{ item.created_at }}</em></p>
-            </li>
+<div class="container mt-5">
+    <h2>Haberler</h2>
+    <div class="row">
+        {% for news in all_news %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">{{ news.summary }}</p>
+                    <a href="{% url 'news_detail' news.id %}" class="btn btn-primary">Devamını Oku</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+</div>
 {% endblock %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haberler</title>
-</head>
-<body>
-    <h1>Haberler</h1>
-    <ul>
-        {% for item in news %}
-            <li>
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.content|truncatewords:30 }}</p>
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:300px;">
-                {% endif %}
-                <p><em>{{ item.created_at }}</em></p>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>

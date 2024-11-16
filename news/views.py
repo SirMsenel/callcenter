@@ -1,15 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import News
 from django.db.models import Q
 
 def news_list(request):
-    news = News.objects.all().order_by('-created_at')  # Tüm haberleri en yeniye göre sırala
-    return render(request, 'news/news_list.html', {'news': news})
+    all_news = News.objects.all().order_by('-created_at')  # Tüm haberler
+    return render(request, 'news/news_list.html', {'all_news': all_news})
+
 
 def home(request):
-    # Son 5 haberi getir
-    news = News.objects.all().order_by('-created_at')[:5]  # En yeni 5 haber
-    return render(request, 'news/home.html', {'news': news})
+    latest_news = News.objects.all().order_by('-created_at')[:5]  # Son 5 haber
+    return render(request, 'news/home.html', {'latest_news': latest_news})
+
 
 def search(request):
     query = request.GET.get('q')
@@ -19,3 +20,7 @@ def search(request):
             Q(title__icontains=query) | Q(content__icontains=query)
         )  # Başlık veya içerik içinde arama yap
     return render(request, 'news/search_results.html', {'results': results, 'query': query})
+
+def news_detail(request, id):
+    news = get_object_or_404(News, id=id)  # Haber nesnesini al
+    return render(request, 'news/news_detail.html', {'news': news})

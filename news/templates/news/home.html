@@ -1,43 +1,30 @@
-{% extends 'news/base.html' %}
-
-{% block title %}Ana Sayfa{% endblock %}
+{% extends "news/base.html" %}
 
 {% block content %}
-    <h1>Hoşgeldiniz!</h1>
-    <h2>En Son Haberler</h2>
-    <ul>
-        {% for item in news %}
-            <li>
-                <h3><a href="#">{{ item.title }}</a></h3>
-                <p>{{ item.content|truncatewords:20 }}</p>
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:200px;">
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+<div class="container mt-5">
+    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for news in latest_news %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>
+                        <a href="{% url 'news_detail' news.id %}" class="text-white">{{ news.title }}</a>
+                    </h5>
+                    <p>{{ news.summary }}</p>
+                    <a href="{% url 'news_detail' news.id %}" class="btn btn-primary">Haberi Oku</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 {% endblock %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Sayfa</title>
-</head>
-<body>
-    <h1>Hoşgeldiniz!</h1>
-    <h2>En Son Haberler</h2>
-    <ul>
-        {% for item in news %}
-            <li>
-                <h3><a href="#">{{ item.title }}</a></h3>  <!-- Burada haber detayına yönlendirme yapılabilir -->
-                <p>{{ item.content|truncatewords:20 }}</p>
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="max-width:200px;">
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>

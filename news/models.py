@@ -1,11 +1,21 @@
+from PIL import Image
 from django.db import models
 
+
 class News(models.Model):
-    title = models.CharField(max_length=200)  # Haber başlığı
-    content = models.TextField()  # Haber içeriği
-    created_at = models.DateTimeField(auto_now_add=True)  # Oluşturulma zamanı
-    image = models.ImageField(upload_to='news_images/', null=True, blank=True)  # Haber görseli
+    title = models.CharField(max_length=255)
+    summary = models.TextField(default="Bu haberin özeti henüz eklenmemiştir.")
+    content = models.TextField()
+    image = models.ImageField(upload_to='news_images/')
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image.path)
+
+            # Görseli yeniden boyutlandır
+            max_size = (800, 400)  # Maksimum genişlik ve yükseklik
+            img.thumbnail(max_size, Image.Resampling.LANCZOS)  # Yeni yöntem
+            img.save(self.image.path)

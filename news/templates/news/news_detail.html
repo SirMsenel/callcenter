@@ -1,0 +1,10 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ news.title }}</h1>
+    <img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid mb-4">
+    <p>{{ news.content }}</p>
+    <a href="{% url 'news_list' %}" class="btn btn-secondary">Geri Dön</a>
+</div>
+{% endblock %}

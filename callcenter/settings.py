@@ -55,7 +55,7 @@ ROOT_URLCONF = 'callcenter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Base template burada yer almalı
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +127,7 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# settings.py
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

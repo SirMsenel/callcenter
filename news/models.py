@@ -19,3 +19,12 @@ class News(models.Model):
             max_size = (800, 400)  # Maksimum genişlik ve yükseklik
             img.thumbnail(max_size, Image.Resampling.LANCZOS)  # Yeni yöntem
             img.save(self.image.path)
+
+
+class Article(models.Model):  # Bu satırı kontrol edin
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    # Diğer alanlar
+
+    def __str__(self):
+        return self.title

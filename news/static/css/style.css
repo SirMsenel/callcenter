@@ -1,7 +1,227 @@
-/* Menü düzenini iyileştirme */
+
+/* Genel Ayarlar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Slider Alanı */
+.carousel-item img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Slider Başlık ve Açıklama Alanı */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.carousel-caption h5 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.carousel-caption p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.carousel-caption a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Giriş ve Kayıt Formu */
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-container label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus,
+.form-container input[type="email"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+/* Giriş ve Kayıt Formu - Hata Mesajları */
+.form-container .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Login Sayfası Ortalamak için CSS */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Ekran yüksekliğinin tamamını kullanır */
+}
+
+.login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maksimum genişlik */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Navbar Düzenlemeleri */
+.navbar {
+    background-color: #f8f9fa;
+    padding: 1rem;
+}
+
+/* Sol Menü */
+.navbar-nav {
+    display: flex;
+    margin-right: 20px;
+}
+
+.navbar-nav li {
+    margin-right: 20px;
+}
+
+/* Sol Menü öğeleri */
+nav .left-menu {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Sol menü öğeleri solda hizalanır */
+}
+
+/* Sağ Menü */
+.navbar-nav.ms-auto {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin-left: 10px;
+}
+
+.nav-link {
+    font-size: 14px;
+    color: #333;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+/* Navbar Aktif Menü Öğesi */
+.navbar-nav .active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Arama Formu */
+header form.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* Menü Düzeni İyileştirmeleri */
 nav {
     display: flex;
-    justify-content: space-between; /* Menü öğeleri ve arama formu arasındaki boşluğu dengeler */
+    justify-content: space-between; /* Menü öğeleri arasına boşluk bırakır */
     align-items: center;
     padding: 0 20px;
     background-color: #fff;
@@ -23,7 +243,6 @@ nav ul li:last-child {
     margin-right: 0;
 }
 
-/* Menü öğeleri - Normal Durum */
 nav ul li a {
     text-decoration: none;
     color: #333;
@@ -34,43 +253,26 @@ nav ul li a {
     border-radius: 5px;
 }
 
-/* Menü öğeleri - Hover Durumu */
 nav ul li a:hover {
     background-color: #4CAF50;
     color: white;
-}
-
-/* Aktif Menü Öğesi */
-nav ul li a.active {
-    color: black;
-    font-weight: bold;
 }
 
 /* Arama formunun stilini iyileştirme */
 header form.search-form {
     display: flex;
     align-items: center;
-}
-
-header form.search-form input[type="text"],
-header form.search-form button {
-    padding: 8px 12px;
-    margin: 0;
-    border-radius: 20px;
-    font-size: 14px;
+    justify-content: flex-start;
+    gap: 10px; /* Arama kutusu ile buton arasında boşluk bırakmak için */
 }
 
 /* Arama kutusu */
 header form.search-form input[type="text"] {
     border: 2px solid #ccc;
-    width: 200px;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-header form.search-form input[type="text"]:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    padding: 6px 10px;
+    font-size: 14px;
+    width: 180px; /* Arama kutusunun genişliğini küçülttük */
+    border-radius: 5px;
 }
 
 /* Arama butonu */
@@ -79,45 +281,13 @@ header form.search-form button {
     color: white;
     border: none;
     cursor: pointer;
+    padding: 6px 10px;
+    font-size: 14px;
     transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
+/* Arama butonu hover durumu */
 header form.search-form button:hover {
     background-color: #45a049;
-}
-
-
-/* Slider alanını düzenleme */
-.carousel-item img {
-    max-height: 400px; /* Slider'ın maksimum yüksekliği */
-    object-fit: cover; /* Görüntülerin ölçeklenmesini sağlar */
-    width: 100%; /* Görüntü genişliğini korur */
-}
-
-/* Slider başlık ve açıklama alanını düzenleme */
-.carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam bir arka plan */
-    padding: 15px;
-    border-radius: 10px;
-}
-.carousel-caption h5 {
-    font-size: 1.5rem; /* Başlık boyutu */
-    margin-bottom: 10px;
-}
-.carousel-caption p {
-    font-size: 1rem; /* Açıklama boyutu */
-    margin-bottom: 15px;
-}
-.carousel-caption a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-/* Slider görsellerini aynı boyutta göster */
-.carousel-item img {
-    width: 100%; /* Genişlik alanını doldur */
-    height: 400px; /* Sabit yükseklik */
-    object-fit: cover; /* Görselleri kırparak ölçekle */
-    object-position: center; /* Ortalayarak göster */
 }

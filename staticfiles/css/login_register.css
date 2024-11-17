@@ -1,0 +1,89 @@
+/* Genel Ayarlar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Ortalamak için Login Container Ayarları */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Ekran yüksekliğinin tamamını kapsar */
+}
+
+/* İçerik kutusu */
+.login-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maksimum genişlik */
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Elemanları */
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-box form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.login-box form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-box form button:hover {
+    background-color: #45a049;
+}
+
+/* Alt metin ve Bağlantılar */
+.login-box form p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-box form p a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.login-box form p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 20px 30px; /* Küçük ekranlarda daha az padding */
+    }
+}

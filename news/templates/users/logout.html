@@ -1,5 +1,16 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <h2>Çıkış Yaptınız!</h2>
-    <a href="{% url 'login' %}">Tekrar Giriş Yap</a>
+    <div class="container text-center">
+        <h2>Çıkış Yaptınız!</h2>
+        <p>Giriş sayfasına yönlendiriliyorsunuz...</p>
+        <!-- Çıkış yapmak için GET isteği -->
+        <a href="{% url 'logout' %}" class="btn btn-danger">Çıkış Yap</a>
+        <script>
+            // Sayfa yüklendikten sonra giriş sayfasına yönlendir
+            setTimeout(function() {
+                window.location.href = "{% url 'login' %}";
+            }, 2000); // 2 saniye sonra yönlendir
+        </script>
+    </div>
 {% endblock %}

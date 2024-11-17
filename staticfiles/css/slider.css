@@ -1,0 +1,41 @@
+/* Slider Genel Ayarları */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%; /* Slider genişliğinin ekranı geçmemesi için */
+    overflow: hidden; /* Taşan içerik gizlenecek */
+    margin: 0 auto; /* Slider'ı ortalamak */
+}
+
+/* Slider Görselleri */
+.slider img {
+    width: 100%; /* Görselin genişliği slider ile uyumlu olacak */
+    height: auto; /* Görselin orantılı boyutlandırılması için */
+    display: block; /* Görselin altındaki boşlukları kaldırmak için */
+}
+
+/* Slider İçin Geçiş Efekti */
+.slider .slides {
+    display: flex;
+    transition: transform 0.5s ease; /* Geçiş efekti */
+}
+
+/* Slider İçindeki Her Bir Slide */
+.slider .slide {
+    min-width: 100%; /* Her bir slide'ın genişliği slider'ı kaplayacak şekilde */
+    transition: transform 0.5s ease;
+}
+
+/* Mobil Ekranlarda Slider Ayarları */
+@media (max-width: 768px) {
+    .slider img {
+        width: 100%; /* Mobil ekranlarda da slider görseli %100 genişlikte olacak */
+    }
+}
+
+/* Tablet Ekranları için Uyumlu Ayar */
+@media (max-width: 1024px) {
+    .slider {
+        max-width: 90%; /* Tablet ekranlarda %90 genişlikte olacak */
+    }
+}

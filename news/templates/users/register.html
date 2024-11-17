@@ -3,13 +3,15 @@
 {% block title %}Kayıt Ol{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <h2>Kayıt Ol</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Kayıt Ol</button>
-        <p>Zaten hesabınız var mı? <a href="{% url 'login' %}">Giriş Yap</a></p>
-    </form>
+<div class="register-container">
+    <div class="register-box">
+        <h2>Kayıt Ol</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Kayıt Ol</button>
+            <p>Zaten hesabınız var mı? <a href="{% url 'login' %}">Giriş Yap</a></p>
+        </form>
+    </div>
 </div>
 {% endblock %}

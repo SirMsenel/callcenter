@@ -1,0 +1,90 @@
+/* Navbar Genel Düzenlemeleri */
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+}
+
+/* Sol Menü Düzeni */
+.navbar .navbar-nav-left {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .navbar-nav-left li {
+    margin-right: 20px;
+}
+
+.navbar .navbar-nav-left li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.navbar .navbar-nav-left .active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Sağ Menü Düzeni (Giriş Yap ve Kayıt Ol) */
+.navbar .navbar-nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* Öğeler arasında boşluk */
+}
+
+/* Arama Formu Düzeni */
+.navbar .search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Arama kutusu ve buton arasına boşluk */
+}
+
+.navbar .search-form input[type="text"] {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px; /* Arama kutusunun genişliği */
+}
+
+.navbar .search-form button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .search-form button:hover {
+    background-color: #45a049;
+}
+
+/* Navbar Marka */
+.navbar .navbar-brand {
+    font-size: 20px;
+    color: #007bff;
+}
+
+/* Daha geniş ekranlarda navbar düzeni */
+@media (min-width: 768px) {
+    .navbar .navbar-nav-right {
+        justify-content: flex-end; /* Sağ menü öğelerini tamamen sağa yasla */
+    }
+
+    .navbar .search-form {
+        margin-right: 0;
+    }
+}
+
+/* Mobil ekranlarda navbar öğelerinin hizalanması */
+@media (max-width: 768px) {
+    .navbar .navbar-nav-right {
+        justify-content: flex-end; /* Sağ menüyü sağa dayalı yap */
+    }
+}

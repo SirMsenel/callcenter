@@ -1,0 +1,84 @@
+/* Slider Genel Ayarları */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto; /* Slider'ı ortalamak */
+}
+
+.carousel-item {
+    transition: transform 0.5s ease;
+}
+
+/* Slider Görselleri */
+.carousel-item img {
+    width: 100%;
+    height: 500px; /* Görselin yüksekliğini büyüttük */
+    object-fit: cover; /* Görselin orantılı şekilde kaydırılması */
+}
+
+/* Slider Caption (Açıklama) */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px; /* Caption'ın alt kısmındaki mesafeyi azaltıyoruz */
+    left: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Arka planı koyulaştırmak */
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.carousel-caption h5 {
+    font-size: 1.5rem; /* Başlık boyutunu küçülttük */
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px; /* Başlık ile özet arasına boşluk ekledik */
+}
+
+.carousel-caption p {
+    font-size: 1rem; /* Alt açıklama metnini biraz küçültük */
+    color: #fff;
+    margin-bottom: 10px; /* Özet ile buton arasına boşluk ekledik */
+}
+
+.carousel-caption a.btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1rem; /* Buton metninin boyutunu küçülttük */
+    padding: 8px 16px; /* Butonun boyutunu biraz küçültmek için padding */
+    border-radius: 5px;
+}
+
+.carousel-caption a.btn:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Previous & Next Butonları */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Butonların arka plan rengini ayarlamak */
+    border-radius: 50%;
+    width: 50px;  /* Butonları biraz daha büyütüyoruz */
+    height: 50px;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 350px; /* Mobilde görsel boyutunu biraz daha küçültme */
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.2rem; /* Başlık boyutunu mobilde küçültme */
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem; /* Alt açıklama metnini mobilde küçültme */
+    }
+    
+    .carousel-caption a.btn {
+        font-size: 0.9rem; /* Buton boyutunu mobilde küçültme */
+    }
+}

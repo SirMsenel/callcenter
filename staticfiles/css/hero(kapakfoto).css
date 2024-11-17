@@ -3,7 +3,7 @@
     background-image: url("{% static 'media/kapak.jpg' %}");
     background-size: cover;
     background-position: center;
-    height: 400px; /* Kapak fotoğrafı yüksekliği */
+    height: 100vh; /* Kapak fotoğrafının yüksekliği tam ekran */
     position: relative;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@
     backdrop-filter: blur(10px); /* Hafif bulanıklık efekti */
 }
 
-/* Kapak Fotoğrafı */
+/* Kapak Fotoğrafı (Alternatif Kapak Görseli) */
 .cover-photo {
     position: relative;
     width: 100%;
@@ -52,12 +52,28 @@
 /* Welcome Mesajı */
 .welcome-message {
     position: absolute;
-    top: 27%; /* Yazıyı biraz daha yukarıya taşıyoruz */
+    top: 28%; /* Yazıyı biraz daha yukarıya taşıyoruz */
     left: 50%;
     transform: translateX(-50%); /* Yalnızca yatayda ortalamak için */
     font-size: 80px; /* Yazı boyutunu büyütüyoruz */
-    color: #4CAF50; /* Beyaz renk ve şeffaflık */
+    color: #4CAF50; /* Yeşil renk */
     font-weight: bold;
     text-align: center;
     z-index: 10; /* Yazının ön planda olmasını sağlamak */
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 36px; /* Mobilde yazı boyutunu küçültüyoruz */
+    }
+
+    .hero-text p {
+        font-size: 16px; /* Mobilde yazı boyutunu küçültüyoruz */
+    }
+
+    .welcome-message {
+        font-size: 50px; /* Mobilde mesaj boyutunu küçültüyoruz */
+        top: 25%; /* Yazıyı daha uygun konumda tutuyoruz */
+    }
 }

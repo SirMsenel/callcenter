@@ -1,32 +1,32 @@
 /* Navbar Genel Düzenlemeleri */
 .navbar {
     background-color: #f8f9fa;
-    padding: 20px 40px; /* Navbar'ın üst ve alt boşluklarını artırdık */
-    height: 120px; /* Navbar yüksekliği artırıldı */
-    position: fixed; /* Navbar'ı sabitliyoruz */
+    padding: 20px 40px;
+    height: 120px;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1030; /* Navbar'ın diğer içeriklerin üstünde kalmasını sağlar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti ekliyoruz */
+    z-index: 1030;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Ana içerik ile navbar arasındaki boşluk */
 main {
-    padding-top: 120px; /* Navbar'ın yüksekliği kadar boşluk bırakıyoruz */
+    padding-top: 120px;
 }
 
-/* Logo Düzeni: Href ve Hover kaldırıldı */
+/* Logo Düzeni */
 .navbar .navbar-brand {
     display: flex;
     align-items: center;
-    font-size: 32px; /* Yazı boyutunu biraz büyütüyoruz */
+    font-size: 32px;
     color: #007bff;
-    pointer-events: none; /* Logo'ya tıklanmayı engelliyoruz */
 }
 
 .navbar .navbar-brand img {
-    height: 120px; /* Logo yüksekliğini navbar ile eşit hale getiriyoruz */
-    width: auto; /* Yükseklik değiştiğinde genişlik orantılı olarak ayarlanır */
+    height: 100%; /* Logo boyutunu navbar'a göre orantılı yapıyoruz */
+    width: auto;
+    max-height: 100px; /* Logo yüksekliğini sınırlıyoruz */
     margin-right: 15px;
 }
 
@@ -38,69 +38,60 @@ main {
     padding: 0;
 }
 
-/* Sol Menü Düzeni */
-.navbar .navbar-nav-left {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 .navbar .navbar-nav-left li {
-    margin-right: 30px; /* Öğeler arasında daha fazla boşluk */
+    margin-right: 30px;
 }
 
 .navbar .navbar-nav-left li a {
     text-decoration: none;
-    font-size: 22px; /* Yazı boyutunu büyütüyoruz */
+    font-size: 22px;
     color: #333;
-    position: relative; /* Çerçeve eklemek için konumlandırma */
-    padding: 10px 15px; /* İçerik alanı oluşturmak için padding */
-    transition: color 0.3s, background-color 0.3s, border 0.3s; /* Renk ve border geçişi */
+    position: relative;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s, border 0.3s;
 }
 
-/* Hover Efekti: Tüm menüler ve butonlar için */
-.navbar .navbar-nav-left li a:hover,
-.navbar .search-form button:hover {
-    color: #fff !important; /* Metin rengi beyaz */
-    background-color: #4CAF50 !important; /* Arka plan rengi */
-    border-radius: 5px; /* Kenarları yuvarlatmak */
-    text-decoration: underline !important; /* Alt çizgi ekleyelim */
+/* Hover Efekti */
+.navbar .navbar-nav-left li a:hover {
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    text-decoration: underline;
 }
 
-/* Aktif Menü İçin Çerçeve Rengi (bulunduğunuz menü) */
+/* Aktif Menü İçin Çerçeve Rengi */
 .navbar .navbar-nav-left .active a {
     font-weight: bold;
-    color: #fff !important; /* Aktif menüde metin rengi beyaz */
-    background-color: #4CAF50 !important; /* Arka plan rengi */
-    border-radius: 5px; /* Kenarları yuvarlatmak */
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
 }
 
-/* Sağ Menü Düzeni (Giriş Yap ve Kayıt Ol) */
+/* Sağ Menü Düzeni */
 .navbar .navbar-nav-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 20px; /* Sağ menü öğeleri arasına daha fazla boşluk ekledik */
+    gap: 20px;
 }
 
 /* Arama Formu Düzeni */
 .navbar .search-form {
     display: flex;
     align-items: center;
-    gap: 15px; /* Arama kutusu ve buton arasına boşluk */
+    gap: 15px;
 }
 
 .navbar .search-form input[type="text"] {
     padding: 10px 18px;
-    font-size: 18px; /* Arama kutusu font boyutu büyütüldü */
+    font-size: 18px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 350px; /* Arama kutusunun genişliği arttırıldı */
+    width: 350px;
 }
 
 .navbar .search-form button {
-    padding: 12px 20px; /* Butonun boyutu arttırıldı */
+    padding: 12px 20px;
     font-size: 18px;
     background-color: #28a745;
     color: #fff;

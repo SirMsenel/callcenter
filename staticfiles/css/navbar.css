@@ -10,22 +10,22 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti ekliyoruz */
 }
 
-/* İçerik ile Navbar Arasındaki Boşluk */
-body {
-    margin: 0; /* Varsayılan margin'i kaldırıyoruz */
+/* Ana içerik ile navbar arasındaki boşluk */
+main {
     padding-top: 120px; /* Navbar'ın yüksekliği kadar boşluk bırakıyoruz */
 }
 
-/* Logo Düzeni */
+/* Logo Düzeni: Href ve Hover kaldırıldı */
 .navbar .navbar-brand {
     display: flex;
     align-items: center;
-    font-size: 28px;
+    font-size: 32px; /* Yazı boyutunu biraz büyütüyoruz */
     color: #007bff;
+    pointer-events: none; /* Logo'ya tıklanmayı engelliyoruz */
 }
 
 .navbar .navbar-brand img {
-    height: 80px; /* Logo yüksekliğini düşürdük */
+    height: 120px; /* Logo yüksekliğini navbar ile eşit hale getiriyoruz */
     width: auto; /* Yükseklik değiştiğinde genişlik orantılı olarak ayarlanır */
     margin-right: 15px;
 }
@@ -38,37 +38,31 @@ body {
     padding: 0;
 }
 
-/* Sol Menü Düzeni */
-.navbar .navbar-nav-left {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
+/* Menü Öğeleri Düzenlemeleri */
 .navbar .navbar-nav-left li {
     margin-right: 30px; /* Öğeler arasında daha fazla boşluk */
 }
 
 .navbar .navbar-nav-left li a {
     text-decoration: none;
-    font-size: 20px; /* Yazı boyutunu büyütüyoruz */
+    font-size: 22px; /* Yazı boyutunu büyütüyoruz */
     color: #333;
     position: relative; /* Çerçeve eklemek için konumlandırma */
     padding: 10px 15px; /* İçerik alanı oluşturmak için padding */
     transition: color 0.3s, background-color 0.3s, border 0.3s; /* Renk ve border geçişi */
 }
 
-/* Hover Efekti */
-.navbar .navbar-nav-left li a:hover {
+/* Hover Efekti: Tüm menüler ve butonlar için */
+.navbar .navbar-nav-left li a:hover,
+.navbar .search-form button:hover {
     color: #fff !important; /* Metin rengi beyaz */
     background-color: #4CAF50 !important; /* Arka plan rengi */
     border-radius: 5px; /* Kenarları yuvarlatmak */
     text-decoration: underline !important; /* Alt çizgi ekleyelim */
 }
 
-/* Aktif Menü İçin Çerçeve Rengi */
-.navbar .navbar-nav-left .active {
+/* Aktif Menü İçin Çerçeve Rengi (bulunduğunuz menü) */
+.navbar .navbar-nav-left .active a {
     font-weight: bold;
     color: #fff !important; /* Aktif menüde metin rengi beyaz */
     background-color: #4CAF50 !important; /* Arka plan rengi */
@@ -99,73 +93,15 @@ body {
 }
 
 .navbar .search-form button {
-    padding: 10px 18px;
-    font-size: 18px; /* Buton yazı boyutu arttırıldı */
-    background-color: #4CAF50;
-    color: white;
+    padding: 12px 20px; /* Butonun boyutu arttırıldı */
+    font-size: 18px;
+    background-color: #28a745;
+    color: #fff;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .navbar .search-form button:hover {
-    background-color: #45a049;
-}
-
-/* Navbar Marka (Metinli) */
-.navbar .navbar-brand {
-    font-size: 28px; /* Logo metni için boyutlandırma */
-    color: #007bff;
-}
-
-/* Navbar Menülerinin Font Boyutunu Ayarlama */
-.navbar-nav .nav-link {
-    font-size: 20px; /* Menü linklerinin boyutunu büyütme */
-    color: #555;
-}
-
-/* Daha geniş ekranlarda navbar düzeni */
-@media (min-width: 768px) {
-    .navbar .navbar-nav-right {
-        justify-content: flex-end; /* Sağ menü öğelerini tamamen sağa yasla */
-    }
-
-    .navbar .search-form {
-        margin-right: 0;
-    }
-}
-
-/* Mobil ekranlarda navbar öğelerinin hizalanması */
-@media (max-width: 768px) {
-    .navbar .navbar-nav-right {
-        justify-content: flex-end; /* Sağ menüyü sağa dayalı yap */
-    }
-
-    .navbar .search-form input[type="text"] {
-        width: 250px; /* Mobilde arama kutusu genişliği arttırıldı */
-    }
-
-    .navbar .navbar-brand {
-        font-size: 24px; /* Mobilde logo metni boyutunu biraz azaltıyoruz */
-    }
-
-    .navbar .navbar-nav-left li a {
-        font-size: 16px; /* Mobilde menü öğelerinin boyutunu biraz küçültüyoruz */
-    }
-
-    .navbar .search-form input[type="text"] {
-        font-size: 16px; /* Arama kutusunun font boyutunu da ayarlıyoruz */
-    }
-}
-
-/* Mobil uyumluluk */
-@media (max-width: 768px) {
-    body {
-        padding-top: 150px; /* Mobilde navbar daha büyük olduğu için padding artırılır */
-    }
-}
-
-main {
-    padding-top: 120px; /* Ana içerik ile navbar arasındaki boşluğu buradan düzenleyebiliriz */
+    background-color: #218838;
 }

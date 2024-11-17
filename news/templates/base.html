@@ -45,9 +45,14 @@
                 <!-- Sağ Menü (Giriş Yap ve Kayıt Ol) -->
                 <ul class="navbar-nav ml-3 ms-auto">
                     {% if user.is_authenticated %}
-                        <!-- Çıkış Yap Butonu -->
+                        <!-- Çıkış Yap Butonu (POST yöntemiyle) -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Çıkış Yap</a>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn btn-link" style="border: none; background: none;">
+                                    Çıkış Yap
+                                </button>
+                            </form>
                         </li>
                     {% else %}
                         <!-- Giriş Yap ve Kayıt Ol Butonları -->
@@ -59,6 +64,7 @@
                         </li>
                     {% endif %}
                 </ul>
+                
             </div>
         </nav>
     </header>

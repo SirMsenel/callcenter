@@ -25,9 +25,9 @@ body {
 }
 
 .navbar .navbar-brand img {
-    height: 120px; 
-    width: auto;
-    margin-right: 15px; 
+    height: 80px; /* Logo yüksekliğini düşürdük */
+    width: auto; /* Yükseklik değiştiğinde genişlik orantılı olarak ayarlanır */
+    margin-right: 15px;
 }
 
 /* Menü Düzeni */
@@ -54,11 +54,25 @@ body {
     text-decoration: none;
     font-size: 20px; /* Yazı boyutunu büyütüyoruz */
     color: #333;
+    position: relative; /* Çerçeve eklemek için konumlandırma */
+    padding: 10px 15px; /* İçerik alanı oluşturmak için padding */
+    transition: color 0.3s, background-color 0.3s, border 0.3s; /* Renk ve border geçişi */
 }
 
+/* Hover Efekti */
+.navbar .navbar-nav-left li a:hover {
+    color: #fff !important; /* Metin rengi beyaz */
+    background-color: #4CAF50 !important; /* Arka plan rengi */
+    border-radius: 5px; /* Kenarları yuvarlatmak */
+    text-decoration: underline !important; /* Alt çizgi ekleyelim */
+}
+
+/* Aktif Menü İçin Çerçeve Rengi */
 .navbar .navbar-nav-left .active {
     font-weight: bold;
-    color: #007bff;
+    color: #fff !important; /* Aktif menüde metin rengi beyaz */
+    background-color: #4CAF50 !important; /* Arka plan rengi */
+    border-radius: 5px; /* Kenarları yuvarlatmak */
 }
 
 /* Sağ Menü Düzeni (Giriş Yap ve Kayıt Ol) */

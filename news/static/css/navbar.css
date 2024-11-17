@@ -1,7 +1,41 @@
 /* Navbar Genel Düzenlemeleri */
 .navbar {
     background-color: #f8f9fa;
-    padding: 10px 20px;
+    padding: 20px 40px; /* Navbar'ın üst ve alt boşluklarını artırdık */
+    height: 120px; /* Navbar yüksekliği artırıldı */
+    position: fixed; /* Navbar'ı sabitliyoruz */
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Navbar'ın diğer içeriklerin üstünde kalmasını sağlar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti ekliyoruz */
+}
+
+/* İçerik ile Navbar Arasındaki Boşluk */
+body {
+    margin: 0; /* Varsayılan margin'i kaldırıyoruz */
+    padding-top: 120px; /* Navbar'ın yüksekliği kadar boşluk bırakıyoruz */
+}
+
+/* Logo Düzeni */
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    color: #007bff;
+}
+
+.navbar .navbar-brand img {
+    height: 120px; 
+    width: auto;
+    margin-right: 15px; 
+}
+
+/* Menü Düzeni */
+.navbar .navbar-nav-left {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Sol Menü Düzeni */
@@ -13,12 +47,12 @@
 }
 
 .navbar .navbar-nav-left li {
-    margin-right: 20px;
+    margin-right: 30px; /* Öğeler arasında daha fazla boşluk */
 }
 
 .navbar .navbar-nav-left li a {
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px; /* Yazı boyutunu büyütüyoruz */
     color: #333;
 }
 
@@ -32,27 +66,27 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px; /* Öğeler arasında boşluk */
+    gap: 20px; /* Sağ menü öğeleri arasına daha fazla boşluk ekledik */
 }
 
 /* Arama Formu Düzeni */
 .navbar .search-form {
     display: flex;
     align-items: center;
-    gap: 10px; /* Arama kutusu ve buton arasına boşluk */
+    gap: 15px; /* Arama kutusu ve buton arasına boşluk */
 }
 
 .navbar .search-form input[type="text"] {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 10px 18px;
+    font-size: 18px; /* Arama kutusu font boyutu büyütüldü */
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 250px; /* Arama kutusunun genişliği */
+    width: 350px; /* Arama kutusunun genişliği arttırıldı */
 }
 
 .navbar .search-form button {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 10px 18px;
+    font-size: 18px; /* Buton yazı boyutu arttırıldı */
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -65,10 +99,16 @@
     background-color: #45a049;
 }
 
-/* Navbar Marka */
+/* Navbar Marka (Metinli) */
 .navbar .navbar-brand {
-    font-size: 20px;
+    font-size: 28px; /* Logo metni için boyutlandırma */
     color: #007bff;
+}
+
+/* Navbar Menülerinin Font Boyutunu Ayarlama */
+.navbar-nav .nav-link {
+    font-size: 20px; /* Menü linklerinin boyutunu büyütme */
+    color: #555;
 }
 
 /* Daha geniş ekranlarda navbar düzeni */
@@ -87,4 +127,31 @@
     .navbar .navbar-nav-right {
         justify-content: flex-end; /* Sağ menüyü sağa dayalı yap */
     }
+
+    .navbar .search-form input[type="text"] {
+        width: 250px; /* Mobilde arama kutusu genişliği arttırıldı */
+    }
+
+    .navbar .navbar-brand {
+        font-size: 24px; /* Mobilde logo metni boyutunu biraz azaltıyoruz */
+    }
+
+    .navbar .navbar-nav-left li a {
+        font-size: 16px; /* Mobilde menü öğelerinin boyutunu biraz küçültüyoruz */
+    }
+
+    .navbar .search-form input[type="text"] {
+        font-size: 16px; /* Arama kutusunun font boyutunu da ayarlıyoruz */
+    }
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    body {
+        padding-top: 150px; /* Mobilde navbar daha büyük olduğu için padding artırılır */
+    }
+}
+
+main {
+    padding-top: 120px; /* Ana içerik ile navbar arasındaki boşluğu buradan düzenleyebiliriz */
 }

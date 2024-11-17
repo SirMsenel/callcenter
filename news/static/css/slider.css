@@ -12,9 +12,10 @@
 
 /* Slider Görselleri */
 .carousel-item img {
-    width: 100%;
-    height: 500px; /* Görselin yüksekliğini büyüttük */
-    object-fit: cover; /* Görselin orantılı şekilde kaydırılması */
+    width: 100%; /* Genişlik %100 olacak şekilde ayarlandı */
+    height: 100%; /* Yükseklik %100 olacak şekilde ayarlandı */
+    object-fit: cover; /* Resmin container'a tam oturacak şekilde kırpılması */
+    max-height: 500px; /* Maksimum yükseklik belirledik, slider'ın belirlediği sınır */
 }
 
 /* Slider Caption (Açıklama) */

@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="container mt-5">
-    <h2>Haberler</h2>
+    <h2 class="custom-heading">Haberler</h2>
     <div class="row">
         {% for news in all_news %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
+        <div class="col-md-4 mb-4"> <!-- Bootstrap grid sınıfı 3 kolona böler -->
+            <div class="card h-100"> <!-- h-100 ile kart yüksekliğini eşitliyoruz -->
                 <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ news.title }}</h5>

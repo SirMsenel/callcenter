@@ -1,0 +1,63 @@
+/* Kapak Fotoğrafı */
+.hero-image {
+    background-image: url("{% static 'media/kapak.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Kapak fotoğrafı yüksekliği */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin: 10px 0 0;
+}
+
+/* Navbar Şeffaflığı */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8); /* Şeffaf beyaz arka plan */
+    backdrop-filter: blur(10px); /* Hafif bulanıklık efekti */
+}
+
+/* Kapak Fotoğrafı */
+.cover-photo {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ekranın tam yüksekliği */
+    overflow: hidden;
+}
+
+.cover-photo img {
+    object-fit: cover; /* Fotoğrafın ekranı tamamen kaplamasını sağlar */
+    width: 100%; /* Genişlik tamamen ekran boyutunda */
+    height: 100%; /* Yükseklik tamamen ekran boyutunda */
+    object-position: center; /* Fotoğrafın ortalanmasını sağlar */
+}
+
+/* Welcome Mesajı */
+.welcome-message {
+    position: absolute;
+    top: 30%; /* Yazıyı biraz daha yukarıya taşıyoruz */
+    left: 50%;
+    transform: translateX(-50%); /* Yalnızca yatayda ortalamak için */
+    font-size: 80px; /* Yazı boyutunu büyütüyoruz */
+    color: #4CAF50; /* Beyaz renk ve şeffaflık */
+    font-weight: bold;
+    text-align: center;
+    z-index: 10; /* Yazının ön planda olmasını sağlamak */
+}

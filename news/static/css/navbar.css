@@ -10,35 +10,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti ekliyoruz */
 }
 
-/* İçerik ile Navbar Arasındaki Boşluk */
-body {
-    margin: 0; /* Varsayılan margin'i kaldırıyoruz */
-    padding-top: 120px; /* Navbar'ın yüksekliği kadar boşluk bırakıyoruz */
-}
-
-/* Logo Düzeni */
-.navbar .navbar-brand {
-    display: flex;
-    align-items: center;
-    font-size: 28px;
-    color: #007bff;
-}
-
-.navbar .navbar-brand img {
-    height: 120px; 
-    width: auto;
-    margin-right: 15px; 
-}
-
 /* Menü Düzeni */
-.navbar .navbar-nav-left {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Sol Menü Düzeni */
 .navbar .navbar-nav-left {
     display: flex;
     list-style: none;
@@ -54,11 +26,25 @@ body {
     text-decoration: none;
     font-size: 20px; /* Yazı boyutunu büyütüyoruz */
     color: #333;
+    padding: 10px;
+    transition: all 0.3s ease; /* Geçiş efekti */
 }
 
+/* Aktif Menü Vurgulama */
 .navbar .navbar-nav-left .active {
     font-weight: bold;
     color: #007bff;
+    border: 2px solid #4CAF50; /* Aktif menü çevresi */
+    border-radius: 5px;
+    padding: 10px 15px; /* Çevreye biraz iç boşluk ekledik */
+}
+
+/* Menü Hover Efekti */
+.navbar .navbar-nav-left li a:hover {
+    border: 2px solid #4CAF50; /* Hover durumunda çevre rengi */
+    border-radius: 5px;
+    color: #4CAF50; /* Hover durumunda yazı rengi */
+    padding: 10px 15px; /* Çevredeki boşluk aynı kalması için */
 }
 
 /* Sağ Menü Düzeni (Giriş Yap ve Kayıt Ol) */

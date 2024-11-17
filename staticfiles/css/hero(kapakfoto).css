@@ -1,0 +1,35 @@
+/* Kapak Fotoğrafı */
+.hero-image {
+    background-image: url("{% static 'media/new_images/kapak.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Kapak fotoğrafı yüksekliği */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin: 10px 0 0;
+}
+
+/* Navbar Şeffaflığı */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8); /* Şeffaf beyaz arka plan */
+    backdrop-filter: blur(10px); /* Hafif bulanıklık efekti */
+}

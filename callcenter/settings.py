@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,12 +51,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'callcenter.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Base template burada yer almalı
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # Proje genelinde yer alan templates klasörü
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +114,15 @@ USE_TZ = True
 
 import os
 
-STATIC_URL = '/static/'
+# Statik dosya ayarları
+STATIC_URL = '/static/'  # Statik dosyaların URL'si
+
+# Statik dosyaların fiziksel konumu
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Proje düzeyindeki 'static' dizini
+]
+
+# collectstatic çıktısı için dizin
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
@@ -119,22 +131,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import os
+# Medya dosyaları (ör. kapak fotoğrafları)
+MEDIA_URL = '/media/'  # Medya dosyalarının URL'si
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Fiziksel medya dizini
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # settings.py
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
-
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Bu varsayılan dizin olabilir.
-    "/Users/mehmetsenel/Desktop/CagrıMerkeziWEB/callcenter/static",  # Ek bir dizin.
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic için.
 
 

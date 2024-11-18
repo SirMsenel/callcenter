@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}  <!-- Burada static tag'ini yüklüyoruz -->
 
 {% block content %}
 <!-- Kapak Fotoğrafı -->
-<div class="cover-photo">
-    <img src='media/kapak.jpg' alt="Kapak Fotoğrafı">
-    <div class="welcome-message">
-        HOŞGELDİNİZ
-    </div>
+<div class="hero-image">
+    <img src="{% static 'images/kapak.jpg' %}" alt="Kapak Fotoğrafı" class="img-fluid">
 </div>
 
 <!-- Haber Slider -->
@@ -26,6 +24,7 @@
             </div>
             {% endfor %}
         </div>
+        <!-- Slider Butonları -->
         <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>

@@ -6,33 +6,4 @@
 <div class="hero-image">
     <img src="{% static 'images/kapak.jpg' %}" alt="Kapak Fotoğrafı" class="img-fluid">
 </div>
-
-<!-- Haber Slider -->
-<div class="container mt-5">
-    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for news in latest_news %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>
-                        <a href="{% url 'news_detail' news.id %}" class="text-white">{{ news.title }}</a>
-                    </h5>
-                    <p>{{ news.summary }}</p>
-                    <a href="{% url 'news_detail' news.id %}" class="btn btn-primary">Haberi Oku</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <!-- Slider Butonları -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
 {% endblock %}

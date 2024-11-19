@@ -1,46 +1,13 @@
-/* Hero Görseli */
+/* Kapak fotoğrafını ekranın tamamını kaplayacak şekilde yerleştiriyoruz */
 .hero-image {
-    background-image: url('{% static "images/kapak.jpg" %}');
-    background-size: cover;  /* Fotoğrafın ekranı tamamen kaplamasını sağlar */
-    background-position: center center;  /* Fotoğrafı tam ortalar */
-    height: 100vh;  /* Yüksekliği ekranın tamamına ayarlar */
-    width: 100%;  /* Genişliği ekranın tamamına ayarlar */
-    position: relative;
-    overflow: hidden;  /* Fotoğrafın taşan kısımlarını gizler */
-}
-
-/* Eğer img etiketi ile görsel ekliyorsanız */
-.hero-image img {
-    width: 100%;
-    height: 100vh;  /* Yüksekliği ekran boyutuna ayarlarız */
-    object-fit: cover;  /* Resmin kırpılmadan tamamen sığmasını sağlar */
-    object-position: center center;  /* Resmin ortalanmasını sağlar */
-}
-
-/* Kapak Fotoğrafı (Alternatif Kapak Görseli) */
-.cover-photo {
-    position: relative;
-    width: 100%;
-    height: 400px; /* Kapak görselinin yüksekliğini ayarlayın */
-    overflow: hidden; /* Taşmaları gizler */
-}
-
-.cover-photo img {
-    object-fit: cover;  /* Fotoğrafın ekranı tamamen kaplamasını sağlar */
-    width: 100%;  /* Genişlik ekran boyutunda olur */
-    height: 100%;  /* Yükseklik ekran boyutunda olur */
-    object-position: center center;  /* Fotoğrafı ortalar */
-}
-
-/* Genel Stil ve Düzenlemeler */
-img {
-    max-width: 100%; /* Resim genişliği %100 olacak şekilde */
-}
-
-/* Hero Görseli İçin Mobil Uyum: */
-@media (max-width: 768px) {
-    .hero-image img {
-        height: auto;  /* Mobil cihazlar için görselin yüksekliği otomatik ayarlanır */
-        max-height: 50vh;  /* Daha küçük cihazlarda görselin yüksekliği sınırlandırılır */
-    }
+    position: relative; /* Kapsayıcıyı yerinde tutmak için gerekli */
+    width: 100%; /* Yatayda tam genişlik */
+    height: 100vh; /* Dikeyde ekranın tamamını kapsar */
+    margin: 0; /* Dış boşlukları sıfırlıyoruz */
+    padding: 0; /* İç boşlukları sıfırlıyoruz */
+    background-image: url("{% static 'images/kapak.jpg' %}"); /* Fotoğrafı çağırıyoruz */
+    background-size: cover; /* Fotoğrafın ekranı tamamen kaplamasını sağlıyoruz */
+    background-position: center center; /* Fotoğrafı hem yatayda hem dikeyde ortalıyoruz */
+    background-repeat: no-repeat; /* Fotoğrafın tekrarlanmamasını sağlıyoruz */
+    display: block; /* Blok öğesi olarak tanımlıyoruz */
 }

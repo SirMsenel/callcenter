@@ -1,81 +1,80 @@
 /* Navbar Genel Düzenlemeleri */
 .navbar {
-    background-color: #f8f9fa;
-    padding: 20px 40px;
-    height: 120px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1030;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa; /* Arka plan rengi */
+    padding: 20px 40px; /* İç boşluklar */
+    height: 120px; /* Navbar yüksekliği */
+    position: fixed; /* Sabit bir pozisyonda tutar */
+    top: 0; /* Sayfanın en üstüne sabitler */
+    width: 100%; /* Ekranın tamamını kapsar */
+    z-index: 1030; /* Diğer öğelerin altında kalmaması için yüksek bir z-index */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
 }
 
-/* Ana içerik ile navbar arasındaki boşluk */
+/* Ana içerik düzenlemesi */
 main {
-    padding-top: 120px;
+    padding-top: 120px; /* Navbar yüksekliği kadar üst boşluk */
 }
 
 /* Logo Düzeni */
 .navbar .navbar-brand {
     display: flex;
     align-items: center;
-    font-size: 32px;
+    font-size: 40px; /* Logo yazı boyutu */
     color: #007bff;
 }
 
 .navbar .navbar-brand img {
-    height: 100%; /* Logo boyutunu navbar'a göre orantılı yapıyoruz */
+    height: auto;
+    max-height: 120px; /* Logo yüksekliği */
+    margin-right: 20px;
     width: auto;
-    max-height: 100px; /* Logo yüksekliğini sınırlıyoruz */
-    margin-right: 15px;
 }
 
 /* Menü Düzeni */
-.navbar .navbar-nav-left {
+.navbar .navbar-nav {
     display: flex;
+    align-items: center;
+    gap: 35px; /* Menü öğeleri arası boşluk */
+}
+
+.navbar .navbar-nav li {
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-.navbar .navbar-nav-left li {
-    margin-right: 30px;
-}
-
-.navbar .navbar-nav-left li a {
+.navbar .navbar-nav li a {
     text-decoration: none;
-    font-size: 22px;
+    font-size: 24px; /* Menü yazı boyutu */
     color: #333;
-    position: relative;
-    padding: 10px 15px;
-    transition: color 0.3s, background-color 0.3s, border 0.3s;
+    padding: 12px 20px;
+    border-radius: 5px; /* Hover için köşe yuvarlatma */
+    transition: color 0.3s, background-color 0.3s, transform 0.3s; /* Hover efekt geçişleri */
 }
 
 /* Hover Efekti */
-.navbar .navbar-nav-left li a:hover {
+.navbar .navbar-nav li a:hover {
     color: #fff;
-    background-color: #4CAF50;
-    border-radius: 5px;
-    text-decoration: underline;
+    background-color: #0056b3; /* Koyu mavi hover arka plan */
+    text-decoration: none;
+    transform: scale(1.1); /* Hafif büyüme efekti */
 }
 
-/* Aktif Menü İçin Çerçeve Rengi */
-.navbar .navbar-nav-left .active a {
+/* Aktif Menü İçin */
+.navbar .navbar-nav .active a {
     font-weight: bold;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Aktif menü için yeşil arka plan */
     border-radius: 5px;
 }
 
-/* Sağ Menü Düzeni */
+/* Sağ Menü (Arama ve Giriş Butonları) */
 .navbar .navbar-nav-right {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
+    gap: 25px;
+    margin-left: auto;
 }
 
-/* Arama Formu Düzeni */
+/* Arama Formu */
 .navbar .search-form {
     display: flex;
     align-items: center;
@@ -83,23 +82,52 @@ main {
 }
 
 .navbar .search-form input[type="text"] {
-    padding: 10px 18px;
+    padding: 12px 20px; /* Arama kutusu iç dolgu */
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1px solid #ccc;
     width: 350px;
 }
 
 .navbar .search-form button {
-    padding: 12px 20px;
+    padding: 12px 25px;
     font-size: 18px;
     background-color: #28a745;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Arama Butonu Hover */
 .navbar .search-form button:hover {
     background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 15px 20px;
+    }
+
+    .navbar .navbar-brand {
+        font-size: 28px;
+    }
+
+    .navbar .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar .search-form {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .navbar .search-form input[type="text"] {
+        width: 100%;
+    }
 }

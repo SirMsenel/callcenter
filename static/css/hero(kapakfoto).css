@@ -1,13 +1,8 @@
-/* Kapak fotoğrafını ekranın tamamını kaplayacak şekilde yerleştiriyoruz */
 .hero-image {
-    position: relative; /* Kapsayıcıyı yerinde tutmak için gerekli */
-    width: 100%; /* Yatayda tam genişlik */
-    height: 100vh; /* Dikeyde ekranın tamamını kapsar */
-    margin: 0; /* Dış boşlukları sıfırlıyoruz */
-    padding: 0; /* İç boşlukları sıfırlıyoruz */
-    background-image: url("{% static 'images/kapak.jpg' %}"); /* Fotoğrafı çağırıyoruz */
-    background-size: cover; /* Fotoğrafın ekranı tamamen kaplamasını sağlıyoruz */
-    background-position: center center; /* Fotoğrafı hem yatayda hem dikeyde ortalıyoruz */
-    background-repeat: no-repeat; /* Fotoğrafın tekrarlanmamasını sağlıyoruz */
-    display: block; /* Blok öğesi olarak tanımlıyoruz */
+    background-image: url("{% static 'images/kapak.jpg' %}");
+    background-size: cover; /* Fotoğrafı ekranı kaplayacak şekilde yerleştir */
+    background-position: center top; /* Fotoğrafın üst kısmını ekranda göstermek için */
+    background-repeat: no-repeat; /* Fotoğrafın tekrarlamasını engelle */
+    width: 100%; /* Genişlik %100 */
+    height: 100vh; /* Ekran yüksekliği kadar */
 }

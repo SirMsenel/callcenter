@@ -1,0 +1,42 @@
+/* Hoverda Ortada Görünen Mesaj */
+.welcome-message {
+    position: absolute;
+    top: 50%;  /* Yüksekliği %50'te başlatıp biraz daha aşağıya aldık */
+    left: 50%;  /* Genişliğin ortasında */
+    transform: translate(-50%, -50%);  /* Ortalamayı sağlar */
+    text-align: center;
+    color: #28a745;  /* Yeşil renk */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    border: 8px solid #28a745;  /* Çerçeve boyutunu büyüttük */
+    padding: 40px;  /* Çerçevenin içindeki boşluğu artırdık */
+    border-radius: 12px;  /* Köşe yuvarlama */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);  /* Çerçeveye daha belirgin gölge ekledik */
+}
+
+/* Başlık için stil */
+.main-title {
+    font-size: 5rem;  /* "CCTurkey'e" başlığı için daha büyük yazı boyutu */
+    font-weight: bold;
+    text-transform: uppercase;  /* Yazıyı büyük harflerle yapar */
+    letter-spacing: 5px;  /* Harfler arasına daha fazla boşluk */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);  /* Gölgeleme */
+    margin-bottom: 10px;  /* Alt boşluk */
+}
+
+/* Alt başlık için stil */
+.sub-title {
+    font-size: 3rem;  /* "Hoşgeldiniz" yazısı için biraz daha büyük yazı boyutu */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;  /* Harfler arasına biraz boşluk */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);  /* Gölgeleme */
+}
+
+/* Hoverda Yazının Görünmesi ve Animasyonu */
+.hero-image:hover .welcome-message {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -60%) scale(1.1);  /* Hoverda biraz daha büyür ve daha aşağıya kayar */
+}

@@ -15,8 +15,9 @@ def news_list(request):
 
 
 def home(request):
-    latest_news = News.objects.all().order_by('-created_at')[:5]  # Son 5 haber
-    return render(request, 'news/home.html', {'latest_news': latest_news})
+    # Son 5 haberi alıyoruz
+    news_list = News.objects.all().order_by('-created_at')[:5]
+    return render(request, 'news/home.html', {'news_list': news_list})
 
 
 def search(request):

@@ -1,59 +1,56 @@
-/* Slider Genel Ayarları */
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 300px; /* Slider'ın yüksekliğini küçültüyoruz */
-    margin: 0 auto;
-    overflow: hidden;
+/* Slider'ı kapak fotoğrafı bitiminden başlat */
+#newsSlider {
+    margin-top: 60px; /* Kapak fotoğrafından sonra slider'ı başlat, 50px yerine 60px kullanarak biraz daha boşluk bıraktık */
 }
 
-/* Slider Görselleri */
-.carousel-item img {
-    width: 100%;
-    height: 100%; /* Görselin yüksekliğini slider ile uyumlu hale getiriyoruz */
-    object-fit: cover; /* Resmi, slider'ın tamamını kaplayacak şekilde kırpıyoruz */
-    object-position: center; /* Resmi ortalıyoruz */
+/* Slider başlık kısmına boşluk ekleyelim */
+#newsSlider h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px; /* Slider ile başlık arasına biraz boşluk bırakalım */
+    color: #333;
 }
 
-/* Slider Caption (Açıklama) */
-.carousel-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Koyu arka plan */
-    padding: 15px;
+/* Slider resminin yüksekliğini ayarlama */
+#newsSlider .carousel-item img {
+    height: 400px; /* Slider resminin yüksekliği */
+    object-fit: cover; /* Resmin en boy oranını koruyarak ekrana sığdırma */
+}
+
+/* Slider'ın caption kısmının stilleri */
+#newsSlider .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam bir arka plan */
+    border-radius: 8px;
+    padding: 20px; /* Padding'i biraz arttırarak daha geniş bir alan sağladık */
+    text-align: center;
+}
+
+/* Slider başlık stilini özelleştirme */
+#newsSlider .carousel-caption h5 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px; /* Başlık ile özet arasına boşluk ekleyelim */
+}
+
+/* Slider özet kısmının stilini özelleştirme */
+#newsSlider .carousel-caption p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 15px; /* Özet ile buton arasına boşluk ekleyelim */
+}
+
+/* Habere Git butonunun stilini özelleştirme */
+#newsSlider .carousel-caption a {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px; /* Butonun sol ve sağ tarafına daha fazla padding ekledik */
     border-radius: 5px;
-    text-align: left;
-    z-index: 2;
+    text-decoration: none;
 }
 
-/* Previous & Next Butonları */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: black;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    z-index: 3;
-}
-
-/* Responsive Tasarım */
-@media (max-width: 768px) {
-    .carousel-item img {
-        height: auto; /* Mobilde yüksekliği orantılı yapıyoruz */
-        max-height: 250px; /* Daha küçük cihazlar için slider yüksekliğini sınırlıyoruz */
-    }
-
-    .carousel-caption h5 {
-        font-size: 1.2rem;
-    }
-
-    .carousel-caption p {
-        font-size: 0.9rem;
-    }
-
-    .carousel-caption a.btn {
-        font-size: 0.9rem;
-    }
+#newsSlider .carousel-caption a:hover {
+    background-color: #218838; /* Hover durumunda renk değişimi */
 }

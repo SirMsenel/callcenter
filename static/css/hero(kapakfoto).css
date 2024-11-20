@@ -1,8 +1,0 @@
-.hero-image {
-    background-image: url("{% static 'images/kapak.jpg' %}");
-    background-size: cover; /* Fotoğrafı ekranı kaplayacak şekilde yerleştir */
-    background-position: center top; /* Fotoğrafın üst kısmını ekranda göstermek için */
-    background-repeat: no-repeat; /* Fotoğrafın tekrarlamasını engelle */
-    width: 100%; /* Genişlik %100 */
-    height: 100vh; /* Ekran yüksekliği kadar */
-}

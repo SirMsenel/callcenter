@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('search/', views.search, name='search'),  # Arama URL'si
     path('', views.news_list, name='news_list'),  # Tüm haberler
-    path('<int:id>/', views.news_detail, name='news_detail'),  # Haber detay
+    path('news/<int:id>/', views.news_detail, name='news_detail'),  # Burada id parametresi kullanılmakta
     path('articles/', views.article_list, name='articles_list'),
     path('register/', views.register, name='register'), #kayıt sistemi
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),  # Giriş işlemi

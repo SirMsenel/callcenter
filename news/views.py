@@ -28,9 +28,11 @@ def search(request):
         )  # Başlık veya içerik içinde arama yap
     return render(request, 'news/search_results.html', {'results': results, 'query': query})
 
+
 def news_detail(request, id):
     news = get_object_or_404(News, id=id)  # Haber nesnesini al
     return render(request, 'news/news_detail.html', {'news': news})
+
 
 def register(request):
     if request.method == 'POST':

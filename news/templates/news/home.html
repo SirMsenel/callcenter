@@ -3,5 +3,51 @@
 
 {% block content %}
 <!-- Kapak Fotoğrafı -->
-<div class="hero-image"></div>
+<div class="hero-image">
+    <div class="welcome-message">
+        <div class="main-title">CCTurkey'e</div>
+        <div class="sub-title">Hoşgeldiniz</div>
+    </div>
+</div>
+
+<!-- Slider -->
+<div id="newsSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for news in news_list %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ news.title }}</h5>
+                    <p>{{ news.summary }}</p>
+                    <a href="{% url 'news_detail' id=news.id %}" class="btn btn-primary">Habere Git</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#newsSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#newsSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<style>
+    /* Kapak Fotoğrafı İçin CSS */
+    .hero-image {
+        background-image: url("{% static 'images/kapak2.jpg' %}");
+        background-size: cover;  /* Arka plan resmi ekranı tamamen dolduracak şekilde ayarlanır */
+        background-position: center center;  /* Resmi ortalar */
+        background-repeat: no-repeat;  /* Resmin tekrar etmesini engeller */
+        height: 100vh;  /* Ekranın tamamını kapsar */
+        width: 100%;  /* Ekranın genişliği kadar */
+        position: relative; /* Çocuk elemanları (mesaj) için pozisyon ayarı */
+    }
+</style>
+
 {% endblock %}
+
+
+

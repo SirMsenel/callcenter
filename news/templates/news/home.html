@@ -15,29 +15,44 @@
     Haberler
 </a>
 
-<!-- Slider -->
-<div id="newsSlider" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {% for news in news_list %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
-            <div class="carousel-caption">
-                <h5 class="news-title">{{ news.title }}</h5>
-                <p class="news-summary">{{ news.summary }}</p>
-                <a href="{% url 'news_detail' id=news.id %}" class="btn btn-primary">Habere Git</a>
-            </div>
-        </div>
-        {% endfor %}
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <!-- Carousel indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#newsSlider" data-bs-slide="prev">
+
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      {% for news in news_list %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+        <!-- Her bir resim için link açıyoruz -->
+        <a href="{% url 'news_detail' id=news.id %}">
+          <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
+        </a>
+        <!-- Carousel caption (başlık, özet) -->
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="news-title">{{ news.title }}</h5>
+          <p class="news-summary">{{ news.summary }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Carousel controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#newsSlider" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
 
 <style>
     /* Kapak Fotoğrafı İçin CSS */

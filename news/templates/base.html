@@ -7,20 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Ana Sayfa{% endblock %}</title>
 
-    <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeo7DkV3DULpywEf2MOIoEicKqN1rKcDOA06Hwr6bWr7b7Qe" 
-    crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Ortak CSS dosyaları -->
     <link rel="stylesheet" href="{% static 'css/image.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/card.css' %}">
     <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Navbar Genel Ayarları */
         .navbar {
@@ -64,14 +60,17 @@
         /* Sağdaki Butonlar */
         .navbar-nav.ml-auto .btn-login,
         .navbar-nav.ml-auto .btn-register {
-            font-size: 14px; /* Buton yazı boyutu */
-            padding: 5px 15px; /* Buton paddingi */
-            border-radius: 5px;
-            margin-left: 6px;
+            font-size: 14px; /* Yazı boyutu */
+            padding: 8px 12px; /* Arama butonuyla aynı padding */
+            border-radius: 5px; /* Köşe yuvarlama */
+            margin-left: 6px; /* Butonlar arası mesafe */
+            height: 38px; /* Arama butonuyla aynı yükseklik */
+            line-height: 20px; /* Metni dikeyde ortala */
         }
 
+        /* Giriş Yap Butonu */
         .navbar-nav.ml-auto .btn-login {
-            background-color: #28a745;
+            background-color: #28a745; /* Yeşil renk */
             color: #fff;
         }
 
@@ -79,8 +78,9 @@
             background-color: #218838;
         }
 
+        /* Kaydol Butonu */
         .navbar-nav.ml-auto .btn-register {
-            background-color: #6c757d;
+            background-color: #6c757d; /* Gri renk */
             color: #fff;
         }
 
@@ -88,7 +88,7 @@
             background-color: #5a6268;
         }
 
-        /* Arama Kutusu */
+        /* Arama Kutusu ve Buton */
         .navbar .search-form {
             display: flex;
             align-items: center;
@@ -100,7 +100,7 @@
             font-size: 14px; /* Arama kutusu yazı boyutu */
             border: 1px solid #ccc;
             border-radius: 5px;
-            width: 200px; /* Daha küçük genişlik */
+            width: 200px; /* Arama kutusu genişliği */
         }
 
         .navbar .search-form button {
@@ -111,11 +111,14 @@
             border: none;
             border-radius: 5px;
             margin-left: 5px; /* Arama butonuyla arama kutusu arasındaki mesafe */
+            height: 38px; /* Giriş yap/kaydol ile aynı yükseklik */
+            line-height: 20px; /* Metni dikeyde ortala */
         }
 
         .navbar .search-form button:hover {
             background-color: #218838;
         }
+
         /* Aktif Menü Durumu */
         .navbar-nav .nav-link {
             font-size: 16px; /* Menü yazı boyutu */
@@ -138,85 +141,66 @@
             border-radius: 10px; /* Kenarları yuvarla */
             font-weight: bold; /* Yazı tipini kalın yap */
         }
-
-
     </style>
 </head>
 <body>
-
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <!-- Sol Taraftaki Logo -->
-            <a class="navbar-brand">
-                <img src="{% static 'images/logo.png' %}" alt="Logo">
-            </a>
-            <!-- Mobil Menüyü Açma Butonu -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar Menüsü -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <!-- Ana Sayfa bağlantısı active kontrolü -->
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
-                            Ana Sayfa
-                        </a>
-                    </li>                  
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/news/' %}active{% endif %}" href="{% url 'news_list' %}">
-                            Haberler
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles_list' %}">
-                            Makaleler
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/other/' %}active{% endif %}" href="#">
-                            Diğer Sayfa
-                        </a>
-                    </li>
-                </ul>
-                <!-- Sağ Tarafta Arama ve Kullanıcı İşlemleri -->
-                <form action="{% url 'search' %}" method="get" class="d-flex me-3 search-form">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Haber Ara" aria-label="Search" required>
-                    <button class="btn btn-outline-success" type="submit">Ara</button>
-                </form>
-                <ul class="navbar-nav ml-auto">
-                    {% if user.is_authenticated %}
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <form action="{% url 'logout' %}" method="post" class="d-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link nav-link">Çıkış Yap</button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="btn btn-login" href="{% url 'login' %}">Giriş Yap</a>
+                            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Ana Sayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-register" href="{% url 'register' %}">Kayıt Ol</a>
+                            <a class="nav-link {% if request.path == '/news/' %}active{% endif %}" href="{% url 'news_list' %}">Haberler</a>
                         </li>
-                    {% endif %}
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/other/' %}active{% endif %}" href="#">Diğer Sayfa</a>
+                        </li>
+                    </ul>
+                    <form action="{% url 'search' %}" method="get" class="d-flex me-3 search-form">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Haber Ara" aria-label="Search" required>
+                        <button class="btn btn-outline-success" type="submit">Ara</button>
+                    </form>
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <form action="{% url 'logout' %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link nav-link">Çıkış Yap</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="btn btn-login" href="{% url 'login' %}">Giriş Yap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-register" href="{% url 'register' %}">Kayıt Ol</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-    
-    
-<main>
-    {% block content %}{% endblock %}
-</main>
+        </nav>
+    </header>
 
-   <!-- Bootstrap JS ve Bağımlılıkları -->
-   <script 
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-   integrity="sha384-qkWtdEHp4eR12dSBmILqqNCeABEdGIfToYZoWDRGgdnFSc6Hw+LI9Lg3G7PA6FMO" 
-   crossorigin="anonymous"></script>
-   
+    <!-- Sayfa İçeriği -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Bootstrap JS ve Bağımlılıkları -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

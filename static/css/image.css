@@ -1,42 +1,94 @@
 /* Hoverda Ortada Görünen Mesaj */
 .welcome-message {
     position: absolute;
-    top: 50%;  /* Yüksekliği %50'te başlatıp biraz daha aşağıya aldık */
-    left: 50%;  /* Genişliğin ortasında */
-    transform: translate(-50%, -50%);  /* Ortalamayı sağlar */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    color: #28a745;  /* Yeşil renk */
+    color: #28a745;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    border: 8px solid #28a745;  /* Çerçeve boyutunu büyüttük */
-    padding: 40px;  /* Çerçevenin içindeki boşluğu artırdık */
-    border-radius: 12px;  /* Köşe yuvarlama */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);  /* Çerçeveye daha belirgin gölge ekledik */
+    border: 8px solid #28a745;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Başlık için stil */
 .main-title {
-    font-size: 5rem;  /* "CCTurkey'e" başlığı için daha büyük yazı boyutu */
+    font-size: 5rem;
     font-weight: bold;
-    text-transform: uppercase;  /* Yazıyı büyük harflerle yapar */
-    letter-spacing: 5px;  /* Harfler arasına daha fazla boşluk */
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);  /* Gölgeleme */
-    margin-bottom: 10px;  /* Alt boşluk */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
 }
 
 /* Alt başlık için stil */
 .sub-title {
-    font-size: 3rem;  /* "Hoşgeldiniz" yazısı için biraz daha büyük yazı boyutu */
+    font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 3px;  /* Harfler arasına biraz boşluk */
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);  /* Gölgeleme */
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Hoverda Yazının Görünmesi ve Animasyonu */
 .hero-image:hover .welcome-message {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -60%) scale(1.1);  /* Hoverda biraz daha büyür ve daha aşağıya kayar */
+    transform: translate(-50%, -60%) scale(1.1);
 }
+
+/* Ekran Uyumluluğu */
+
+/* Tabletler için (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .welcome-message {
+        padding: 30px; /* Daha az padding */
+        border: 6px solid #28a745; /* Daha ince çerçeve */
+    }
+    .main-title {
+        font-size: 3.5rem; /* Başlık yazı boyutunu küçült */
+        letter-spacing: 3px; /* Harfler arasındaki boşluğu daralt */
+    }
+    .sub-title {
+        font-size: 2rem; /* Alt başlık yazı boyutunu küçült */
+        letter-spacing: 2px; /* Alt başlık harf aralığını daralt */
+    }
+}
+
+/* Mobil cihazlar için (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .welcome-message {
+        padding: 20px; /* Daha az padding */
+        border: 4px solid #28a745; /* Daha ince çerçeve */
+    }
+    .main-title {
+        font-size: 2.5rem; /* Başlık yazı boyutunu küçült */
+        letter-spacing: 2px; /* Harfler arasındaki boşluğu daralt */
+    }
+    .sub-title {
+        font-size: 1.5rem; /* Alt başlık yazı boyutunu küçült */
+        letter-spacing: 1px; /* Alt başlık harf aralığını daralt */
+    }
+}
+
+/* Çok küçük ekranlar için (max-width: 360px) */
+@media screen and (max-width: 360px) {
+    .welcome-message {
+        padding: 15px; /* Daha az padding */
+        border: 3px solid #28a745; /* Daha ince çerçeve */
+    }
+    .main-title {
+        font-size: 2rem; /* Başlık yazı boyutunu küçült */
+        letter-spacing: 1px; /* Harfler arasındaki boşluğu daralt */
+    }
+    .sub-title {
+        font-size: 1rem; /* Alt başlık yazı boyutunu küçült */
+        letter-spacing: 0.5px; /* Alt başlık harf aralığını daralt */
+    }
+}
+
+

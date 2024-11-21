@@ -11,46 +11,33 @@
 </div>
 
 <!-- Bülten Başlığı -->
-<h2 class="bulten-haberler">Bülten</h2>
+<a href="{% url 'news_list' %}" class="bulten-haberler">
+    Haberler
+</a>
 
-<!-- Slider ve İçeriği -->
-<div class="slider-container">
-    <!-- Sol Boş Alan -->
-    <div class="empty-space"></div>
-
-    <!-- Slider -->
-    <div id="newsSlider" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for news in news_list %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <!-- Slider İçindeki Resim -->
-                    <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
-
-                    <!-- Haber Başlığı, Özet ve Buton -->
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="news-title">{{ news.title }}</h5>  <!-- Haber Başlığı -->
-                        <p class="news-summary">{{ news.summary }}</p> <!-- Haber Özeti -->
-                        <a href="{% url 'news_detail' id=news.id %}" class="btn btn-primary">Habere Git</a>
-                    </div>
-                </div>
-            {% endfor %}
+<!-- Slider -->
+<div id="newsSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for news in news_list %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ news.image.url }}" class="d-block w-100" alt="{{ news.title }}">
+            <div class="carousel-caption">
+                <h5 class="news-title">{{ news.title }}</h5>
+                <p class="news-summary">{{ news.summary }}</p>
+                <a href="{% url 'news_detail' id=news.id %}" class="btn btn-primary">Habere Git</a>
+            </div>
         </div>
-
-        <!-- Slider Kontrolleri -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#newsSlider" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#newsSlider" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        {% endfor %}
     </div>
-
-    <!-- Sağ Boş Alan -->
-    <div class="empty-space"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#newsSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#newsSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
-
 
 <style>
     /* Kapak Fotoğrafı İçin CSS */
@@ -70,100 +57,6 @@
         height: 100%;
         margin: 0;
         overflow-x: hidden; /* Yatay kaydırma çubuğunu engelliyoruz */
-    }
-
-    /* Bülten Başlığı */
-    h2.bulten-haberler {
-        text-align: center;
-        font-size: 4rem; /* Başlık boyutunu büyütüyoruz */
-        font-weight: bold;
-        color: #28a745; /* Yeşil renk */
-        margin-top: 60px; /* Üstten boşluğu arttırdık, başlığı daha aşağıya taşıdık */
-        margin-bottom: 20px; /* Alttan boşluğu azaltıyoruz */
-        padding: 10px 20px; /* Padding'i küçültüyoruz */
-        border: 2px solid #28a745; /* Yeşil çerçeve daha ince oldu */
-        border-radius: 6px; /* Köşe yuvarlama */
-        width: 66.66%; /* Ortada kalan 4 birim için genişlik */
-        margin-left: 16.66%; /* Sağdan ve soldan boşluk bırakıyoruz */
-        transition: all 0.3s ease;
-    }
-
-
-    h2.bulten-haberler:hover {
-        background-color: transparent; /* Hoverda arka plan rengini kaldırıyoruz */
-        color: #28a745; /* Hoverda yazı rengini yeşil yapıyoruz */
-        cursor: pointer; /* Fare imleci el işaretine dönüşecek */
-    }
-    /* Slider ve içerik alanı */
-    .slider-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: calc(100vh - 30px); /* Slider'ı ekranın geri kalan kısmını dolduracak şekilde ayarlıyoruz */
-        margin-top: 0;  /* Slider'ın üst margin'ini sıfırladık, böylece daha yakın olur */
-    }
-
-    /* Sol ve Sağ Alanlar */
-    .empty-space {
-        width: 8.33%; /* Ekranı 6 parçaya böldüğümüzde her bir boş alan %8.33 */
-    }
-
-    /* Slider'ı yatayda ortalayalım ve sabit bir yükseklik verelim */
-    #newsSlider {
-        width: 83.33%; /* Slider'ı ekranın 4/6'sı kadar yapıyoruz */
-        height: 70%; /* Yüksekliği yatay alana oranla biraz daha arttırdık */
-        margin: 0 auto; /* Slider'ı yatayda ortalıyoruz */
-        overflow: hidden; /* Dikey kaydırma çubuğunu engelliyoruz */
-    }
-
-    /* Resimlerin Slider'a Tam Oturması */
-    #newsSlider .carousel-item img {
-        width: 100%; /* Resim genişliği slider'ı dolduracak */
-        height: 100%; /* Resim yüksekliği slider yüksekliğine uyum sağlayacak */
-        object-fit: cover; /* Resim alanı dolduracak şekilde kesilir */
-        object-position: center; /* Resim ortalanır */
-    }
-
-    /* Slider başlık, özet ve buton stilleri */
-    .carousel-caption {
-        background-color: rgba(0, 0, 0, 0.6); /* Koyu zemin */
-        border-radius: 8px;  /* Köşe yuvarlama */
-        padding: 20px;
-        text-align: center;
-        position: absolute;
-        bottom: 20px;  /* Alt kısmı yakın yapıyoruz */
-        left: 50%;
-        transform: translateX(-50%);  /* Ortalamayı sağlıyoruz */
-        width: 90%;  /* İçeriği genişletiyoruz */
-        z-index: 10; /* Başlık, özet ve butonun görünebilmesi için z-index ekliyoruz */
-    }
-
-    .news-title {
-        font-size: 2rem;
-        font-weight: bold;
-        color: white;
-        margin-bottom: 10px;
-    }
-
-    .news-summary {
-        font-size: 1.2rem;
-        color: white;
-        margin-bottom: 20px;
-    }
-
-    /* Habere Git butonunun stilini */
-    .carousel-caption a {
-        background-color: #28a745; /* Yeşil renk */
-        color: white;
-        font-weight: bold;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-
-    .carousel-caption a:hover {
-        background-color: #218838; /* Hover durumunda yeşil tonları */
     }
 </style>
 

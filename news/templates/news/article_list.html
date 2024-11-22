@@ -1,21 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makale Listesi</title>
-</head>
-<body>
-    <h1>Makale Listesi</h1>
-    <ul>
+<!-- Makaleler Sayfası -->
+<div class="articles-section">
+    <h2 class="section-title">Tüm Makaleler</h2>
+    <div class="articles-container">
         {% for article in articles %}
-            <li>{{ article.title }}</li>
+        <div class="article-card">
+            <!-- Kapak Görseli -->
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
+            
+            <!-- Makale Bilgileri -->
+            <div class="article-content">
+                <span class="article-category">{{ article.category.name }}</span>
+                <h3 class="article-title">{{ article.title }}</h3>
+                <p class="article-summary">{{ article.summary|truncatechars:150 }}</p>
+                
+                <!-- İstatistikler -->
+                <div class="article-meta">
+                    <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
+                    <span class="comments">💬 {{ article.comment_count }} Yorum</span>
+                </div>
+            </div>
+
+            <!-- Link -->
+            <a href="{% url 'article_detail' article.id %}" class="read-more">Detayları Gör</a>
+        </div>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </div>
+
+    <!-- Sayfalama -->
+    <div class="pagination">
+        {% if articles.has_previous %}
+            <a href="?page=1" class="pagination-link">İlk Sayfa</a>
+            <a href="?page={{ articles.previous_page_number }}" class="pagination-link">‹ Önceki</a>
+        {% endif %}
+        
+        <span class="current-page">Sayfa {{ articles.number }} / {{ articles.paginator.num_pages }}</span>
+
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}" class="pagination-link">Sonraki ›</a>
+            <a href="?page={{ articles.paginator.num_pages }}" class="pagination-link">Son Sayfa</a>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

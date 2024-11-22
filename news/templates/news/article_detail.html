@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+    <div class="article-detail">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <div class="meta">
+            <span>📅 Yayınlanma Tarihi: {{ article.created_at }}</span>
+            <span>📖 Görüntüleme: {{ article.view_count }}</span>
+            <span>💬 Yorumlar: {{ article.comment_count }}</span>
+        </div>
+        <img src="{{ article.image.url }}" alt="{{ article.title }}">
+        <a href="{% url 'articles_list' %}">Tüm Makalelere Dön</a>
+    </div>
+</body>
+</html>

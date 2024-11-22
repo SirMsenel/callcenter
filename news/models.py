@@ -1,5 +1,6 @@
 from PIL import Image
 from django.db import models
+from django.utils import timezone
 
 
 class News(models.Model):
@@ -21,10 +22,24 @@ class News(models.Model):
             img.save(self.image.path)
 
 
-class Article(models.Model):  # Bu satırı kontrol edin
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    # Diğer alanlar
+# Category modelini elle girilebilir şekilde bırakıyoruz
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+# Article modelini güncelliyoruz
+class Article(models.Model):
+    title = models.CharField(max_length=200)  # Makale başlığı
+    summary = models.TextField()  # Makale özeti
+    content = models.TextField()  # Makale içeriği
+    image = models.ImageField(upload_to='article/', null=True, blank=True)  # Image alanı, media/news_images klasörüne kaydedilecek
+    category = models.CharField(max_length=100, null=True, blank=True)  # null=True ve blank=True ile boş bırakılabilir
+    created_at = models.DateTimeField(auto_now_add=True, null=True)  # null=True olarak güncellendi
+    published_at = models.DateTimeField(null=True, blank=True)  # Kullanıcıya tarih seçme imkanı
+    view_count = models.IntegerField(default=0)  # Görüntülenme sayısı
+    comment_count = models.IntegerField(default=0)  # Yorum sayısı
 
     def __str__(self):
         return self.title

@@ -1,25 +1,19 @@
 /* Bülten Başlığı */
 a.bulten-haberler {
     text-align: center;
-    font-size: 4rem; /* Başlık boyutunu büyütüyoruz */
+    font-size: 3rem; /* Başlık boyutunu küçülttük */
     font-weight: bold;
     color: #28a745; /* Yeşil renk */
-    margin-top: 60px; /* Üstten boşluğu arttırdık, başlığı daha aşağıya taşıdık */
-    margin-bottom: 20px; /* Alttan boşluğu azaltıyoruz */
-    padding: 10px 20px; /* Padding'i küçültüyoruz */
-    border: 2px solid #28a745; /* Yeşil çerçeve daha ince oldu */
-    border-radius: 6px; /* Köşe yuvarlama */
-    width: 66.66%; /* Ortada kalan 4 birim için genişlik */
-    margin-left: 16.66%; /* Sağdan ve soldan boşluk bırakıyoruz */
+    margin-top: 80px; /* Üstten boşluğu arttırdık */
+    margin-bottom: 20px; /* Alttan boşluk sabit kaldı */
+    padding: 5px 15px; /* Padding'i küçülttük */
+    border: 1.5px solid #28a745; /* Çerçeve kalınlığını incelttik */
+    border-radius: 5px; /* Köşe yuvarlama sabit kaldı */
+    width: 60%; /* Genişliği biraz daralttık */
+    margin-left: 20%; /* Ortada kalması için sağ ve soldan boşluğu ayarladık */
     display: inline-block; /* Bağlantıyı blok düzeyinde göster */
     text-decoration: none; /* Alt çizgiyi kaldır */
-    transition: all 0.3s ease;
-}
-
-a.bulten-haberler:hover {
-    background-color: transparent; /* Hoverda arka plan rengini kaldırıyoruz */
-    color: #28a745; /* Hoverda yazı rengini yeşil yapıyoruz */
-    cursor: pointer; /* Fare imleci el işaretine dönüşecek */
+    transition: all 0.3s ease; /* Hover efekti için geçiş süresi */
 }
 
 /* Slider genel düzenleme */

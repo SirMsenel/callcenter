@@ -17,7 +17,9 @@ def news_list(request):
 def home(request):
     # Son 5 haberi alıyoruz
     news_list = News.objects.all().order_by('-created_at')[:5]
-    return render(request, 'news/home.html', {'news_list': news_list})
+    article_list = Article.objects.all().order_by('-created_at')[:4]  # Son 4 makale
+    return render(request, 'news/home.html', {'news_list': news_list,'article_list' : article_list})
+
 
 
 def search(request):
@@ -48,5 +50,18 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 def article_list(request):
-    articles = Article.objects.all()
-    return render(request, 'news/article_list.html', {'articles': articles})
+    # Son 4 makale
+    articles = Article.objects.order_by('-created_at')[:4]
+    
+    context = {
+        'articles': articles
+    }
+    return render(request, 'news/article_list.html', context)
+
+def article_detail(request, id):
+    # ID'ye göre makaleyi getir, yoksa 404 hatası döndür
+    article = get_object_or_404(Article, id=id)
+    context = {
+        'article': article
+    }
+    return render(request, 'news/article_detail.html', context)

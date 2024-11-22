@@ -7,12 +7,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('search/', views.search, name='search'),  # Arama URL'si
-    path('', views.news_list, name='news_list'),  # Tüm haberler
-    path('news/<int:id>/', views.news_detail, name='news_detail'),  # Burada id parametresi kullanılmakta
-    path('articles/', views.article_list, name='articles_list'),
-    path('register/', views.register, name='register'), #kayıt sistemi
+    path('news/', views.news_list, name='news_list'),  # Tüm haberler sayfası
+    path('news/<int:id>/', views.news_detail, name='news_detail'),  # Haber detay sayfası
+    path('articles/', views.article_list, name='articles_list'),  # Tüm makalelerin listelendiği ana sayfa
+    path('articles/<int:id>/', views.article_detail, name='article_detail'),  # Makale detay sayfası
+    path('register/', views.register, name='register'),  # Kayıt işlemi
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),  # Giriş işlemi
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),  # Çıkış işlemi 
 ]
+
 
 

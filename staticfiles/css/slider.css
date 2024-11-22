@@ -1,26 +1,28 @@
 /* Bülten Başlığı */
 a.bulten-haberler {
     text-align: center;
-    font-size: 4rem; /* Başlık boyutunu büyütüyoruz */
+    font-size: 3rem; /* Başlık boyutunu küçülttük */
     font-weight: bold;
     color: #28a745; /* Yeşil renk */
-    margin-top: 60px; /* Üstten boşluğu arttırdık, başlığı daha aşağıya taşıdık */
-    margin-bottom: 20px; /* Alttan boşluğu azaltıyoruz */
-    padding: 10px 20px; /* Padding'i küçültüyoruz */
-    border: 2px solid #28a745; /* Yeşil çerçeve daha ince oldu */
-    border-radius: 6px; /* Köşe yuvarlama */
-    width: 66.66%; /* Ortada kalan 4 birim için genişlik */
-    margin-left: 16.66%; /* Sağdan ve soldan boşluk bırakıyoruz */
+    margin-top: 80px; /* Üstten boşluğu arttırdık */
+    margin-bottom: 20px; /* Alttan boşluk sabit kaldı */
+    padding: 5px 15px; /* Padding'i küçülttük */
+    border: 1.5px solid #28a745; /* Çerçeve kalınlığını incelttik */
+    border-radius: 5px; /* Köşe yuvarlama sabit kaldı */
+    width: 60%; /* Genişliği biraz daralttık */
+    margin-left: 20%; /* Ortada kalması için sağ ve soldan boşluğu ayarladık */
     display: inline-block; /* Bağlantıyı blok düzeyinde göster */
     text-decoration: none; /* Alt çizgiyi kaldır */
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Hover efekti için geçiş süresi */
 }
 
 a.bulten-haberler:hover {
-    background-color: transparent; /* Hoverda arka plan rengini kaldırıyoruz */
-    color: #28a745; /* Hoverda yazı rengini yeşil yapıyoruz */
+    background-color: #28a745; /* Arka plan rengini yeşil yapıyoruz */
+    color: white; /* Yazı rengini beyaz yapıyoruz */
+    border: 1.5px solid white; /* Çerçeve rengini beyaz yapıyoruz */
     cursor: pointer; /* Fare imleci el işaretine dönüşecek */
 }
+
 
 /* Slider genel düzenleme */
 #carouselExampleDark {
@@ -30,6 +32,8 @@ a.bulten-haberler:hover {
     height: 60vh; /* Slider boyutunu %60 yüksekliğe ayarlıyoruz */
     overflow: hidden; /* Taşmaların engellenmesi için */
     position: relative; /* Altındaki caption'ı doğru pozisyonda tutmak için */
+    border: 3px solid #28a745; /* Yeşil çerçeve ekliyoruz */
+    border-radius: 10px; /* Köşeleri yuvarlıyoruz */
 }
 
 /* Slider içeriği */
@@ -46,9 +50,9 @@ a.bulten-haberler:hover {
 
 .carousel-caption {
     position: absolute;
-    top: 50%; /* Dikeyde ortalamak için */
+    top: 5%; /* İndikatörlerin hemen üst kısmına yerleştiriyoruz */
     left: 50%; /* Yatayda ortalamak için */
-    transform: translate(-50%, -50%); /* Hem yatay hem dikeyde ortalamak için */
+    transform: translateX(-50%); /* Yalnızca yatayda ortalamak için */
     color: white; /* Yazı rengini beyaz yapıyoruz */
     text-align: center; /* Metni ortalamak için */
     width: 70%; /* Genişliği %70 yapıyoruz, yatayda yayılma alanını kısıtlıyoruz */
@@ -65,22 +69,7 @@ a.bulten-haberler:hover {
 /* Özet stili */
 .news-summary {
     font-size: 1rem; /* Özet boyutunu ayarlıyoruz */
-    margin-bottom: 20px; /* Özet ile buton arasına boşluk ekliyoruz */
-}
-
-/* Habere git butonu */
-.carousel-caption a {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-caption a:hover {
-    background-color: #218838;
+    margin-bottom: 20px; /* Özet ile başlık arasına boşluk ekliyoruz */
 }
 
 /* Previous ve Next butonlarının stilini düzenliyoruz */

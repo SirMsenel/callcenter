@@ -54,6 +54,45 @@
 </div>
 
 
+<!-- Makaleler Başlığı -->
+<a href="{% url 'articles_list' %}" class="bulten-haberler">
+    Makaleler
+</a>
+
+<!-- Son Eklenen Makaleler Anasayfası -->
+<div class="articles-section">
+    <!-- Son Eklenen Makaleler Başlığı -->
+    <h2 class="section-title">Son Eklenen Makaleler</h2>
+
+    <!-- Makale Kartları -->
+    <div class="articles-container">
+        {% for article in article_list %}
+        <div class="article-card" onclick="window.location.href='{% url 'article_detail' article.id %}'">
+            <!-- Kapak Görseli -->
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
+            
+            <!-- Makale Bilgileri -->
+            <div class="article-content">
+                <span class="article-category">{{ article.category.name }}</span>
+                <h3 class="article-title">{{ article.title }}</h3>
+                <p class="article-summary">{{ article.summary|truncatechars:100 }}</p>
+                
+                <!-- İstatistikler -->
+                <div class="article-meta">
+                    <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
+                    <span class="comments">💬 {{ article.comment_count }} Yorum</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Tüm Makaleleri Gör butonu -->
+    <div class="more-articles">
+        <a href="{% url 'articles_list' %}" class="btn btn-primary">Tüm Makaleleri Gör</a>
+    </div>
+</div>
+
 <style>
     /* Kapak Fotoğrafı İçin CSS */
     .hero-image {
@@ -73,6 +112,19 @@
         margin: 0;
         overflow-x: hidden; /* Yatay kaydırma çubuğunu engelliyoruz */
     }
+
+    a.bulten-haberler:hover,
+    a.bulten-haberler:focus,
+    a.bulten-haberler:active {
+        background-color: #28a745; /* Arka plan rengini yeşil yapıyoruz */
+        color: white; /* Yazı rengini beyaz yapıyoruz */
+        border: 1.5px solid #28a745; /* Çerçeve rengini yeşil bırakıyoruz */
+        cursor: pointer; /* Fare imleci el işaretine dönüşecek */
+        transform: scale(1.02); /* Hover sırasında hafif büyüme efekti */
+        transition: all 0.3s ease; /* Hover ve aktif durum geçişleri */
+    }
+
 </style>
+
 
 {% endblock %}

@@ -54,14 +54,8 @@
 </div>
 
 
-<!-- Makaleler Başlığı -->
-<a href="{% url 'articles_list' %}" class="bulten-haberler">
-    Makaleler
-</a>
-
 <!-- Son Eklenen Makaleler Anasayfası -->
 <div class="articles-section">
-    <!-- Son Eklenen Makaleler Başlığı -->
     <h2 class="section-title">Son Eklenen Makaleler</h2>
 
     <!-- Makale Kartları -->
@@ -76,12 +70,12 @@
                 <span class="article-category">{{ article.category.name }}</span>
                 <h3 class="article-title">{{ article.title }}</h3>
                 <p class="article-summary">{{ article.summary|truncatechars:100 }}</p>
-                
-                <!-- İstatistikler -->
-                <div class="article-meta">
-                    <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
-                    <span class="comments">💬 {{ article.comment_count }} Yorum</span>
-                </div>
+            </div>
+
+            <!-- İstatistikler (Alt Kısma Taşındı ve Ortalandı) -->
+            <div class="article-meta">
+                <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
+                <span class="comments">💬 {{ article.comment_count }} Yorum</span>
             </div>
         </div>
         {% endfor %}

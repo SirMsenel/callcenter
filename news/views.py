@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate
 from django.views.generic import ListView
 from .models import Article
 from django.db.models import Count
+from django.core.paginator import Paginator
 
 
 def news_list(request):
@@ -59,14 +60,15 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
+
+
 def article_list(request):
-    # Son 4 makale
-    articles = Article.objects.order_by('-created_at')
-    
-    context = {
-        'articles': articles
-    }
-    return render(request, 'news/article_list.html', context)
+    articles = Article.objects.all()
+    paginator = Paginator(articles, 5)  # Her sayfada 5 makale
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'news/article_list.html', {'articles': page_obj})
+
 
 def article_detail(request, id):
     # ID'ye göre makaleyi getir, yoksa 404 hatası döndür

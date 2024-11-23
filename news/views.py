@@ -7,6 +7,7 @@ from .forms import UserRegisterForm
 from django.contrib.auth import login, authenticate
 from django.views.generic import ListView
 from .models import Article
+from django.db.models import Count
 
 
 def news_list(request):
@@ -15,10 +16,19 @@ def news_list(request):
 
 
 def home(request):
-    # Son 5 haberi alıyoruz
-    news_list = News.objects.all().order_by('-created_at')[:5]
+   
+    news_list = News.objects.all().order_by('-created_at')[:5] # Son 5 haberi alıyoruz
     article_list = Article.objects.all().order_by('-created_at')[:4]  # Son 4 makale
-    return render(request, 'news/home.html', {'news_list': news_list,'article_list' : article_list})
+    # En çok yorum alan makaleyi bul
+    most_commented_article = (
+        Article.objects.annotate(annotated_comment_count=Count('comments'))
+        .order_by('-annotated_comment_count')
+        .first()
+    )
+    
+    return render(request, 'news/home.html', {'news_list': news_list,
+                                              'article_list' : article_list,
+                                              'most_commented_article': most_commented_article,})
 
 
 

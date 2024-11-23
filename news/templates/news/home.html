@@ -58,25 +58,19 @@
     Makaleler
 </a>
 
-<!-- Son Eklenen Makaleler Anasayfası -->
+<!-- Son Eklenen Makaleler -->
 <div class="articles-section">
     <h2 class="section-title">Son Eklenen Makaleler</h2>
 
-    <!-- Makale Kartları -->
     <div class="articles-container">
         {% for article in article_list %}
         <div class="article-card" onclick="window.location.href='{% url 'article_detail' article.id %}'">
-            <!-- Kapak Görseli -->
             <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
-            
-            <!-- Makale Bilgileri -->
             <div class="article-content">
                 <span class="article-category">{{ article.category.name }}</span>
                 <h3 class="article-title">{{ article.title }}</h3>
                 <p class="article-summary">{{ article.summary|truncatechars:100 }}</p>
             </div>
-
-            <!-- İstatistikler (Alt Kısma Taşındı ve Ortalandı) -->
             <div class="article-meta">
                 <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
                 <span class="comments">💬 {{ article.comment_count }} Yorum</span>
@@ -84,12 +78,26 @@
         </div>
         {% endfor %}
     </div>
+</div>
 
-    <!-- Tüm Makaleleri Gör butonu -->
-    <div class="more-articles">
-        <a href="{% url 'articles_list' %}" class="btn btn-primary">Tüm Makaleleri Gör</a>
+<!-- En Çok Yorum Alan Makale -->
+<div class="most-commented-section">
+    <h2 class="section-title">En Çok Yorum Alan Makale</h2>
+
+    <div class="most-commented-card">
+        <img src="{{ most_commented_article.image.url }}" alt="{{ most_commented_article.title }}" class="most-commented-image">
+        <div class="most-commented-content">
+            <h3>{{ most_commented_article.title }}</h3>
+            <p>{{ most_commented_article.content|truncatechars:500 }}</p>
+        </div>
+        <div class="article-meta">
+            <span class="views">📖 {{ most_commented_article.view_count }} Görüntüleme</span>
+            <span class="comments">💬 {{ most_commented_article.comment_count }} Yorum</span>
+        </div>
+        <a href="{% url 'article_detail' most_commented_article.id %}" class="btn">Devamını Oku</a>
     </div>
 </div>
+
 
 <style>
     /* Kapak Fotoğrafı İçin CSS */

@@ -10,6 +10,9 @@ class News(models.Model):
     image = models.ImageField(upload_to='news_images/')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -43,3 +46,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

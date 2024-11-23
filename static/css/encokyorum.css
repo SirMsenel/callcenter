@@ -1,0 +1,49 @@
+/* En Çok Yorum Alan Makale Bölümü */
+.most-commented-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.most-commented-section .most-commented-card {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.most-commented-section .most-commented-image {
+    width: 100%;
+    height: auto;
+}
+
+.most-commented-section .most-commented-content {
+    padding: 20px;
+}
+
+.most-commented-section .most-commented-content h3 {
+    margin-bottom: 10px;
+}
+
+.most-commented-section .article-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 10px;
+    color: #555;
+}
+
+.most-commented-section .btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.most-commented-section .btn:hover {
+    background-color: #0056b3;
+}

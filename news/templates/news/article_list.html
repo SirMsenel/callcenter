@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Makaleler Sayfası -->
-<div class="articles-section">
+<!-- Tüm Makaleler Sayfası -->
+<div class="articles-page">
     <h2 class="section-title">Tüm Makaleler</h2>
-    <div class="articles-container">
+    
+    <!-- Makaleleri Kapsayan Grid -->
+    <div class="articles-grid">
         {% for article in articles %}
         <div class="article-card">
             <!-- Kapak Görseli -->

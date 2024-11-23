@@ -61,7 +61,7 @@ def register(request):
 
 def article_list(request):
     # Son 4 makale
-    articles = Article.objects.order_by('-created_at')[:4]
+    articles = Article.objects.order_by('-created_at')
     
     context = {
         'articles': articles

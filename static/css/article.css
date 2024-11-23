@@ -1,75 +1,74 @@
-.articles-page {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+/* Tüm Makaleler */
+.all-articles-section {
+    margin-top: 50px;
 }
 
-.articles-page .section-title {
-    text-align: center;
+.all-articles-section .section-title {
     font-size: 2rem;
-    margin-bottom: 20px;
     color: #333;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.articles-page .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.articles-list {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.articles-page .article-card {
-    background: #fff;
+.article-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
+    background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.articles-page .article-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.articles-page .article-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.articles-page .article-content {
     padding: 20px;
 }
 
-.articles-page .article-category {
-    font-size: 0.9rem;
-    color: #007bff;
-    font-weight: bold;
-    margin-bottom: 5px;
+.article-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.articles-page .article-title {
+.article-info {
+    flex-grow: 1;
+}
+
+.article-info h3 {
     font-size: 1.25rem;
-    margin: 10px 0;
     color: #333;
+    margin-bottom: 10px;
 }
 
-.articles-page .article-summary {
+.article-info p {
     font-size: 0.95rem;
     color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
-.articles-page .article-meta {
+.article-meta {
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    gap: 20px;
     font-size: 0.9rem;
     color: #777;
+    margin-bottom: 10px;
 }
 
-.articles-page .read-more {
+.article-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.article-info .btn {
     display: inline-block;
-    margin: 15px 20px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
@@ -77,20 +76,19 @@
     transition: background-color 0.3s;
 }
 
-.articles-page .read-more:hover {
+.article-info .btn:hover {
     background-color: #0056b3;
 }
 
-.articles-page .pagination {
+/* Sayfalama */
+.pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-top: 30px;
     gap: 10px;
 }
 
-.articles-page .pagination-link {
-    display: inline-block;
+.pagination-link {
     padding: 10px 15px;
     background-color: #007bff;
     color: #fff;
@@ -99,11 +97,12 @@
     transition: background-color 0.3s;
 }
 
-.articles-page .pagination-link:hover {
+.pagination-link:hover {
     background-color: #0056b3;
 }
 
-.articles-page .current-page {
+.current-page {
     font-size: 1rem;
     color: #333;
+    font-weight: bold;
 }

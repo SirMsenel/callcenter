@@ -2,31 +2,22 @@
 
 {% block content %}
 <!-- Tüm Makaleler Sayfası -->
-<div class="articles-page">
+<!-- Diğer Makaleler -->
+<div class="all-articles-section">
     <h2 class="section-title">Tüm Makaleler</h2>
-    
-    <!-- Makaleleri Kapsayan Grid -->
-    <div class="articles-grid">
+    <div class="articles-list">
         {% for article in articles %}
-        <div class="article-card">
-            <!-- Kapak Görseli -->
-            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
-            
-            <!-- Makale Bilgileri -->
-            <div class="article-content">
-                <span class="article-category">{{ article.category.name }}</span>
-                <h3 class="article-title">{{ article.title }}</h3>
-                <p class="article-summary">{{ article.summary|truncatechars:150 }}</p>
-                
-                <!-- İstatistikler -->
+        <div class="article-row">
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-thumbnail">
+            <div class="article-info">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.summary|truncatechars:200 }}</p>
                 <div class="article-meta">
                     <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
                     <span class="comments">💬 {{ article.comment_count }} Yorum</span>
                 </div>
+                <a href="{% url 'article_detail' article.id %}" class="btn">Detayları Gör</a>
             </div>
-
-            <!-- Link -->
-            <a href="{% url 'article_detail' article.id %}" class="read-more">Detayları Gör</a>
         </div>
         {% endfor %}
     </div>
@@ -46,5 +37,4 @@
         {% endif %}
     </div>
 </div>
-
 {% endblock %}

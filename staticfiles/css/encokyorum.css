@@ -1,0 +1,41 @@
+/* En Çok Yorum Alan Makale Bölümü */
+.most-commented-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.most-commented-section .most-commented-card {
+    max-width: 1000px; /* Kart genişliğini arttırdık */
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.most-commented-section .most-commented-image {
+    width: 100%;
+    height: auto;
+}
+
+.most-commented-section .most-commented-content {
+    padding: 30px; /* İçeriğin etrafındaki boşluğu artırdık */
+}
+
+.most-commented-section .most-commented-content h3 {
+    margin-bottom: 15px; /* Başlık ile içerik arasındaki mesafeyi artırdık */
+    font-size: 2rem; /* Başlık boyutunu büyüttük */
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Başlığı ortaladık */
+}
+
+
+.most-commented-section .article-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 20px; /* Kenar boşluklarını artırdık */
+    color: #555;
+    font-size: 1rem; /* Yazı boyutunu biraz büyüttük */
+}

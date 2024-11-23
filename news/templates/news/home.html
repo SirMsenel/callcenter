@@ -78,6 +78,10 @@
         </div>
         {% endfor %}
     </div>
+    <!-- Tüm Makaleleri Gör Butonu -->
+    <div class="view-all-container">
+        <a href="{% url 'articles_list' %}" class="view-all-btn">Tüm Makaleleri Gör</a>
+    </div>
 </div>
 
 <!-- En Çok Yorum Alan Makale -->
@@ -85,16 +89,20 @@
     <h2 class="section-title">En Çok Yorum Alan Makale</h2>
 
     <div class="most-commented-card">
-        <img src="{{ most_commented_article.image.url }}" alt="{{ most_commented_article.title }}" class="most-commented-image">
+        <!-- Resim üzerine tıklanabilir link -->
+        <a href="{% url 'article_detail' most_commented_article.id %}">
+            <img src="{{ most_commented_article.image.url }}" alt="{{ most_commented_article.title }}" class="most-commented-image">
+        </a>
+        
         <div class="most-commented-content">
             <h3>{{ most_commented_article.title }}</h3>
             <p>{{ most_commented_article.content|truncatechars:500 }}</p>
         </div>
+        
         <div class="article-meta">
             <span class="views">📖 {{ most_commented_article.view_count }} Görüntüleme</span>
             <span class="comments">💬 {{ most_commented_article.comment_count }} Yorum</span>
         </div>
-        <a href="{% url 'article_detail' most_commented_article.id %}" class="btn">Devamını Oku</a>
     </div>
 </div>
 

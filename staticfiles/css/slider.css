@@ -16,14 +16,6 @@ a.bulten-haberler {
     transition: all 0.3s ease; /* Hover efekti için geçiş süresi */
 }
 
-a.bulten-haberler:hover {
-    background-color: #28a745; /* Arka plan rengini yeşil yapıyoruz */
-    color: white; /* Yazı rengini beyaz yapıyoruz */
-    border: 1.5px solid white; /* Çerçeve rengini beyaz yapıyoruz */
-    cursor: pointer; /* Fare imleci el işaretine dönüşecek */
-}
-
-
 /* Slider genel düzenleme */
 #carouselExampleDark {
     width: 80%; /* Slider'ın genişliğini %80 yaparak yatayda daha küçük yapıyoruz */

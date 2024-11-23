@@ -16,17 +16,19 @@ a.bulten-haberler {
     transition: all 0.3s ease; /* Hover efekti için geçiş süresi */
 }
 
+
 /* Slider genel düzenleme */
 #carouselExampleDark {
-    width: 80%; /* Slider'ın genişliğini %80 yaparak yatayda daha küçük yapıyoruz */
-    max-width: 100%; /* Genişlik sınırlaması */
-    margin: 0 auto; /* Ortalamak */
-    height: 60vh; /* Slider boyutunu %60 yüksekliğe ayarlıyoruz */
-    overflow: hidden; /* Taşmaların engellenmesi için */
-    position: relative; /* Altındaki caption'ı doğru pozisyonda tutmak için */
-    border: 3px solid #28a745; /* Yeşil çerçeve ekliyoruz */
-    border-radius: 10px; /* Köşeleri yuvarlıyoruz */
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 60vh; /* Slider boyutunu %60 yaparak daha estetik hale getiriyoruz */
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #28a745;
+    border-radius: 10px;
 }
+
 
 /* Slider içeriği */
 .carousel-inner {
@@ -36,20 +38,27 @@ a.bulten-haberler {
 
 .carousel-item img {
     width: 100%;
-    height: 100%; /* Resim yüksekliği %100 olacak şekilde ayarlandı */
-    object-fit: cover; /* Resimleri kırpmadan tam alanı doldurur */
+    height: 100%; /* Resmin yüksekliğini %100 yapıyoruz */
+    object-fit: cover; /* Resimleri tamamen kapsaması için */
+    object-position: center; /* Resmin merkezini kullanarak daha düzgün bir yerleşim */
 }
+
 
 .carousel-caption {
     position: absolute;
-    top: 5%; /* İndikatörlerin hemen üst kısmına yerleştiriyoruz */
-    left: 50%; /* Yatayda ortalamak için */
-    transform: translateX(-50%); /* Yalnızca yatayda ortalamak için */
-    color: white; /* Yazı rengini beyaz yapıyoruz */
-    text-align: center; /* Metni ortalamak için */
-    width: 70%; /* Genişliği %70 yapıyoruz, yatayda yayılma alanını kısıtlıyoruz */
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    width: 70%;
     z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /* Daha görünür hale gelmesi için koyu bir arka plan ekledik */
+    padding: 10px; /* İçerik etrafındaki boşlukları arttırdık */
+    border-radius: 5px; /* Köşeleri yuvarladık */
 }
+
+
 
 /* Başlık stili */
 .news-title {

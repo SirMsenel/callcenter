@@ -21,129 +21,113 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
     <style>
-        /* Navbar Genel Ayarları */
-        .navbar {
-            background-color: #f8f9fa; /* Açık gri arka plan */
-            padding: 15px 20px; /* Navbar iç paddingi */
-            height: 100px; /* Navbar yüksekliği */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1030; /* Diğer içeriklerin üzerinde olacak */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+/* Navbar Genel Ayarları */
+.navbar {
+    background-color: #f8f9fa; /* Açık gri arka plan */
+    padding: 15px 20px; /* Navbar iç paddingi */
+    height: 100px; /* Navbar yüksekliği */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Diğer içeriklerin üzerinde olacak */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        /* Logo Boyutunu Navbar'a Eşitleme */
-        .navbar .navbar-brand img {
-            height: 90px; /* Logo yüksekliği */
-            width: auto; /* Oran koruma */
-        }
+/* Logo Boyutunu Navbar'a Eşitleme */
+.navbar .navbar-brand img {
+    height: 90px; /* Logo yüksekliği */
+    width: auto; /* Oran koruma */
+}
 
-        /* Navbar Bitişi ile Sayfa Başlangıcını Ayarla */
-        body {
-            margin-top: 100px; /* Navbar yüksekliği kadar boşluk bırak */
-        }
+/* Navbar Bitişi ile Sayfa Başlangıcını Ayarla */
+body {
+    margin-top: 100px; /* Navbar yüksekliği kadar boşluk bırak */
+}
 
-        /* Menü Düzeni */
-        .navbar-nav .nav-link {
-            font-size: 18px; /* Menü yazı boyutu */
-            color: #333;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            padding: 8px 12px; /* Menü öğeleri için padding */
-        }
+/* Menü Düzeni */
+.navbar-nav .nav-link {
+    font-size: 18px; /* Menü yazı boyutu */
+    color: #333;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 12px; /* Menü öğeleri için padding */
+}
 
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .active .nav-link {
-            color: #fff;
-            background-color: #28a745;
-            border-radius: 5px;
-        }
+/* Menü Link Hover ve Aktif Durumu */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: #28a745;
+    border-radius: 5px;
+    font-weight: bold; /* Menü linklerini aktif olduğunda kalın yap */
+}
 
-        /* Sağdaki Butonlar */
-        .navbar-nav.ml-auto .btn-login,
-        .navbar-nav.ml-auto .btn-register {
-            font-size: 14px; /* Yazı boyutu */
-            padding: 8px 12px; /* Arama butonuyla aynı padding */
-            border-radius: 5px; /* Köşe yuvarlama */
-            margin-left: 6px; /* Butonlar arası mesafe */
-            height: 38px; /* Arama butonuyla aynı yükseklik */
-            line-height: 20px; /* Metni dikeyde ortala */
-        }
+/* Sağdaki Butonlar */
+.navbar-nav.ml-auto .btn-login,
+.navbar-nav.ml-auto .btn-register {
+    font-size: 14px; /* Yazı boyutu */
+    padding: 8px 12px; /* Arama butonuyla aynı padding */
+    border-radius: 5px; /* Köşe yuvarlama */
+    margin-left: 6px; /* Butonlar arası mesafe */
+    height: 38px; /* Arama butonuyla aynı yükseklik */
+    line-height: 20px; /* Metni dikeyde ortala */
+}
 
-        /* Giriş Yap Butonu */
-        .navbar-nav.ml-auto .btn-login {
-            background-color: #28a745; /* Yeşil renk */
-            color: #fff;
-        }
+/* Giriş Yap Butonu */
+.navbar-nav.ml-auto .btn-login {
+    background-color: #28a745; /* Yeşil renk */
+    color: #fff;
+}
 
-        .navbar-nav.ml-auto .btn-login:hover {
-            background-color: #218838;
-        }
+/* Giriş Yap Butonu Hover Durumu */
+.navbar-nav.ml-auto .btn-login:hover {
+    background-color: #218838;
+}
 
-        /* Kaydol Butonu */
-        .navbar-nav.ml-auto .btn-register {
-            background-color: #6c757d; /* Gri renk */
-            color: #fff;
-        }
+/* Kaydol Butonu */
+.navbar-nav.ml-auto .btn-register {
+    background-color: #6c757d; /* Gri renk */
+    color: #fff;
+}
 
-        .navbar-nav.ml-auto .btn-register:hover {
-            background-color: #5a6268;
-        }
+/* Kaydol Butonu Hover Durumu */
+.navbar-nav.ml-auto .btn-register:hover {
+    background-color: #5a6268;
+}
 
-        /* Arama Kutusu ve Buton */
-        .navbar .search-form {
-            display: flex;
-            align-items: center;
-            margin-right: 10px; /* Arama ve butonlar arasındaki mesafeyi artır */
-        }
+/* Arama Kutusu ve Buton */
+.navbar .search-form {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Arama ve butonlar arasındaki mesafeyi artır */
+}
 
-        .navbar .search-form input[type="search"] {
-            padding: 8px 12px; /* Arama kutusunun iç paddingi */
-            font-size: 14px; /* Arama kutusu yazı boyutu */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 200px; /* Arama kutusu genişliği */
-        }
+.navbar .search-form input[type="search"] {
+    padding: 8px 12px; /* Arama kutusunun iç paddingi */
+    font-size: 14px; /* Arama kutusu yazı boyutu */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px; /* Arama kutusu genişliği */
+}
 
-        .navbar .search-form button {
-            padding: 8px 12px; /* Buton boyutu */
-            font-size: 14px; /* Buton yazı boyutu */
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            margin-left: 5px; /* Arama butonuyla arama kutusu arasındaki mesafe */
-            height: 38px; /* Giriş yap/kaydol ile aynı yükseklik */
-            line-height: 20px; /* Metni dikeyde ortala */
-        }
+/* Arama Butonu */
+.navbar .search-form button {
+    padding: 8px 12px; /* Buton boyutu */
+    font-size: 14px; /* Buton yazı boyutu */
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px; /* Arama butonuyla arama kutusu arasındaki mesafe */
+    height: 38px; /* Giriş yap/kaydol ile aynı yükseklik */
+    line-height: 20px; /* Metni dikeyde ortala */
+}
 
-        .navbar .search-form button:hover {
-            background-color: #218838;
-        }
+/* Arama Butonu Hover Durumu */
+.navbar .search-form button:hover {
+    background-color: #218838;
+}
 
-        /* Aktif Menü Durumu */
-        .navbar-nav .nav-link {
-            font-size: 16px; /* Menü yazı boyutu */
-            color: #333; /* Varsayılan yazı rengi */
-            padding: 8px 12px; /* Menü öğeleri için padding */
-            transition: color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .active .nav-link {
-            color: #fff; /* Metin rengi beyaz */
-            background-color: #28a745; /* Yeşil arka plan */
-            border-radius: 5px; /* Köşeleri yuvarla */
-            font-weight: bold; /* Aktif öğe kalın yazı */
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            color: #ffffff !important; /* Yazı rengini beyaz yap */
-            background-color: #28a745; /* Arka plan rengini yeşil yap */
-            border-radius: 10px; /* Kenarları yuvarla */
-            font-weight: bold; /* Yazı tipini kalın yap */
-        }
     </style>
 </head>
 <body>
@@ -163,10 +147,10 @@
                             <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Ana Sayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/news/' %}active{% endif %}" href="{% url 'news_list' %}">Haberler</a>
+                            <a class="nav-link {% if request.path == '/news/' or request.path == '/news' %}active{% endif %}" href="{% url 'news_list' %}">Haberler</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
+                            <a class="nav-link {% if request.path == '/articles/' or request.path == '/articles' %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == '/other/' %}active{% endif %}" href="#">Diğer Sayfa</a>
@@ -197,6 +181,7 @@
             </div>
         </nav>
     </header>
+    
 
     <!-- Sayfa İçeriği -->
     <main>

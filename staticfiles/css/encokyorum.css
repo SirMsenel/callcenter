@@ -5,37 +5,40 @@
 }
 
 .most-commented-section .most-commented-card {
-    max-width: 1000px; /* Kart genişliğini arttırdık */
+    max-width: 900px; /* Kartın maksimum genişliğini küçültüyoruz */
     margin: 0 auto;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: left;
+    padding: 15px; /* İçerik etrafındaki boşluğu azaltıyoruz */
 }
 
 .most-commented-section .most-commented-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Fotoğrafın genişliğini %100 yapıyoruz */
+    height: 100%; /* Fotoğrafın yüksekliğini %100 yapıyoruz, böylece kartın yüksekliğine uyum sağlar */
+    object-fit: cover; /* Fotoğrafın kartın sınırlarını aşmaması için cover kullanıyoruz ve tam oturmasını sağlıyoruz */
 }
 
+
+
 .most-commented-section .most-commented-content {
-    padding: 30px; /* İçeriğin etrafındaki boşluğu artırdık */
+    padding: 20px; /* İçeriğin etrafındaki boşluğu azaltıyoruz */
 }
 
 .most-commented-section .most-commented-content h3 {
-    margin-bottom: 15px; /* Başlık ile içerik arasındaki mesafeyi artırdık */
-    font-size: 2rem; /* Başlık boyutunu büyüttük */
+    margin-bottom: 15px;
+    font-size: 1.8rem; /* Başlık boyutunu biraz küçültüyoruz */
     font-weight: bold;
     color: #333;
     text-align: center; /* Başlığı ortaladık */
 }
 
-
 .most-commented-section .article-meta {
     display: flex;
     justify-content: space-between;
-    padding: 0 30px 20px; /* Kenar boşluklarını artırdık */
+    padding: 0 20px 20px; /* Kenar boşluklarını biraz küçültüyoruz */
     color: #555;
-    font-size: 1rem; /* Yazı boyutunu biraz büyüttük */
+    font-size: 1rem;
 }

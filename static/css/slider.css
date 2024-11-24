@@ -49,28 +49,30 @@ a.bulten-haberler {
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
+    color: white; /* Yazı rengini beyaz yapıyoruz */
     text-align: center;
-    width: 70%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5); /* Daha görünür hale gelmesi için koyu bir arka plan ekledik */
-    padding: 10px; /* İçerik etrafındaki boşlukları arttırdık */
-    border-radius: 5px; /* Köşeleri yuvarladık */
+    width: 70%; /* Genişliği ayarlıyoruz */
+    z-index: 10; /* Slider içeriğinin üstünde olmasını sağlıyoruz */
+    padding: 0; /* Dolguyu sıfırlıyoruz */
+    border-radius: 0; /* Köşe yuvarlama kaldırılıyor */
+    background: none; /* Arka plan tamamen kaldırılıyor */
+    box-shadow: none; /* Gölge kaldırılıyor */
 }
-
-
 
 /* Başlık stili */
 .news-title {
-    font-size: 2rem; /* Başlık boyutunu büyütüyoruz */
-    font-weight: bold;
-    margin-bottom: 10px; /* Başlık ile özet arasına boşluk ekliyoruz */
+    font-size: 2rem; /* Başlık boyutunu ayarlıyoruz */
+    font-weight: bold; /* Kalın yazı */
+    margin-bottom: 10px; /* Başlık ve özet arasına boşluk */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Hafif gölge ekleyerek okunabilirliği artır */
 }
+
 
 /* Özet stili */
 .news-summary {
-    font-size: 1rem; /* Özet boyutunu ayarlıyoruz */
-    margin-bottom: 20px; /* Özet ile başlık arasına boşluk ekliyoruz */
+    font-size: 1rem; /* Özet boyutu */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Metin için gölge */
+    margin-bottom: 20px;
 }
 
 /* Previous ve Next butonlarının stilini düzenliyoruz */
@@ -99,15 +101,16 @@ a.bulten-haberler {
 /* Mobil uyumluluk */
 @media (max-width: 768px) {
     .carousel-caption {
-        max-width: 90%;
-        padding: 15px 25px;
+        top: 10%; /* Metni daha üstte tut */
+        width: 90%; /* Genişliği mobil ekranlara göre artır */
+        padding: 10px;
     }
 
     .news-title {
-        font-size: 1.5rem; /* Mobilde başlık boyutunu küçültüyoruz */
+        font-size: 1.5rem; /* Mobilde başlık boyutunu küçült */
     }
 
     .news-summary {
-        font-size: 1rem; /* Mobilde özet boyutunu küçültüyoruz */
+        font-size: 1rem; /* Mobilde özet boyutunu ayarla */
     }
 }

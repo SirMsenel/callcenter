@@ -1,5 +1,5 @@
-
-.custom-heading {
+/* Başlık stilini sadece haberler sayfasında geçerli olacak şekilde özgül hale getirdik */
+.haber-page .custom-heading {
     text-align: center; /* Başlığı ortalar */
     font-size: 3rem; /* Başlık boyutunu büyütür */
     font-weight: bold; /* Başlığı kalın yapar */
@@ -8,53 +8,31 @@
     margin-top: 20px; /* Sayfa üstünden boşluk ekler */
     text-transform: uppercase; /* Başlığı büyük harf yapar */
     letter-spacing: 2px; /* Harfler arasında boşluk ekler */
-    position: relative; /* İkonları yerleştirmek için */
-    /* Diğer stiller burada */
+
 }
 
-
-/* İkonları Yerleştirmek */
-h2::before, h2::after {
-    content: '\f005'; /* Font Awesome ikonu (örnek olarak yıldız ekledik) */
-    font-family: 'Font Awesome 5 Free'; /* Font Awesome 5 kullanarak ikon ekliyoruz */
-    font-weight: 900; /* Font Awesome ikonlarını görünür yapmak için */
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem; /* İkon boyutunu ayarladık */
-    color: #007bff; /* İkon rengini başlıkla uyumlu yapar */
-}
-
-/* Sol İkon */
-h2::before {
-    left: -50px; /* Başlığın sol tarafına mesafe */
-}
-
-/* Sağ İkon */
-h2::after {
-    right: -50px; /* Başlığın sağ tarafına mesafe */
-}
-
-
-/* Kartların düzeni */
-.card {
+/* Kartların düzeni sadece haberler sayfasında geçerli olacak şekilde özgül hale getirilmiştir */
+.haber-page .card {
     display: flex;
     flex-direction: column; /* Kartların içeriğini dikey hizala */
-    height: 100%; /* Kartları eşit yükseklikte yap */
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     border-radius: 8px; /* Yuvarlatılmış köşeler */
+    width: 100%; /* Kart genişliğini %100 yapıyoruz */
+    height: 500px; /* Kartın yüksekliğini sabitliyoruz */
+    min-height: 500px; /* Minimum yükseklik ayarı */
+    margin: 10px 0; /* Kartlar arasına boşluk bırakıyoruz */
 }
 
-/* Görsel boyutunu artırma */
-.card-img-top {
+/* Fotoğraf alanını düzenleme */
+.haber-page .card-img-top {
     width: 100%;
-    height: 300px; /* Görselin yüksekliğini büyüttük */
-    object-fit: cover; /* Görselin orantılı şekilde doldurulmasını sağlar */
+    height: 250px; /* Fotoğrafın yüksekliğini sabitliyoruz */
+    object-fit: cover; /* Fotoğrafın orantılı şekilde doldurulmasını sağlar */
 }
 
 /* Kart içeriği */
-.card-body {
+.haber-page .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* İçeriği en üste ve en alta yerleştirir */
@@ -63,36 +41,41 @@ h2::after {
     text-align: center;
 }
 
+/* Başlık ve içerik */
+.haber-page .card-body .card-title {
+    font-size: 1.6rem; /* Başlık boyutunu sabitliyoruz */
+    font-weight: bold;
+    margin-top: 15px; /* Başlık ile fotoğraf arasına boşluk ekliyoruz */
+}
 
 /* Ekran küçüldüğünde kart düzeni */
 @media (max-width: 768px) {
-    .row {
+    .haber-page .row {
         grid-template-columns: 1fr; /* Mobilde kartlar tek sütun olacak */
     }
 }
 
-/* Kartlar için minimum yükseklik belirleme */
-.card {
-    min-height: 400px; /* Mobilde kart yüksekliğini en az 400px yap */
-}
-
 /* "Devamını Oku" butonunu alt kısma sabitle */
-.card-footer {
+.haber-page .card-footer {
     margin-top: auto; /* Butonun kartın altına sabitlenmesini sağlar */
     padding-top: 15px;
     text-align: center;
 }
 
 /* "Devamını Oku" butonunun stilini ayarlama */
-.card-footer .btn {
-    background-color: #007bff;
-    color: white;
+.haber-page .card-footer .btn {
+    background-color: transparent;
+    color: #28a745;
+    border: 2px solid #28a745;
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
     text-decoration: none;
+    transition: all 0.3s ease; /* Hover efekti için geçiş süresi */
 }
 
-.card-footer .btn:hover {
-    background-color: #0056b3;
+/* Hover durumu */
+.haber-page .card-footer .btn:hover {
+    background-color: #28a745; /* Hover olduğunda arka planı yeşil yapıyoruz */
+    color: white; /* Hover olduğunda yazıyı beyaz yapıyoruz */
 }

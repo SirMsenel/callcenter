@@ -147,11 +147,11 @@ body {
                             <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Ana Sayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/news/' or request.path == '/news' %}active{% endif %}" href="{% url 'news_list' %}">Haberler</a>
+                            <a class="nav-link {% if 'news/news' in request.path %}active{% endif %}" href="{% url 'news_list' %}">Haberler</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/articles/' or request.path == '/articles' %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
-                        </li>
+                            <a class="nav-link {% if 'news/articles' in request.path %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
+                        </li>                        
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == '/other/' %}active{% endif %}" href="#">Diğer Sayfa</a>
                         </li>

@@ -106,6 +106,36 @@
     </div>
 </div>
 
+<!-- Galeri Başlığı -->
+<a href="{% url 'photo_list' %}" class="bulten-haberler">
+    Galeri
+</a>
+
+<div class="gallery-container">
+    <!-- Soldaki Büyük Fotoğraf -->
+    {% if gallery_photos|length > 0 %}
+    <div class="gallery-large-photo" onclick="window.location.href='{% url 'photo_detail' gallery_photos.0.id %}'">
+        <img src="{{ gallery_photos.0.image.url }}" alt="{{ gallery_photos.0.title }}">
+        <div class="gallery-photo-meta">
+            <span class="likes">👍 {{ gallery_photos.0.like_count }} Beğeni</span>
+            <span class="comments">💬 {{ gallery_photos.0.comment_count }} Yorum</span>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Sağdaki Küçük Fotoğraflar -->
+    {% for photo in gallery_photos|slice:"1:5" %}
+    <div class="gallery-small-photo gallery-small-photo-{{ forloop.counter }}">
+        <a href="{% url 'photo_detail' photo.id %}">
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+            <div class="gallery-photo-meta">
+                <span class="likes">👍 {{ photo.like_count }} Beğeni</span>
+                <span class="comments">💬 {{ photo.comment_count }} Yorum</span>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
 
 <style>
     /* Kapak Fotoğrafı İçin CSS */

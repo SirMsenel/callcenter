@@ -1,6 +1,7 @@
 from PIL import Image
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class News(models.Model):
@@ -52,3 +53,27 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+#Fotoğraf Modeli
+class Photo(models.Model):
+    title = models.CharField(max_length=100, blank=True, null=True)  # Fotoğraf başlığı (isteğe bağlı)
+    image = models.ImageField(upload_to='photos/')  # Fotoğraf dosyası
+    uploaded_at = models.DateTimeField(auto_now_add=True)  # Yüklenme tarihi
+    likes = models.ManyToManyField('auth.User', related_name='liked_photos', blank=True)  # Beğeniler
+
+    def __str__(self):
+        return self.title or f"Photo {self.id}"
+
+    def total_likes(self):
+        return self.likes.count()
+
+# Fotoğraf Yorum Modeli
+class PhotoComment(models.Model):
+    photo = models.ForeignKey('Photo', on_delete=models.CASCADE, related_name='comments')  # Fotoğraf ile ilişki
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Yorum yapan kullanıcı
+    text = models.TextField()  # Yorum içeriği
+    created_at = models.DateTimeField(auto_now_add=True)  # Yorumun oluşturulma zamanı
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.photo}"

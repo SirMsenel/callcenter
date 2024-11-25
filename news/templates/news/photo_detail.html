@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="photo-detail">
+    <h2>{{ photo.title }}</h2>
+    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="img-fluid">
+
+    <!-- Yorumlar -->
+    <div class="comments mt-4">
+        <h3>Yorumlar</h3>
+        <ul class="list-group">
+            {% for comment in comments %}
+                <li class="list-group-item">
+                    <strong>{{ comment.user.username }}</strong> - {{ comment.created_at|date:"d M Y H:i" }}
+                    <p>{{ comment.text }}</p>
+                    {% if comment.user == request.user %}
+                        <form action="{% url 'delete_comment' comment.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li class="list-group-item">Henüz yorum yok.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Yorum Formu -->
+    <div class="comment-form mt-4">
+        <h3>Yorum Yap</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

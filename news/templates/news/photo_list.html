@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Fotoğraflar</h2>
+    <div class="row">
+        {% for photo in photos %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ photo.title }}</h5>
+                    <p>{{ photo.total_likes }} Beğeni</p>
+                    <a href="{% url 'photo_detail' photo.id %}" class="btn btn-primary">Detay</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

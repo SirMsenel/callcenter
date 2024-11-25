@@ -9,11 +9,9 @@ from django.views.generic import ListView
 from .models import Article
 from django.db.models import Count
 from django.core.paginator import Paginator
-
-
-def news_list(request):
-    all_news = News.objects.all().order_by('-created_at')  # Tüm haberler
-    return render(request, 'news/news_list.html', {'all_news': all_news})
+from django.contrib.auth.decorators import login_required
+from .models import Photo,PhotoComment
+from .forms import PhotoCommentForm
 
 
 def home(request):
@@ -26,12 +24,12 @@ def home(request):
         .order_by('-annotated_comment_count')
         .first()
     )
+    gallery_photos = Photo.objects.all().order_by('-uploaded_at')[:5]  # Galeri için fotoğrafları getiriyoruz (Son 5 fotoğraf)
     
     return render(request, 'news/home.html', {'news_list': news_list,
                                               'article_list' : article_list,
-                                              'most_commented_article': most_commented_article,})
-
-
+                                              'most_commented_article': most_commented_article,
+                                              'gallery_photos': gallery_photos})
 
 def search(request):
     query = request.GET.get('q')
@@ -41,6 +39,11 @@ def search(request):
             Q(title__icontains=query) | Q(content__icontains=query)
         )  # Başlık veya içerik içinde arama yap
     return render(request, 'news/search_results.html', {'results': results, 'query': query})
+
+
+def news_list(request):
+    all_news = News.objects.all().order_by('-created_at')  # Tüm haberler
+    return render(request, 'news/news_list.html', {'all_news': all_news})
 
 
 def news_detail(request, id):
@@ -77,3 +80,48 @@ def article_detail(request, id):
         'article': article
     }
     return render(request, 'news/article_detail.html', context)
+
+#galeri
+def photo_list(request):
+    photos = Photo.objects.all()
+    return render(request, 'news/photo_list.html', {'photos': photos})
+
+def photo_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    return render(request, 'news/photo_detail.html', {'photo': photo})
+
+@login_required
+def like_photo(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    if request.user in photo.likes.all():
+        photo.likes.remove(request.user)  # Beğeniyi kaldır
+    else:
+        photo.likes.add(request.user)  # Beğeniyi ekle
+    return redirect('photo_detail', pk=pk)
+
+# Fotoğraf yorumlarını listeleme ve yeni yorum ekleme
+def photo_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    comments = photo.comments.all()  # Fotoğrafa ait tüm yorumlar
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = PhotoCommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.photo = photo
+                comment.user = request.user
+                comment.save()
+                return redirect('photo_detail', pk=pk)
+        else:
+            return redirect('login')  # Kullanıcı giriş yapmadıysa giriş sayfasına yönlendir
+    else:
+        form = PhotoCommentForm()
+    return render(request, 'news/photo_detail.html', {'photo': photo, 'comments': comments, 'form': form})
+
+# Yorum silme
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(PhotoComment, id=comment_id)
+    if comment.user == request.user:
+        comment.delete()  # Yalnızca yorumu yapan kullanıcı silebilir
+    return redirect('photo_detail', pk=comment.photo.pk)

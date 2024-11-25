@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/makale.home.css' %}">
     <link rel="stylesheet" href="{% static 'css/encokyorum.css' %}">
+    <link rel="stylesheet" href="{% static 'css/galerihome.css' %}">
     <link rel="stylesheet" href="{% static 'css/card.css' %}">
     <link rel="stylesheet" href="{% static 'css/article.css' %}">
     <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
@@ -127,6 +128,23 @@ body {
 .navbar .search-form button:hover {
     background-color: #218838;
 }
+/* Dropdown içindeki linkler */
+.dropdown-menu .dropdown-item {
+    font-size: 18px; /* Yazı boyutu */
+    color: #333; /* Varsayılan renk */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 12px; /* Menü öğeleri için padding */
+}
+
+/* Dropdown link hover ve aktif durumu */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item.active {
+    color: #fff; /* Hover durumunda beyaz renk */
+    background-color: #28a745; /* Hover durumunda yeşil arka plan */
+    border-radius: 5px; /* Köşe yuvarlama */
+    font-weight: bold; /* Aktif durum için kalın yazı */
+}
+
 
     </style>
 </head>
@@ -151,10 +169,14 @@ body {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if 'news/articles' in request.path %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/other/' %}active{% endif %}" href="#">Diğer Sayfa</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {% if '/photos' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Diğer Sayfa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item {% if '/photos' in request.path %}active{% endif %}" href="{% url 'photo_list' %}">Galeri</a></li>
+                            </ul>
+                        </li>                                                                
                     </ul>
                     <form action="{% url 'search' %}" method="get" class="d-flex me-3 search-form">
                         <input class="form-control me-2" type="search" name="q" placeholder="Haber Ara" aria-label="Search" required>

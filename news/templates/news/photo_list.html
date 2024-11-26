@@ -10,7 +10,7 @@
                 <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ photo.title }}</h5>
-                    <p>{{ photo.total_likes }} Beğeni</p>
+                    <p>👍 {{ photo.total_likes }} Beğeni | 💬 {{ photo.total_comments }} Yorum</p>
                     <a href="{% url 'photo_detail' photo.id %}" class="btn btn-primary">Detay</a>
                 </div>
             </div>

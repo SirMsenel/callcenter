@@ -5,6 +5,25 @@
     <h2>{{ photo.title }}</h2>
     <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="img-fluid">
 
+    <!-- Beğeni ve Giriş Yapma Uyarısı -->
+    <div class="like-section mt-3">
+        {% if user.is_authenticated %}
+            <form action="{% url 'like_photo' photo.id %}" method="post">
+                {% csrf_token %}
+                {% if user in photo.likes.all %}
+                    <button type="submit" class="btn btn-danger">Beğeniyi Kaldır</button>
+                {% else %}
+                    <button type="submit" class="btn btn-primary">Beğen</button>
+                {% endif %}
+            </form>
+        {% else %}
+            <div class="alert alert-info mt-3" role="alert">
+                Beğenmek ve yorum yapmak için lütfen <a href="{% url 'login' %}">giriş yapın</a>.
+            </div>
+        {% endif %}
+        <p class="mt-2">Beğeniler: {{ photo.total_likes }}</p>
+    </div>
+
     <!-- Yorumlar -->
     <div class="comments mt-4">
         <h3>Yorumlar</h3>
@@ -27,14 +46,15 @@
     </div>
 
     <!-- Yorum Formu -->
-    <div class="comment-form mt-4">
-        <h3>Yorum Yap</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Gönder</button>
-        </form>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="comment-form mt-4">
+            <h3>Yorum Yap</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+        </div>
+    {% endif %}
 </div>
-
 {% endblock %}

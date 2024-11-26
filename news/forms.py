@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import PhotoComment
+from .models import ContactMessage
 
 
 class UserRegisterForm(UserCreationForm):
@@ -29,3 +30,10 @@ class PhotoCommentForm(forms.ModelForm):
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Yorum yazın...'}),
         }
+
+
+# iletişim form.py
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['first_name', 'last_name', 'email', 'phone', 'message']

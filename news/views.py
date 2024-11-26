@@ -12,6 +12,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Photo,PhotoComment
 from .forms import PhotoCommentForm
+from .forms import ContactForm
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import ContactMessage
 
 
 def home(request):
@@ -25,11 +29,38 @@ def home(request):
         .first()
     )
     gallery_photos = Photo.objects.all().order_by('-uploaded_at')[:5]  # Galeri için fotoğrafları getiriyoruz (Son 5 fotoğraf)
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Formu veritabanına kaydet
+            contact_message = form.save()
+
+            # Admin'e e-posta gönder
+            send_mail(
+                'Yeni İletişim Mesajı',
+                f"Mesaj: {contact_message.message}\nAdı Soyadı: {contact_message.first_name} {contact_message.last_name}\nE-posta: {contact_message.email}\nTelefon: {contact_message.phone}",
+                contact_message.email,
+                [settings.ADMIN_EMAIL],  # Admin e-posta adresi
+            )
+
+            # Başarı sayfasına yönlendir
+            return redirect('contact_success')  # Başarıyla gönderildikten sonra yönlendirme
+
+    else:
+        form = ContactForm()
+
     
     return render(request, 'news/home.html', {'news_list': news_list,
                                               'article_list' : article_list,
                                               'most_commented_article': most_commented_article,
-                                              'gallery_photos': gallery_photos})
+                                              'gallery_photos': gallery_photos,
+                                              'form': form})
+
+ 
+
+def contact_success(request):
+    return render(request, 'news/contact_success.html')
+
 
 def search(request):
     query = request.GET.get('q')
@@ -39,17 +70,6 @@ def search(request):
             Q(title__icontains=query) | Q(content__icontains=query)
         )  # Başlık veya içerik içinde arama yap
     return render(request, 'news/search_results.html', {'results': results, 'query': query})
-
-
-def news_list(request):
-    all_news = News.objects.all().order_by('-created_at')  # Tüm haberler
-    return render(request, 'news/news_list.html', {'all_news': all_news})
-
-
-def news_detail(request, id):
-    news = get_object_or_404(News, id=id)  # Haber nesnesini al
-    return render(request, 'news/news_detail.html', {'news': news})
-
 
 def register(request):
     if request.method == 'POST':
@@ -65,8 +85,19 @@ def register(request):
 
 
 
+def news_list(request):
+    all_news = News.objects.all().order_by('-created_at')  # Tüm haberler
+    return render(request, 'news/news_list.html', {'all_news': all_news})
+
+
+def news_detail(request, id):
+    news = get_object_or_404(News, id=id)  # Haber nesnesini al
+    return render(request, 'news/news_detail.html', {'news': news})
+
+
+
 def article_list(request):
-    articles = Article.objects.all()
+    articles = Article.objects.all().order_by('-created_at')  # Tüm haberler
     paginator = Paginator(articles, 5)  # Her sayfada 5 makale
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -83,7 +114,7 @@ def article_detail(request, id):
 
 #galeri
 def photo_list(request):
-    photos = Photo.objects.all()
+    photos = Photo.objects.all().order_by('-uploaded_at')  # Tarihe göre azalan sırada
     return render(request, 'news/photo_list.html', {'photos': photos})
 
 def photo_detail(request, pk):
@@ -125,3 +156,4 @@ def delete_comment(request, comment_id):
     if comment.user == request.user:
         comment.delete()  # Yalnızca yorumu yapan kullanıcı silebilir
     return redirect('photo_detail', pk=comment.photo.pk)
+

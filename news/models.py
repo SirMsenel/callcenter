@@ -67,6 +67,10 @@ class Photo(models.Model):
 
     def total_likes(self):
         return self.likes.count()
+    
+    def total_comments(self):
+        return self.comments.count()  # İlgili yorumları sayar
+
 
 # Fotoğraf Yorum Modeli
 class PhotoComment(models.Model):
@@ -77,3 +81,20 @@ class PhotoComment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user.username} on {self.photo}"
+
+
+# iletişim modeli
+class ContactMessage(models.Model):
+    first_name = models.CharField(max_length=100, verbose_name="Ad")
+    last_name = models.CharField(max_length=100, verbose_name="Soyad")
+    email = models.EmailField(verbose_name="E-posta")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="Telefon Numarası")
+    message = models.TextField(verbose_name="Mesaj")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Mesaj Tarihi")
+
+    def __str__(self):
+        return f"Mesaj: {self.first_name} {self.last_name} - {self.email}"
+
+    class Meta:
+        verbose_name = "İletişim Mesajı"
+        verbose_name_plural = "İletişim Mesajları"

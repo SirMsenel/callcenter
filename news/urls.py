@@ -18,6 +18,7 @@ urlpatterns = [
     path('photos/<int:pk>/', views.photo_detail, name='photo_detail'),  # Fotoğraf detay
     path('photos/<int:pk>/like/', views.like_photo, name='like_photo'),  # Beğeni
     path('photos/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),  # Yorum sil
+    path('contact/success/', views.contact_success, name='contact_success'),  # Başarı mesajı sayfası
 ]
 
 

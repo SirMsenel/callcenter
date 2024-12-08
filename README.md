@@ -1,7 +1,6 @@
-# callcenter
 # 🌟 Çağrı Merkezi Web Sitesi 🌟
 
-Modern, kullanıcı dostu ve dinamik özelliklerle dolu bu web sitesi, çağrı merkezi hizmetlerinizi dijital dünyaya taşımanız için tasarlanmıştır. 🖥️📱 
+Modern, kullanıcı dostu ve dinamik özelliklerle dolu bu web sitesi, çağrı merkezi hizmetlerinizi dijital dünyaya taşımanız için tasarlanmıştır. 🖥️📱
 
 ---
 
@@ -20,12 +19,15 @@ Modern, kullanıcı dostu ve dinamik özelliklerle dolu bu web sitesi, çağrı 
 
 🖼️ **Galeri**  
 - Görsel içeriklerin sergilendiği şık ve modern galeri.  
+  - 💬 **Yorum Yapma**: Fotoğraflara düşüncelerinizi ekleyin.  
+  - 👍 **Beğenme**: Favori görsellerinizi beğenerek vurgulayın.  
 
 ℹ️ **Hakkımızda**  
 - Misyon, vizyon ve şirket tarihi hakkında bilgi.  
 
 📞 **İletişim**  
 - Hızlı ve kolay iletişim için özel form ve bilgiler.  
+  - 📚 **Yönetim Paneli**: İletişime geçmek isteyen kullanıcıların bilgileri, admin paneli czerinden kolayca takip edilebilir.  
 
 ---
 
@@ -35,6 +37,7 @@ Kayıtlı kullanıcılar için özel ayrıcalıklar:
 ✅ Makalelere yorum yapın.  
 ✅ İçerikleri beğenin ve favorilerinize ekleyin.  
 ✅ Sadece size özel içeriklerle etkileşimde bulunun.  
+✅ Galeride fotoğrafları yorumlayın ve beğenin.  
 
 ---
 
@@ -42,7 +45,9 @@ Kayıtlı kullanıcılar için özel ayrıcalıklar:
 
 - **Backend**: Django Framework 🐍  
 - **Frontend**: HTML, CSS, JavaScript 🌐  
-- **Veritabanı**: SQLite 🗄️  
+- **Veritabanı**: SQLite 🐄️  
 
 ---
+
+
 

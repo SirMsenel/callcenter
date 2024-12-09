@@ -16,18 +16,20 @@ from .forms import ContactForm
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import ContactMessage
+from django.db.models import Count, F
+from .models import Article, ArticleComment
+
+
 
 
 def home(request):
    
     news_list = News.objects.all().order_by('-created_at')[:5] # Son 5 haberi alıyoruz
     article_list = Article.objects.all().order_by('-created_at')[:4]  # Son 4 makale
-    # En çok yorum alan makaleyi bul
-    most_commented_article = (
-        Article.objects.annotate(annotated_comment_count=Count('comments'))
-        .order_by('-annotated_comment_count')
-        .first()
-    )
+    most_commented_article = Article.objects.annotate(
+        total_likes=Count('likes'),
+        total_comments=Count('comments')
+    ).order_by('-total_likes', '-total_comments', '-created_at').first()
     gallery_photos = Photo.objects.all().order_by('-uploaded_at')[:5]  # Galeri için fotoğrafları getiriyoruz (Son 5 fotoğraf)
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -107,10 +109,53 @@ def article_list(request):
 def article_detail(request, id):
     # ID'ye göre makaleyi getir, yoksa 404 hatası döndür
     article = get_object_or_404(Article, id=id)
-    context = {
-        'article': article
-    }
-    return render(request, 'news/article_detail.html', context)
+    return render(request, 'news/article_detail.html', {'article': article})
+
+@login_required
+def like_article(request, article_id):
+    article = get_object_or_404(Article, id=article_id)
+    if request.user in article.likes.all():
+        # Kullanıcı makaleyi beğenmişse, beğeniyi kaldır
+        article.likes.remove(request.user)
+    else:
+        # Kullanıcı makaleyi beğenmemişse, beğeni ekle
+        article.likes.add(request.user)
+    
+    # Kullanıcıyı makale detay sayfasına yönlendir
+    return redirect('article_detail', id=article_id)
+
+
+@login_required
+def add_comment(request, article_id):
+    article = get_object_or_404(Article, id=article_id)  # Makaleyi alıyoruz
+
+    if request.method == "POST":
+        text = request.POST.get('text')  # 'text' alanını alıyoruz
+        
+        if text:  # Eğer metin boş değilse
+            ArticleComment.objects.create(
+                article=article,
+                user=request.user,  # Yorum yapan kullanıcı
+                text=text  # Yorumun içeriği
+            )
+            return redirect('article_detail', article_id=article.id)  # Yorum eklendikten sonra makale detayına yönlendiriyoruz
+        else:
+            return render(request, 'article_detail.html', {'article': article, 'error': 'Yorum boş olamaz!'})
+
+    return redirect('article_detail', article_id=article.id)  # GET isteği ile gelirse makale detayına yönlendiriyoruz
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(ArticleComment, id=comment_id)
+
+    # Yorumun sahibi, şu anki kullanıcı olmalı
+    if comment.user == request.user:
+        comment.delete()
+
+    # Yorum silindikten sonra, makale detay sayfasına yönlendir
+    return redirect('article_detail', id=comment.article.id)
+
 
 #galeri
 def photo_list(request):

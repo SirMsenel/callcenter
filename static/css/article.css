@@ -71,7 +71,31 @@
     border-color: #28a745;
 }
 
-/* Sayfa numaraları */
+.article-list-page .like-button {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.article-list-page .like-button:hover {
+    color: #ff6347;
+}
+
+.article-list-page .article-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+
+.article-list-page .likes, .article-list-page .comments {
+    font-weight: bold;
+    color: #28a745;
+}
+
 .article-list-page .pagination {
     margin-top: 20px;
     display: flex;

@@ -2,6 +2,7 @@ from PIL import Image
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 
 class News(models.Model):
@@ -33,26 +34,39 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-# Article modelini güncelliyoruz
+
+# Makale Modeli
 class Article(models.Model):
     title = models.CharField(max_length=200)  # Makale başlığı
     summary = models.TextField()  # Makale özeti
     content = models.TextField()  # Makale içeriği
-    image = models.ImageField(upload_to='article/', null=True, blank=True)  # Image alanı, media/news_images klasörüne kaydedilecek
-    category = models.CharField(max_length=100, null=True, blank=True)  # null=True ve blank=True ile boş bırakılabilir
-    created_at = models.DateTimeField(auto_now_add=True, null=True)  # null=True olarak güncellendi
-    published_at = models.DateTimeField(null=True, blank=True)  # Kullanıcıya tarih seçme imkanı
-    view_count = models.IntegerField(default=0)  # Görüntülenme sayısı
-    comment_count = models.IntegerField(default=0)  # Yorum sayısı
+    image = models.ImageField(upload_to='articles/', null=True, blank=True)  # Makale görseli
+    category = models.CharField(max_length=100, null=True, blank=True)  # Makale kategorisi
+    created_at = models.DateTimeField(auto_now_add=True)  # Yorumun oluşturulma tarihi
+    published_at = models.DateTimeField(null=True, blank=True)  # Yayınlanma tarihi
+    likes = models.ManyToManyField(User, related_name='liked_articles', blank=True)  # Beğeniler
 
     def __str__(self):
         return self.title
-    
 
-class Comment(models.Model):
-    article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    def total_likes(self):
+        """Makale için toplam beğeni sayısını döndürür."""
+        return self.likes.count()
+
+    def total_comments(self):
+        """Makale için toplam yorum sayısını döndürür."""
+        return self.comments.count()
+
+
+# Makale Yorum Modeli
+class ArticleComment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')  # Makale ile ilişki
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Yorumu yapan kullanıcı
+    text = models.TextField()  # Yorum içeriği
+    created_at = models.DateTimeField(auto_now_add=True)  # Yorumun oluşturulma tarihi
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.article}"
 
 
 #Fotoğraf Modeli

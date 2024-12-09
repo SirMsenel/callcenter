@@ -1,0 +1,54 @@
+.article-detail-page .article-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.article-detail-page .article-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+
+.article-detail-page .likes, .article-detail-page .comments {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.article-detail-page .like-button {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.article-detail-page .like-button:hover {
+    color: #ff6347;
+}
+
+.article-detail-page .comment-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.article-detail-page .comment-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.article-detail-page .comment-button:hover {
+    background-color: #218838;
+}
+
+.article-detail-page .comment {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}

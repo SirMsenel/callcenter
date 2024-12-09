@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Article, Category,Photo,PhotoComment
+from .models import News, Article,ArticleComment, Category,Photo,PhotoComment
 from .models import ContactMessage
 
 admin.site.register(News)
@@ -7,12 +7,18 @@ admin.site.register(News)
 # Category modelini admin paneline ekliyoruz
 admin.site.register(Category)
 
-# Article modelini admin paneline ekliyoruz
-@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'created_at', 'published_at', 'view_count', 'comment_count')
-    search_fields = ('title', 'category')  # Başlık ve kategori üzerinden arama yapılabilir
-    list_filter = ('category', 'published_at')  # Kategori ve yayınlanma tarihiyle filtreleme yapılabilir
+    list_display = ('title', 'category', 'created_at', 'total_likes', 'total_comments')
+    search_fields = ('title', 'content')
+    list_filter = ('category', 'created_at')
+
+class ArticleCommentAdmin(admin.ModelAdmin):
+    list_display = ('article', 'user', 'created_at')
+    search_fields = ('text',)
+    list_filter = ('created_at',)
+
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 # Photo(galeri) modelini admin paneline ekliyoruz
 @admin.register(Photo)

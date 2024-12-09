@@ -65,19 +65,26 @@
     <div class="articles-container">
         {% for article in article_list %}
         <div class="article-card" onclick="window.location.href='{% url 'article_detail' article.id %}'">
+            {% if article.image %}
             <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
+            {% else %}
+            <img src="/static/default_article_image.jpg" alt="{{ article.title }}" class="article-image">
+            {% endif %}
+
             <div class="article-content">
-                <span class="article-category">{{ article.category.name }}</span>
                 <h3 class="article-title">{{ article.title }}</h3>
                 <p class="article-summary">{{ article.summary|truncatechars:100 }}</p>
             </div>
+            
             <div class="article-meta">
-                <span class="views">📖 {{ article.view_count }} Görüntüleme</span>
-                <span class="comments">💬 {{ article.comment_count }} Yorum</span>
+                <!-- Kalp simgesi ile Beğeni ve Yorum Sayıları -->
+                <span class="likes">❤️ {{ article.total_likes }} Beğeni</span>
+                <span class="comments">💬 {{ article.total_comments }} Yorum</span>
             </div>
         </div>
         {% endfor %}
     </div>
+
     <!-- Tüm Makaleleri Gör Butonu -->
     <div class="view-all-container">
         <a href="{% url 'articles_list' %}" class="view-all-btn">Tüm Makaleleri Gör</a>
@@ -89,6 +96,7 @@
     <h2 class="section-title">En Çok Yorum Alan Makale</h2>
 
     <div class="most-commented-card">
+        {% if most_commented_article %}
         <!-- Resim üzerine tıklanabilir link -->
         <a href="{% url 'article_detail' most_commented_article.id %}">
             <img src="{{ most_commented_article.image.url }}" alt="{{ most_commented_article.title }}" class="most-commented-image">
@@ -100,9 +108,12 @@
         </div>
         
         <div class="article-meta">
-            <span class="views">📖 {{ most_commented_article.view_count }} Görüntüleme</span>
-            <span class="comments">💬 {{ most_commented_article.comment_count }} Yorum</span>
+            <span class="likes">❤️ {{ most_commented_article.total_likes }} Beğeni</span>
+            <span class="comments">💬 {{ most_commented_article.total_comments }} Yorum</span>
         </div>
+        {% else %}
+        <p>Henüz en çok yorum alan makale yok.</p>
+        {% endif %}
     </div>
 </div>
 

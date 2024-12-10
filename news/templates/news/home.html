@@ -152,38 +152,66 @@
 <a class="bulten-haberler">
     İletişime Geçin
 </a>
-<!-- iletişime geçin İçeriği -->
-<div class="container mt-5">
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="first_name">Adınız</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required>
+<div class="contact-map-container mt-5">
+    <div class="contact-map-row">
+        <!-- Harita -->
+        <div class="contact-map">
+            <div id="map"></div>
         </div>
 
-        <div class="form-group">
-            <label for="last_name">Soyadınız</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required>
-        </div>
+        <!-- İletişim Formu -->
+        <div class="contact-form">
+            <form method="post" class="custom-contact-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="first_name">Adınız</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
 
-        <div class="form-group">
-            <label for="email">E-posta Adresiniz</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
+                <div class="form-group">
+                    <label for="last_name">Soyadınız</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
 
-        <div class="form-group">
-            <label for="phone">Telefon Numaranız</label>
-            <input type="text" class="form-control" id="phone" name="phone">
-        </div>
+                <div class="form-group">
+                    <label for="email">E-posta Adresiniz</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
 
-        <div class="form-group">
-            <label for="message">Mesajınız</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        </div>
+                <div class="form-group">
+                    <label for="phone">Telefon Numaranız</label>
+                    <input type="text" class="form-control" id="phone" name="phone">
+                </div>
 
-        <button type="submit" class="btn btn-primary">Gönder</button>
-    </form>
+                <div class="form-group">
+                    <label for="message">Mesajınız</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const map = L.map('map').setView([39.9334, 32.8597], 13); // Ankara Kızılay koordinatları
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([39.9334, 32.8597]).addTo(map)
+        .bindPopup('Ankara Kızılay')
+        .openPopup();
+
+    // Harita boyutlarının doğru şekilde hesaplanmasını sağlamak için
+    map.on('load', function() {
+        map.invalidateSize();  // Harita boyutlarını günceller
+    });
+</script>
+
 
 
 <style>

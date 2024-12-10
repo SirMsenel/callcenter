@@ -1,0 +1,52 @@
+/* Kapsayıcı genel stiller */
+.contact-map-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-map-row {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px; /* Harita ve form arasında boşluk */
+}
+
+.contact-map,
+.contact-form {
+    flex: 1; /* Her biri eşit genişlikte */
+    height: 500px;
+    overflow: hidden; /* Taşmayı önlemek için */
+}
+
+/* Harita stili */
+#map {
+    height: 100%; /* Kapsayıcının tamamını kapla */
+    width: 100%;  /* Kapsayıcının genişliğini tam al */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Taşmaları önlemek için */
+}
+
+/* İletişim formu stili */
+.custom-contact-form {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Taşma olmaması için tam yükseklik */
+}
+
+.custom-contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.custom-contact-form button {
+    align-self: flex-end;
+}
+

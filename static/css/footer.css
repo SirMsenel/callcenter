@@ -1,0 +1,100 @@
+/* Genel Footer Stili */
+.footer {
+    background-color: #222222;
+    color: #fff;
+    padding: 40px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+/* Başlık Stili */
+.footer-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Footer Metni Stili */
+.footer-text {
+    color: #b0bec5;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer-text a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    color: #ff4081;
+}
+
+/* Sosyal Medya İkonları */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 25px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: #444;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sosyal Medya İkonu Hover Efekti */
+.social-icon:hover {
+    color: #fff;
+    background-color: #ff4081;
+    transform: scale(1.1);
+}
+
+/* Footer Alt Kısım (Telif Hakkı) */
+.footer-bottom {
+    background-color: #102027;
+    padding: 15px 0;
+}
+
+.footer-brand {
+    font-weight: 600;
+    color: #ff4081;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #fff;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .footer .row {
+        text-align: center;
+    }
+
+    .footer-text {
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom p {
+        font-size: 10px;
+    }
+
+    .social-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}

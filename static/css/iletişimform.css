@@ -3,7 +3,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Başlangıç hizasında */
+    padding: 20px 0; /* Üst ve alt boşluk ekledik */
 }
 
 .contact-map-row {
@@ -13,21 +14,23 @@
     gap: 20px; /* Harita ve form arasında boşluk */
 }
 
+/* Harita ve Form */
 .contact-map,
 .contact-form {
     flex: 1; /* Her biri eşit genişlikte */
-    height: 500px;
-    overflow: hidden; /* Taşmayı önlemek için */
+    height: 600px; /* Haritanın yüksekliğini artırdık */
+    overflow: hidden; /* Taşmayı engeller */
 }
 
 /* Harita stili */
 #map {
-    height: 100%; /* Kapsayıcının tamamını kapla */
+    height: 100%; /* Haritanın yüksekliği form ile eşit olacak şekilde %100 */
     width: 100%;  /* Kapsayıcının genişliğini tam al */
     border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box; /* Taşmaları önlemek için */
 }
+
 
 /* İletişim formu stili */
 .custom-contact-form {
@@ -35,18 +38,47 @@
     padding: 20px;
     border-radius: 8px;
     background-color: #f8f9fa;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2); /* Kabartma efekti */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Taşma olmaması için tam yükseklik */
+    justify-content: flex-start; /* Form içeriği üstten başlayacak */
+    height: 100%; /* Formun yüksekliği %100 yapıldı */
 }
 
+/* Form elemanlarının margin'lerini ayarlıyoruz */
 .custom-contact-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Her form elemanı arasında biraz boşluk bırakıyoruz */
 }
 
+.custom-contact-form textarea {
+    font-size: 16px; /* Yazı boyutunu artırıyoruz */
+    padding: 12px; /* İç boşluğu artırıyoruz */
+    height: 120px; /* Yüksekliği artırıyoruz */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px; /* Alt boşluğu artırıyoruz */
+}
+
+/* Gönder Butonu */
 .custom-contact-form button {
-    align-self: flex-end;
+    background-color: white;
+    color: #28a745; /* Buton yazısı yeşil */
+    border: 2px solid #28a745; /* Buton çerçevesi yeşil */
+    padding: 12px 24px; /* İç boşluğu biraz küçültüyoruz */
+    border-radius: 8px;
+    font-size: 16px; /* Yazı boyutunu biraz küçültüyoruz */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-top: 10px; /* Üst boşluğu azaltıyoruz */
+    width: 100%; /* Butonu tam genişlikte yapıyoruz */
 }
 
+/* Buton Hover Durumu */
+.custom-contact-form button:hover {
+    background-color: #28a745; /* Buton arka planı yeşil */
+    color: white; /* Yazı beyaz */
+    border-color: #28a745; /* Çerçeve yine yeşil kalacak */
+    box-shadow: none; /* Hover durumunda da shadow efekti kaldırıldı */
+}

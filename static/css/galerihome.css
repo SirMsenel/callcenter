@@ -2,13 +2,14 @@
 .gallery-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* 6 sütun */
-    grid-template-rows: repeat(6, 1fr); /* 6 satır */
     gap: 10px; /* Fotoğraflar arasında boşluk */
-    height: 100vh; /* Tam ekran yüksekliği */
     margin: 0 auto;
+    padding: 0; /* Padding sıfırlandı, daha sıkı bir düzen için */
+    margin-top: 20px; /* Üstten boşluk */
+    margin-bottom: 10px; /* Alt boşluk minimuma çekildi */
 }
 
-/* Büyük Fotoğraf */
+/* Galeri büyük fotoğraf */
 .gallery-large-photo {
     grid-column: 2 / 4; /* Soldan 2. ve 3. sütun */
     grid-row: 2 / 4; /* 2. ve 3. satır */

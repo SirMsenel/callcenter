@@ -108,8 +108,8 @@
         </div>
         
         <div class="article-meta">
-            <span class="likes">❤️ {{ most_commented_article.total_likes }} Beğeni</span>
-            <span class="comments">💬 {{ most_commented_article.total_comments }} Yorum</span>
+            <span class="likes">❤️ {{ most_commented_article.likes.count }} Beğeni</span>
+            <span class="comments">💬 {{ most_commented_article.comments.count }} Yorum</span>
         </div>
         {% else %}
         <p>Henüz en çok yorum alan makale yok.</p>

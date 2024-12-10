@@ -6,7 +6,6 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth import login, authenticate
 from django.views.generic import ListView
-from .models import Article
 from django.db.models import Count
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
@@ -107,7 +106,6 @@ def article_list(request):
 
 
 def article_detail(request, id):
-    # ID'ye göre makaleyi getir, yoksa 404 hatası döndür
     article = get_object_or_404(Article, id=id)
     return render(request, 'news/article_detail.html', {'article': article})
 
@@ -126,35 +124,25 @@ def like_article(request, article_id):
 
 
 @login_required
-def add_comment(request, article_id):
-    article = get_object_or_404(Article, id=article_id)  # Makaleyi alıyoruz
-
-    if request.method == "POST":
-        text = request.POST.get('text')  # 'text' alanını alıyoruz
-        
-        if text:  # Eğer metin boş değilse
-            ArticleComment.objects.create(
-                article=article,
-                user=request.user,  # Yorum yapan kullanıcı
-                text=text  # Yorumun içeriği
-            )
-            return redirect('article_detail', article_id=article.id)  # Yorum eklendikten sonra makale detayına yönlendiriyoruz
-        else:
-            return render(request, 'article_detail.html', {'article': article, 'error': 'Yorum boş olamaz!'})
-
-    return redirect('article_detail', article_id=article.id)  # GET isteği ile gelirse makale detayına yönlendiriyoruz
+def add_comment(request, article_id):  # 'id' yerine 'article_id' kullandık
+    article = get_object_or_404(Article, id=article_id)
+    if request.method == 'POST':
+        comment_text = request.POST.get('text')
+        if comment_text:
+            ArticleComment.objects.create(article=article, user=request.user, text=comment_text)
+    return redirect('article_detail', id=article_id)  # Yönlendirmede de 'article_id' kullanılıyor
 
 
 @login_required
-def delete_comment(request, comment_id):
+def delete_article_comment(request, comment_id):
     comment = get_object_or_404(ArticleComment, id=comment_id)
-
-    # Yorumun sahibi, şu anki kullanıcı olmalı
+    
+    # Yalnızca yorumu yazan kullanıcı silebilir
     if comment.user == request.user:
         comment.delete()
-
-    # Yorum silindikten sonra, makale detay sayfasına yönlendir
-    return redirect('article_detail', id=comment.article.id)
+        return redirect('article_detail', id=comment.article.id)
+    else:
+        return redirect('article_detail', id=comment.article.id)
 
 
 #galeri

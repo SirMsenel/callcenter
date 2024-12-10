@@ -1,6 +1,38 @@
-.article-detail-page .article-content {
-    padding: 20px;
+.article-detail-page {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+.article-detail-page .article-image-container {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.article-detail-page .article-image {
+    max-width: 100%;
+    max-height: 500px;  /* Maksimum yükseklik sınırlaması ekleyin */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.article-detail-page .article-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #34495e;
+}
+
+.article-detail-page .article-content {
+    padding: 25px;
+    background-color: #f7f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .article-detail-page .article-meta {
@@ -8,47 +40,140 @@
     justify-content: space-between;
     font-size: 14px;
     color: #555;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
 }
 
-.article-detail-page .likes, .article-detail-page .comments {
+.article-detail-page .likes,
+.article-detail-page .comments {
     font-weight: bold;
-    color: #28a745;
+    color: #27ae60;
 }
 
 .article-detail-page .like-button {
-    background-color: transparent;
-    border: none;
-    color: #888;
-    font-size: 14px;
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    color: #7f8c8d;
+    font-size: 16px;
     cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 .article-detail-page .like-button:hover {
-    color: #ff6347;
+    color: #ffffff;
+    background-color: #27ae60;
+    border-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.5); /* Ekstra gölge */
 }
 
-.article-detail-page .comment-section {
-    margin-top: 30px;
-    text-align: left;
+.article-detail-page .comments-section {
+    margin-top: 40px;
+    background-color: #fdfefe;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.article-detail-page .comment-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
+.article-detail-page .comments-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+.article-detail-page .comment-item {
+    margin-bottom: 15px;
+    padding: 20px;
+    background-color: #f4f6f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.article-detail-page .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article-detail-page .comment-header strong {
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.article-detail-page .comment-header small {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.article-detail-page textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    resize: vertical;
+    background-color: #ffffff;
+}
+
+.article-detail-page textarea:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+    background-color: #f1f1f1; /* Arka plan rengi */
+}
+
+.article-detail-page .comment-submit-button {
+    padding: 12px 20px;
+    background-color: #27ae60;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.article-detail-page .comment-button:hover {
-    background-color: #218838;
+.article-detail-page .comment-submit-button:hover {
+    background-color: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.article-detail-page .comment {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
+/* Sil butonu için sade ve dikkat çekmeyecek bir stil */
+.article-detail-page .delete-comment-button {
+    background-color: transparent;
+    color: #7f8c8d;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.article-detail-page .delete-comment-button:hover {
+    color: #bdc3c7;
+    text-decoration: underline;
+    opacity: 0.7; /* Silme butonunun üzerine gelindiğinde hafif opaklık */
+}
+
+/* Mobil uyumlu tasarım */
+@media (max-width: 768px) {
+    .article-detail-page {
+        padding: 15px;
+    }
+    .article-detail-page .article-title {
+        font-size: 24px;
+    }
+    .article-detail-page .article-content {
+        padding: 15px;
+    }
 }

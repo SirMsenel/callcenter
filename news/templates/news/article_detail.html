@@ -2,60 +2,82 @@
 
 {% block content %}
 <div class="article-detail-page">
-    <!-- Makale Başlığı -->
-    <h2 class="article-title">{{ article.title }}</h2>
-
-    <!-- Makale Görseli -->
+    <!-- Görsel -->
+    {% if article.image %}
     <div class="article-image-container">
         <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
     </div>
-    
-    <!-- Makale İçeriği -->
+    {% endif %}
+
+    <!-- Başlık -->
+    <h1 class="article-title">{{ article.title }}</h1>
+
+    <!-- İçerik -->
     <div class="article-content">
         <p>{{ article.content }}</p>
+    </div>
 
-        <div class="article-meta">
-            <span class="likes">❤️ {{ article.total_likes }} Beğeni</span>
-            <span class="comments">💬 {{ article.total_comments }} Yorum</span>
-        </div>
+    <!-- Meta Bilgileri -->
+    <div class="article-meta">
+        <span class="likes">❤️ {{ article.likes.count }} Beğeni</span>
+        <span class="comments">💬 {{ article.comments.count }} Yorum</span>
+    </div>
 
-        <!-- Beğeni Butonu -->
-        <form action="{% url 'like_article' article.id %}" method="post" style="display:inline;">
+    <!-- Beğeni -->
+    <div class="like-section">
+        {% if user.is_authenticated %}
+        <form action="{% url 'like_article' article.id %}" method="post">
             {% csrf_token %}
-            {% if user.is_authenticated %}
-                <button type="submit" class="like-button">
-                    {% if request.user in article.likes.all %}
-                        ❤️ Beğenildi ({{ article.total_likes }})
-                    {% else %}
-                        🤍 Beğen
-                    {% endif %}
-                </button>
-            {% else %}
-                <a href="{% url 'login' %}" class="like-button">Giriş Yaparak Beğen</a>
-            {% endif %}
+            <button type="submit" class="like-button">
+                {% if request.user in article.likes.all %}
+                ❤️ Beğenildi
+                {% else %}
+                🤍 Beğen
+                {% endif %}
+            </button>
         </form>
-        
+        {% else %}
+        <a href="{% url 'login' %}" class="like-button">Giriş Yaparak Beğen</a>
+        {% endif %}
+    </div>
 
-        <!-- Yorum Yapma -->
-        <div class="comment-section">
-            <h3>Yorumlar</h3>
+    <!-- Yorumlar -->
+    <div class="comments-section">
+        <h2>Yorumlar</h2>
+
+        {% if article.comments.exists %}
+        <ul class="comments-list">
             {% for comment in article.comments.all %}
-                <div class="comment">
-                    <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+            <li class="comment-item">
+                <div class="comment-header">
+                    <strong>{{ comment.user.username }}</strong>
+                    <small>{{ comment.created_at|date:"d M Y H:i" }}</small>
                 </div>
+                <p class="comment-text">{{ comment.text }}</p>
+                <!-- Yorum Silme Butonu -->
+                {% if comment.user == request.user %}
+                <form action="{% url 'delete_article_comment' comment.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-comment-button">Sil</button>
+                </form>
+                {% endif %}
+            </li>
             {% endfor %}
+        </ul>
+        {% else %}
+        <p>Henüz yorum yapılmamış.</p>
+        {% endif %}
 
-            <!-- Yorum Yapma Formu -->
-            {% if user.is_authenticated %}
-            <form action="{% url 'add_comment' article.id %}" method="post">
-                {% csrf_token %}
-                <textarea name="text" placeholder="Yorumunuzu yazın..."></textarea>
-                <button type="submit" class="comment-button">Yorum Yap</button>
-            </form>
-            {% else %}
-                <p>Yorum yapabilmek için <a href="{% url 'login' %}">giriş yapın</a></p>
-            {% endif %}        
-        </div>
+        <!-- Yorum Yapma Formu -->
+        {% if user.is_authenticated %}
+        <form action="{% url 'add_comment' article.id %}" method="post">
+            {% csrf_token %}
+            <textarea name="text" placeholder="Yorumunuzu yazın..." required></textarea>
+            <button type="submit" class="comment-submit-button">Yorum Yap</button>
+        </form>
+        {% else %}
+        <p>Yorum yapmak için <a href="{% url 'login' %}">giriş yapın</a>.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

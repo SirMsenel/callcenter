@@ -10,8 +10,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-
     <!-- Ortak CSS dosyaları -->
     <link rel="stylesheet" href="{% static 'css/image.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
@@ -27,135 +25,163 @@
     <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
 
-    <style>
-/* Navbar Genel Ayarları */
-.navbar {
-    background-color: #f8f9fa; /* Açık gri arka plan */
-    padding: 15px 20px; /* Navbar iç paddingi */
-    height: 100px; /* Navbar yüksekliği */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1030; /* Diğer içeriklerin üzerinde olacak */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+<!-- Navbar'a Özel CSS -->
+<style>
+    /* Navbar Ayarları */
+    .navbar {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1030;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-/* Logo Boyutunu Navbar'a Eşitleme */
-.navbar .navbar-brand img {
-    height: 90px; /* Logo yüksekliği */
-    width: auto; /* Oran koruma */
-}
+    .navbar .navbar-brand {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-/* Navbar Bitişi ile Sayfa Başlangıcını Ayarla */
-body {
-    margin-top: 100px; /* Navbar yüksekliği kadar boşluk bırak */
-}
+    .navbar .navbar-brand img {
+        height: 80px;
+        width: auto;
+    }
 
-/* Menü Düzeni */
-.navbar-nav .nav-link {
-    font-size: 18px; /* Menü yazı boyutu */
-    color: #333;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 8px 12px; /* Menü öğeleri için padding */
-}
+    .navbar-nav {
+        display: flex;
+        justify-content: flex-start;
+        flex-grow: 1;
+        margin-left: 120px;
+    }
 
-/* Menü Link Hover ve Aktif Durumu */
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-    color: #fff;
-    background-color: #28a745;
-    border-radius: 5px;
-    font-weight: bold; /* Menü linklerini aktif olduğunda kalın yap */
-}
+    .navbar-nav .nav-link {
+        font-size: 18px;
+        color: #333;
+        padding: 8px 12px;
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
 
-/* Sağdaki Butonlar */
-.navbar-nav.ml-auto .btn-login,
-.navbar-nav.ml-auto .btn-register {
-    font-size: 14px; /* Yazı boyutu */
-    padding: 8px 12px; /* Arama butonuyla aynı padding */
-    border-radius: 5px; /* Köşe yuvarlama */
-    margin-left: 6px; /* Butonlar arası mesafe */
-    height: 38px; /* Arama butonuyla aynı yükseklik */
-    line-height: 20px; /* Metni dikeyde ortala */
-}
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 5px;
+        font-weight: bold;
+    }
 
-/* Giriş Yap Butonu */
-.navbar-nav.ml-auto .btn-login {
-    background-color: #28a745; /* Yeşil renk */
-    color: #fff;
-}
+    .navbar-nav.ml-auto {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
-/* Giriş Yap Butonu Hover Durumu */
-.navbar-nav.ml-auto .btn-login:hover {
-    background-color: #218838;
-}
+    .navbar-nav.ml-auto .nav-item {
+        margin-left: 10px;
+    }
 
-/* Kaydol Butonu */
-.navbar-nav.ml-auto .btn-register {
-    background-color: #6c757d; /* Gri renk */
-    color: #fff;
-}
+    .navbar-nav.ml-auto .btn-register {
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        height: 38px;
+        line-height: 20px;
+        background-color: #6c757d;
+        color: #fff;
+    }
 
-/* Kaydol Butonu Hover Durumu */
-.navbar-nav.ml-auto .btn-register:hover {
-    background-color: #5a6268;
-}
+    .navbar-nav.ml-auto .btn-register:hover {
+        background-color: #5a6268;
+    }
 
-/* Arama Kutusu ve Buton */
-.navbar .search-form {
-    display: flex;
-    align-items: center;
-    margin-right: 10px; /* Arama ve butonlar arasındaki mesafeyi artır */
-}
+    .navbar-nav.ml-auto .btn-login {
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        height: 38px;
+        line-height: 20px;
+        background-color: #28a745;
+        color: #fff;
+    }
 
-.navbar .search-form input[type="search"] {
-    padding: 8px 12px; /* Arama kutusunun iç paddingi */
-    font-size: 14px; /* Arama kutusu yazı boyutu */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px; /* Arama kutusu genişliği */
-}
+    .navbar-nav.ml-auto .btn-login:hover {
+        background-color: #218838;
+    }
 
-/* Arama Butonu */
-.navbar .search-form button {
-    padding: 8px 12px; /* Buton boyutu */
-    font-size: 14px; /* Buton yazı boyutu */
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-left: 5px; /* Arama butonuyla arama kutusu arasındaki mesafe */
-    height: 38px; /* Giriş yap/kaydol ile aynı yükseklik */
-    line-height: 20px; /* Metni dikeyde ortala */
-}
+    .navbar .search-form input[type="search"] {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+    }
 
-/* Arama Butonu Hover Durumu */
-.navbar .search-form button:hover {
-    background-color: #218838;
-}
-/* Dropdown içindeki linkler */
-.dropdown-menu .dropdown-item {
-    font-size: 18px; /* Yazı boyutu */
-    color: #333; /* Varsayılan renk */
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 8px 12px; /* Menü öğeleri için padding */
-}
+    .navbar .search-form button {
+        padding: 8px 12px;
+        font-size: 14px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        height: 38px;
+        line-height: 20px;
+    }
 
-/* Dropdown link hover ve aktif durumu */
-.dropdown-menu .dropdown-item:hover,
-.dropdown-menu .dropdown-item.active {
-    color: #fff; /* Hover durumunda beyaz renk */
-    background-color: #28a745; /* Hover durumunda yeşil arka plan */
-    border-radius: 5px; /* Köşe yuvarlama */
-    font-weight: bold; /* Aktif durum için kalın yazı */
-}
+    body {
+        padding-top: 100px;
+    }
+
+    /* Arama butonunun diğer menülerin sonunda olmasını sağlamak için düzenleme */
+    .navbar-nav.ml-auto .search-form {
+        margin-left: 30px; /* Diğer menülerden biraz boşluk bırak */
+    }
+
+    /* "Ya Biz" ve "Diğer Sayfalar" Menü Öğeleri için Hover Efekti */
+    .navbar-nav .nav-item.dropdown:hover .nav-link {
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-menu {
+        background-color: #f8f9fa;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-item {
+        padding: 8px 12px;
+        color: #333;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-item:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    /* "Ya Biz" ve "Diğer Sayfalar" öğelerinin üzerine gelindiğinde */
+    .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    /* Menü öğeleri tıklandığında focus durumunun mavi kalmaması için */
+    .navbar-nav .nav-item .nav-link:focus {
+        outline: none; /* Mavi outline'ı kaldırıyoruz */
+    }
+
+    /* Eğer bir item tıklanmışsa, hover durumunu temizle */
+    .navbar-nav .nav-item .nav-link:active {
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
 
 
-    </style>
 </head>
 <body>
-    <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container-fluid">
@@ -166,6 +192,7 @@ body {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Navbar Düzenlemeleri -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Ana Sayfa</a>
@@ -175,20 +202,36 @@ body {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if 'news/articles' in request.path %}active{% endif %}" href="{% url 'articles_list' %}">Makaleler</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {% if '/photos' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Diğer Sayfa
+                            <a class="nav-link dropdown-toggle {% if '/about' in request.path or '/founders' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ya Biz
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item {% if '/about' in request.path %}active{% endif %}" href="{% url 'about' %}">Hakkımızda</a></li>
+                                <li><a class="dropdown-item {% if '/founders' in request.path %}active{% endif %}" href="{% url 'founders' %}">Kurucular</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {% if '/photos' in request.path or '/calculator-tools' in request.path or '/exchange-rate' in request.path or '/pdf-converter' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Diğer Sayfalar
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item {% if '/photos' in request.path %}active{% endif %}" href="{% url 'photo_list' %}">Galeri</a></li>
+                                <li><a class="dropdown-item {% if '/calculator-tools' in request.path %}active{% endif %}" href="{% url 'calculation_tools' %}">Hesaplama Araçları</a></li>
+                                <li><a class="dropdown-item {% if '/exchange-rate' in request.path %}active{% endif %}" href="{% url 'currency_tracking' %}">Kur Takibi</a></li>
+                                <li><a class="dropdown-item {% if '/pdf-converter' in request.path %}active{% endif %}" href="{% url 'pdf_converter' %}">PDF Çevirici</a></li>
                             </ul>
-                        </li>                                                                
+                        </li>
                     </ul>
-                    <form action="{% url 'search' %}" method="get" class="d-flex me-3 search-form">
-                        <input class="form-control me-2" type="search" name="q" placeholder="Haber Ara" aria-label="Search" required>
-                        <button class="btn btn-outline-success" type="submit">Ara</button>
-                    </form>
+                    <!-- Sağdaki Butonlar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <form action="{% url 'search' %}" method="get" class="d-flex search-form">
+                                <input class="form-control me-2" type="search" name="q" placeholder="Haber Ara" aria-label="Search" required>
+                                <button class="btn btn-outline-success" type="submit">Ara</button>
+                            </form>
+                        </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <form action="{% url 'logout' %}" method="post" class="d-inline">
@@ -209,7 +252,6 @@ body {
             </div>
         </nav>
     </header>
-    
 
     <!-- Sayfa İçeriği -->
     <main>

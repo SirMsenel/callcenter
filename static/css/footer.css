@@ -1,10 +1,11 @@
 /* Genel Footer Stili */
 .footer {
-    background-color: #222222;
+    background-color: #1d1f1d; /* Koyu gri-siyah arka plan */
     color: #fff;
     padding: 40px 0;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    border-top: 2px solid #28a745; /* Modern görünüm için yeşil sınır */
 }
 
 /* Başlık Stili */
@@ -12,7 +13,7 @@
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
-    color: #fff;
+    color: #28a745; /* Navbar'daki yeşil renk */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -30,7 +31,22 @@
 }
 
 .footer-text a:hover {
-    color: #ff4081;
+    color: #28a745; /* Navbar'daki yeşil renk */
+}
+
+/* Footer Linkleri */
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-link {
+    color: #b0bec5;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #28a745; /* Navbar'daki yeşil renk */
+    text-decoration: underline;
 }
 
 /* Sosyal Medya İkonları */
@@ -58,24 +74,29 @@
 /* Sosyal Medya İkonu Hover Efekti */
 .social-icon:hover {
     color: #fff;
-    background-color: #ff4081;
+    background-color: #28a745; /* Navbar'daki yeşil renk */
     transform: scale(1.1);
 }
 
 /* Footer Alt Kısım (Telif Hakkı) */
 .footer-bottom {
-    background-color: #102027;
-    padding: 15px 0;
-}
-
-.footer-brand {
-    font-weight: 600;
-    color: #ff4081;
+    background-color: #6c757d;
+    padding: 5px; /* Çerçeveyi küçültüyoruz */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-bottom p {
-    font-size: 12px;
+    font-size: 15px; /* Yazı boyutunu büyüttüm */
     color: #fff;
+}
+
+/* Footer Alt Kısım (Telif Hakkı) - Markanın Yeşil Renkle Yazılması */
+.footer-brand {
+    font-weight: 600;
+    color: #28a745; /* Navbar'daki yeşil renk */
 }
 
 /* Responsive Tasarım */
@@ -89,12 +110,17 @@
     }
 
     .footer-bottom p {
-        font-size: 10px;
+        font-size: 14px; /* Mobilde daha küçük yazı boyutu */
     }
 
     .social-links {
         flex-direction: row;
         justify-content: center;
         gap: 15px;
+    }
+
+    .footer-links {
+        text-align: center;
+        margin-top: 10px;
     }
 }

@@ -128,8 +128,8 @@
     <div class="gallery-large-photo" onclick="window.location.href='{% url 'photo_detail' gallery_photos.0.id %}'">
         <img src="{{ gallery_photos.0.image.url }}" alt="{{ gallery_photos.0.title }}">
         <div class="gallery-photo-meta">
-            <span class="likes">❤️ {{ gallery_photos.0.like_count }} Beğeni</span>
-            <span class="comments">💬 {{ gallery_photos.0.comment_count }} Yorum</span>
+            <span class="likes">❤️ {{ gallery_photos.0.total_likes }} Beğeni</span>
+            <span class="comments">💬 {{ gallery_photos.0.total_comments }} Yorum</span>
         </div>
     </div>
     {% endif %}
@@ -140,13 +140,14 @@
         <a href="{% url 'photo_detail' photo.id %}">
             <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
             <div class="gallery-photo-meta">
-                <span class="likes">❤️ {{ photo.like_count }} Beğeni</span>
-                <span class="comments">💬 {{ photo.comment_count }} Yorum</span>
+                <span class="likes">❤️ {{ photo.total_likes }}</span>
+                <span class="comments">💬 {{ photo.total_comments }}</span>
             </div>
         </a>
     </div>
     {% endfor %}
 </div>
+
 
 <!-- iletişime geçin Başlığı -->
 <a class="bulten-haberler">
@@ -212,6 +213,21 @@
         map.invalidateSize();  // Harita boyutlarını günceller
     });
 </script>
+
+
+<!-- Diğer Sayfalar Başlığı -->
+<a class="bulten-haberler">
+    Diğer Sayfalar
+</a>
+
+<div class="page-links">
+    <a href="{% url 'about' %}" class="page-btn">Hakkımızda</a>
+    <a href="{% url 'founders' %}" class="page-btn">Kurucular</a>  <!-- Kurucular butonu eklendi -->
+    <a href="{% url 'calculation_tools' %}" class="page-btn">Hesaplama Araçları</a>
+    <a href="{% url 'currency_tracking' %}" class="page-btn">Kur Takibi</a>
+    <a href="{% url 'pdf_converter' %}" class="page-btn">PDF Çevirici</a>
+</div>
+
 
 <!-- Footer Başlangıcı -->
 <footer class="footer">

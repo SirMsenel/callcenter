@@ -190,3 +190,22 @@ def delete_comment(request, comment_id):
         comment.delete()  # Yalnızca yorumu yapan kullanıcı silebilir
     return redirect('photo_detail', pk=comment.photo.pk)
 
+# Hakkımızda sayfası
+def about(request):
+    return render(request, 'about.html')
+
+# Kurucular sayfası
+def founders(request):
+    return render(request, 'founders.html')  # founders.html dosyasını oluşturun
+
+# Hesaplama Araçları sayfası
+def calculation_tools(request):
+    return render(request, 'calculation_tools.html')
+
+# Kur Takibi sayfası
+def currency_tracking(request):
+    return render(request, 'currency_tracking.html')
+
+# PDF Çevirici sayfası
+def pdf_converter(request):
+    return render(request, 'pdf_converter.html')

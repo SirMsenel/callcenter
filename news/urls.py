@@ -22,6 +22,11 @@ urlpatterns = [
     path('photos/<int:pk>/like/', views.like_photo, name='like_photo'),  # Beğeni
     path('photos/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),  # Yorum sil
     path('contact/success/', views.contact_success, name='contact_success'),  # Başarı mesajı sayfası
+    path('about/', views.about, name='about'),  # Hakkımızda
+    path('founders/', views.founders, name='founders'),  # Kurucular
+    path('calculation-tools/', views.calculation_tools, name='calculation_tools'),  # Hesaplama Araçları
+    path('currency-tracking/', views.currency_tracking, name='currency_tracking'),  # Kur Takibi
+    path('pdf-converter/', views.pdf_converter, name='pdf_converter'),  # PDF Çevirici
 ]
 
 

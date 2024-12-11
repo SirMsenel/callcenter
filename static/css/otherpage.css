@@ -1,0 +1,41 @@
+.page-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Butonlar arasındaki boşluk */
+    margin-top: 20px; /* Üstten boşluk */
+    margin-bottom: 20px; /* Alttan boşluk */
+}
+
+.page-btn {
+    background-color: #28a745; /* Buton rengini #28a745 olarak güncelledik */
+    color: white; /* Buton metni rengi */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px; /* Yuvarlak köşeler */
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.page-btn:hover {
+    background-color: #218838; /* Hover durumunda daha koyu bir yeşil (#218838) */
+}
+
+/* Mobile uyumlu tasarım */
+@media (max-width: 768px) {
+    .page-links {
+        flex-direction: column; /* Butonları alt alta yerleştir */
+        gap: 15px; /* Butonlar arasındaki boşluk daha küçük */
+    }
+
+    .page-btn {
+        font-size: 14px; /* Buton yazı boyutunu küçültüyoruz */
+        padding: 8px 15px; /* Butonun iç padding'ini biraz küçültüyoruz */
+    }
+}
+
+@media (max-width: 480px) {
+    .page-btn {
+        font-size: 12px; /* Çok küçük ekranlarda buton yazı boyutunu daha da küçültüyoruz */
+        padding: 6px 12px; /* Daha küçük padding */
+    }
+}

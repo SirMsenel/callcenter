@@ -12,7 +12,7 @@
 
 <!-- Bülten Başlığı -->
 <a href="{% url 'news_list' %}" class="bulten-haberler">
-    Haberler
+    HABERLER
 </a>
 
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -55,7 +55,7 @@
 
 <!-- Bülten Başlığı -->
 <a href="{% url 'articles_list' %}" class="bulten-haberler">
-    Makaleler
+    MAKALELER
 </a>
 
 <!-- Son Eklenen Makaleler -->
@@ -93,7 +93,7 @@
 
 <!-- En Çok Yorum Alan Makale -->
 <div class="most-commented-section">
-    <h2 class="section-title">En Çok Yorum Alan Makale</h2>
+    <h2 class="section-title">En Çok Etkileşim Alan Makale</h2>
 
     <div class="most-commented-card">
         {% if most_commented_article %}
@@ -119,7 +119,7 @@
 
 <!-- Galeri Başlığı -->
 <a href="{% url 'photo_list' %}" class="bulten-haberler">
-    Galeri
+    GALERİ
 </a>
 
 <div class="gallery-container">
@@ -149,7 +149,7 @@
 </div>
 
 
-<!-- iletişime geçin Başlığı -->
+<!-- İletişime geçin Başlığı -->
 <a class="bulten-haberler">
     İletişime Geçin
 </a>
@@ -214,12 +214,12 @@
     });
 </script>
 
+<!-- Boşluk ve Çizgi -->
+<div style="margin: 40px 0;">
+    <hr style="border: 1px solid #ccc; width: 100%; margin: 20px 0;">
+</div>
 
-<!-- Diğer Sayfalar Başlığı -->
-<a class="bulten-haberler">
-    Diğer Sayfalar
-</a>
-
+<!-- Page Links -->
 <div class="page-links">
     <a href="{% url 'about' %}" class="page-btn">Hakkımızda</a>
     <a href="{% url 'founders' %}" class="page-btn">Kurucular</a>  <!-- Kurucular butonu eklendi -->
@@ -252,7 +252,7 @@
             
             <!-- Sağ Kısım: İletişim -->
             <div class="col-md-4 text-right">
-                <h5 class="footer-title">İletişim</h5>
+                <h5 class="footer-title">İletİşİm</h5>
                 <p class="footer-text">Email: <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></p>
                 <p class="footer-text">Telefon: <a href="tel:+901234567890">+90 123 456 7890</a></p>
             </div>

@@ -5,7 +5,6 @@
     padding: 40px 0;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    border-top: 2px solid #28a745; /* Modern görünüm için yeşil sınır */
 }
 
 /* Başlık Stili */
@@ -16,6 +15,7 @@
     color: #28a745; /* Navbar'daki yeşil renk */
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center; /* Başlıkları ortala */
 }
 
 /* Footer Metni Stili */
@@ -23,6 +23,7 @@
     color: #b0bec5;
     line-height: 1.6;
     font-size: 14px;
+    text-align: center; /* Metni ortala */
 }
 
 .footer-text a {
@@ -37,6 +38,7 @@
 /* Footer Linkleri */
 .footer-links {
     margin-top: 10px;
+    text-align: center; /* Linkleri ortala */
 }
 
 .footer-link {

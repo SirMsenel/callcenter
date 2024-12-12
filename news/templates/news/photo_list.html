@@ -6,12 +6,19 @@
     <div class="row">
         {% for photo in photos %}
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ photo.title }}</h5>
-                    <p>👍 {{ photo.total_likes }} Beğeni | 💬 {{ photo.total_comments }} Yorum</p>
-                    <a href="{% url 'photo_detail' photo.id %}" class="btn btn-primary">Detay</a>
+            <div class="modern-gallery-card">
+                <a href="{% url 'photo_detail' photo.id %}">
+                    <div class="modern-gallery-card-img-container">
+                        <img src="{{ photo.image.url }}" class="modern-gallery-card-img" alt="{{ photo.title }}">
+                    </div>
+                    <div class="modern-gallery-card-body">
+                        <h5 class="modern-gallery-card-title">{{ photo.title }}</h5>
+                    </div>
+                </a>
+                <!-- Beğeni ve Yorum Alanı -->
+                <div class="modern-gallery-card-footer">
+                    <span><i class="fas fa-heart like-icon"></i> {{ photo.total_likes }} Beğeni</span>
+                    <span><i class="comment-icon">💬</i> {{ photo.total_comments }} Yorum</span>
                 </div>
             </div>
         </div>

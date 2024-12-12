@@ -13,6 +13,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: left;
     padding: 15px; /* İçerik etrafındaki boşluğu azaltıyoruz */
+    background-color: #fff; /* Kartın arka plan rengini beyaz yapıyoruz */
 }
 
 .most-commented-section .most-commented-image {
@@ -20,8 +21,6 @@
     height: 100%; /* Fotoğrafın yüksekliğini %100 yapıyoruz, böylece kartın yüksekliğine uyum sağlar */
     object-fit: cover; /* Fotoğrafın kartın sınırlarını aşmaması için cover kullanıyoruz ve tam oturmasını sağlıyoruz */
 }
-
-
 
 .most-commented-section .most-commented-content {
     padding: 20px; /* İçeriğin etrafındaki boşluğu azaltıyoruz */

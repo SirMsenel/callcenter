@@ -1,0 +1,311 @@
+/* Genel Sayfa Düzeni */
+.photo-detail-page {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.8;
+    color: #2c3e50;
+    padding: 0 15px; /* Kenarlara biraz boşluk ekledim */
+}
+
+/* Sol Kısım (Fotoğraf ve Beğeni/yorum Sayısı) */
+.left-section {
+    flex: 1;
+    margin-right: 30px; /* Sağ kısımdan biraz daha geniş boşluk */
+}
+
+/* Fotoğraf */
+.photo-image-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.photo-image {
+    width: 100%;
+    max-height: 700px;  /* Fotoğrafın yüksekliğini artırdık */
+    object-fit: cover;
+    border-radius: 15px;  /* Daha yumuşak köşeler */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-image:hover {
+    transform: scale(1.05); /* Hover efekti ekledim */
+}
+
+/* Beğeni ve Yorum Sayısı Çerçevesi */
+.likes-comments-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ecf0f1;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Beğeni ve Yorum Sayısı */
+.likes-comments-container span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745;  /* Yeşil renk #28a745 */
+    width: 48%;
+    transition: color 0.3s ease;
+}
+
+.likes-comments-container span:hover {
+    color: #1e7e34; /* Hoverda biraz koyu yeşil */
+}
+
+.likes-comments-container .likes {
+    text-align: left;
+}
+
+.likes-comments-container .comments {
+    text-align: right;
+}
+
+/* Beğenme Butonu */
+.like-section {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.like-button {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    color: #7f8c8d;
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 15px;  /* Daha yuvarlak köşeler */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 270px;
+    text-align: center;
+}
+
+.like-button:hover {
+    color: #ffffff;
+    background-color: #28a745;
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+}
+
+.like-button.liked {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Sağ Kısım (Yorum Yapma ve Yorumlar) */
+.right-section {
+    flex: 1;
+}
+
+/* Yorum Yapma Alanı */
+.comment-section {
+    margin-top: 25px;
+}
+
+textarea.form-control {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 15px;
+    min-height: 120px;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+textarea.form-control:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+    background-color: #ffffff;
+}
+
+/* Yorum Yapma Butonu */
+.comment-submit-button {
+    padding: 12px 28px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.comment-submit-button:hover {
+    background-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Yorumlar */
+.comments-section {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #f7f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.comments-section h3 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #34495e;
+    text-align: center;
+}
+
+/* Yorumlar Listesi */
+.comments-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Yorum Kutusu (Baloncuk Stili) */
+.comment-item {
+    margin-bottom: 20px;
+    padding: 18px;
+    background-color: #f4f6f7;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+/* Yorum Kutusunun İçindeki Yorumlar */
+.comment-item .comment-text {
+    padding: 12px 18px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Yorum Başlık ve İçerik */
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-header strong {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.comment-header small {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.comment-text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Silme Butonu */
+.delete-comment-button {
+    background-color: transparent;
+    color: #7f8c8d;
+    border: none;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.delete-comment-button:hover {
+    color: #bdc3c7;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+/* Media Queries (Responsive) */
+
+/* Mobil Ekranlar */
+@media (max-width: 767px) {
+    .photo-detail-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-section,
+    .right-section {
+        flex: none;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .photo-image {
+        max-height: 500px; /* Mobil için fotoğraf boyutunu küçültme */
+    }
+
+    .likes-comments-container {
+        width: 100%;
+        max-width: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .like-button,
+    .comment-submit-button {
+        max-width: 100%;
+    }
+
+    .comments-section {
+        padding: 15px;
+    }
+
+    .comment-item {
+        padding: 15px;
+    }
+}
+
+/* Tablet Ekranlar */
+@media (max-width: 1024px) {
+    .photo-detail-page {
+        flex-direction: row;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 1;
+    }
+
+    .photo-image {
+        max-height: 600px; /* Tablet için fotoğraf boyutunu ayarlama */
+    }
+
+    .likes-comments-container {
+        gap: 15px;
+    }
+
+    .like-button,
+    .comment-submit-button {
+        max-width: 250px;
+    }
+}

@@ -112,3 +112,17 @@ class ContactMessage(models.Model):
     class Meta:
         verbose_name = "İletişim Mesajı"
         verbose_name_plural = "İletişim Mesajları"
+
+
+
+class Founder(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    bio = models.TextField(blank=True, null=True)
+    photo = models.ImageField(upload_to='founders_photos/', blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now)  # Use default here
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+

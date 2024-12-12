@@ -1,0 +1,125 @@
+/* Genel Sayfa Stili */
+body.founders-page {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Stili */
+.founders-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Başlık Stili */
+.founders-container h1 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 40px;
+    font-size: 32px; /* Başlık boyutunu büyüttük */
+}
+
+/* Kurucular için Satır Stili */
+.founders-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Her Kart için Stildir */
+.founder-col {
+    flex: 0 0 calc(33.33% - 20px);  /* Her kart %33 genişliğe sahip, ve aralarındaki boşluk */
+    box-sizing: border-box;  /* Border ve padding'in toplam genişliği etkilemesini sağlar */
+    padding: 10px;  /* Kartlar arasında boşluk oluşturmak için padding */
+}
+
+/* Kurucu Kart Stili */
+.founder-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 450px; /* Kartların yüksekliği eşit oldu */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Fotoğraf ve metni ortalamak için */
+}
+
+/* Kurucu Kart Hover Efekti */
+.founder-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Kurucu Fotoğraf Daire Çerçeve Stili */
+.founder-card .founder-image {
+    width: 220px;         /* Fotoğraf genişliği arttırıldı */
+    height: 220px;        /* Fotoğraf yüksekliği arttırıldı */
+    border-radius: 50%;   /* Daire şeklinde fotoğraf */
+    margin-bottom: 20px;
+    object-fit: cover;    /* Fotoğrafın daire içerisine sığmasını sağlar */
+    object-position: center; /* Fotoğrafın ortalanması */
+    margin-left: auto;
+    margin-right: auto;   /* Fotoğrafı yatayda ortalamak */
+    display: block;       /* Fotoğrafı ortalamak için */
+    margin-top: 30px;     /* Kart ile fotoğraf arasında boşluk */
+}
+
+/* Kurucu İsim ve Pozisyon Stili */
+.founder-card .founder-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.founder-card .founder-position {
+    font-size: 16px; /* Yazı boyutunu biraz büyüttük */
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Detaylı Bilgi Bağlantısı Stili */
+.founder-card .details-link {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px; /* Buton boyutunu artırdık */
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.founder-card .details-link:hover {
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .founders-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .founder-col {
+        width: 80%; /* Mobil cihazlar için kart genişliği */
+    }
+
+    .founder-card {
+        height: auto; /* Yüksekliği mobilde esnek hale getirdik */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}

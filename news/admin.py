@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import News, Article,ArticleComment, Category,Photo,PhotoComment
 from .models import ContactMessage
+from .models import Founder
 
 admin.site.register(News)
 
@@ -42,3 +43,11 @@ class ContactMessageAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
+
+# Founder modelini admin paneline kaydetme
+class FounderAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'position', 'created_at')
+    search_fields = ('first_name', 'last_name', 'position')
+    list_filter = ('created_at',)
+
+admin.site.register(Founder, FounderAdmin)

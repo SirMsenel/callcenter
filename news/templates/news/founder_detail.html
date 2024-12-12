@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Kurucu Detayları Bölümü -->
+<div class="founder-detail-container">
+    <div class="founder-detail-content">
+        <h1 class="founder-name text-center">{{ founder.first_name }} {{ founder.last_name }}</h1>
+        <div class="founder-detail-row">
+            <div class="founder-photo-col">
+                <!-- Fotoğraf -->
+                <img src="{{ founder.photo.url }}" alt="{{ founder.first_name }} {{ founder.last_name }}" class="founder-photo">
+            </div>
+            <div class="founder-info-col">
+                <!-- Kurucunun Bilgileri -->
+                <h3 class="founder-position">{{ founder.position }}</h3>
+                <p><strong>Biyografi:</strong></p>
+                <p class="founder-bio">{{ founder.bio }}</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'founders' %}" class="back-btn btn btn-success">Tüm Kuruculara Geri Dön</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,108 @@
+/* Genel Sayfa Stili */
+body.founder-detail-page {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6; /* Hafif gri bir arka plan */
+    margin: 0;
+    padding: 0;
+}
+
+/* Başlık */
+.founder-name {
+    color: #28a745; /* Yeşil renk */
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase; /* Başlıkları büyük harflerle */
+}
+
+/* Kurucunun Detayları Bölümü */
+.founder-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Fotoğraf Alanı */
+.founder-photo {
+    width: 450px;  /* Fotoğraf genişliği */
+    height: 550px; /* Fotoğraf yüksekliği (çevresine uyumlu) */
+    object-fit: cover; /* Fotoğrafın tam olarak çerçeveye oturması için */
+    border-radius: 50%; /* Tamamen yuvarlak çerçeve */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Kurucunun Bilgileri Alanı */
+.founder-position {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 20px;
+    text-transform: capitalize; /* Pozisyon isimlerini düzgün göstermek */
+}
+
+.founder-bio {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Geri Dön Butonu */
+.back-btn {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #218838;
+    cursor: pointer;
+}
+
+/* Flexbox ile Fotoğraf ve Bilgileri Ortalamak */
+.founder-detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Bilgi Alanının Sol ve Sağ Bölümlerini Düzenlemek */
+.founder-photo-col, .founder-info-col {
+    padding: 15px;
+    width: 50%;
+}
+
+/* Responsive Tasarım - Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .founder-detail-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .founder-photo-col, .founder-info-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .founder-name {
+        font-size: 28px;
+    }
+
+    .back-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}

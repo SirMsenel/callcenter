@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{% static 'css/articledetail.css' %}">
     <link rel="stylesheet" href="{% static 'css/iletişimform.css' %}">
     <link rel="stylesheet" href="{% static 'css/otherpage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/founder.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kurucudetail.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
@@ -208,8 +210,8 @@
                                 Ya Biz
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item {% if '/about' in request.path %}active{% endif %}" href="{% url 'about' %}">Hakkımızda</a></li>
-                                <li><a class="dropdown-item {% if '/founders' in request.path %}active{% endif %}" href="{% url 'founders' %}">Kurucular</a></li>
+                                <li><a class="dropdown-item {% if 'news/about' in request.path %}active{% endif %}" href="{% url 'about' %}">Hakkımızda</a></li>
+                                <li><a class="dropdown-item {% if 'news/founders' in request.path %}active{% endif %}" href="{% url 'founders' %}">Kurucular</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

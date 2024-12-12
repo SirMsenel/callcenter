@@ -17,6 +17,7 @@ from django.conf import settings
 from .models import ContactMessage
 from django.db.models import Count, F
 from .models import Article, ArticleComment
+from .models import Founder
 
 
 
@@ -194,9 +195,15 @@ def delete_comment(request, comment_id):
 def about(request):
     return render(request, 'about.html')
 
-# Kurucular sayfası
 def founders(request):
-    return render(request, 'founders.html')  # founders.html dosyasını oluşturun
+    founders_list = Founder.objects.all()  # Tüm kurucuları veritabanından al
+    return render(request, 'news/founders.html', {'founders': founders_list})
+
+# View to display the detailed bio of a founder
+def founder_detail(request, pk):
+    founder = get_object_or_404(Founder, pk=pk)
+    return render(request, 'news/founder_detail.html', {'founder': founder})
+
 
 # Hesaplama Araçları sayfası
 def calculation_tools(request):

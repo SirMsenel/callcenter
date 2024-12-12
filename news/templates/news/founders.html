@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Kurucular Bölümü -->
+<div class="founders-container">
+    <h1>Kurucularımız</h1>
+    <div class="founders-row">
+        {% for founder in founders %}
+        <div class="founder-col">
+            <div class="founder-card">
+                <img src="{{ founder.photo.url }}" alt="{{ founder.first_name }}" class="founder-image">
+                <div class="founder-info">
+                    <h3 class="founder-name">{{ founder.first_name }} {{ founder.last_name }}</h3>
+                    <p class="founder-position">{{ founder.position }}</p>
+                    <!-- Link to founder detail page -->
+                    <a href="{% url 'founder_detail' pk=founder.pk %}" class="details-link">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

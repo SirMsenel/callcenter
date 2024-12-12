@@ -24,6 +24,7 @@ urlpatterns = [
     path('contact/success/', views.contact_success, name='contact_success'),  # Başarı mesajı sayfası
     path('about/', views.about, name='about'),  # Hakkımızda
     path('founders/', views.founders, name='founders'),  # Kurucular
+    path('founders/<int:pk>/', views.founder_detail, name='founder_detail'),  # kurucular detay ekranı
     path('calculation-tools/', views.calculation_tools, name='calculation_tools'),  # Hesaplama Araçları
     path('currency-tracking/', views.currency_tracking, name='currency_tracking'),  # Kur Takibi
     path('pdf-converter/', views.pdf_converter, name='pdf_converter'),  # PDF Çevirici

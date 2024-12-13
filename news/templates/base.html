@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{% static 'css/otherpage.css' %}">
     <link rel="stylesheet" href="{% static 'css/founder.css' %}">
     <link rel="stylesheet" href="{% static 'css/kurucudetail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
@@ -186,6 +187,26 @@
         background-color: #28a745;
         color: #fff;
     }
+
+    /* "Ya Biz" ve "Diğer Sayfalar" için Hover ve Active Durumu */
+    .navbar-nav .nav-item.dropdown .nav-link:hover,
+    .navbar-nav .nav-item.dropdown .nav-link.active {
+        background-color: #28a745; /* Yeşil arka plan rengi */
+        color: #fff; /* Yazı rengi beyaz */
+    }
+
+    /* Dropdown menü elemanları için hover durumu */
+    .navbar-nav .nav-item.dropdown .dropdown-item:hover {
+        background-color: #28a745; /* Yeşil arka plan rengi */
+        color: #fff; /* Yazı rengi beyaz */
+    }
+
+    /* Eğer aktif menü öğesi varsa, yeşil renkte tutalım */
+    .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item.active {
+        background-color: #28a745; /* Yeşil arka plan rengi */
+        color: #fff; /* Yazı rengi beyaz */
+    }
+
 </style>
 
 

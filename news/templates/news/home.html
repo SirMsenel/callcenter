@@ -149,8 +149,8 @@
 </div>
 
 
-<!-- İletişime geçin Başlığı -->
-<a class="bulten-haberler">
+<!-- İletişime Geçin Başlığı -->
+<a id="contact" class="bulten-haberler">
     İletişime Geçin
 </a>
 
@@ -196,6 +196,7 @@
     </div>
 </div>
 
+<!-- Harita JavaScript -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     const map = L.map('map').setView([39.9334, 32.8597], 13); // Ankara Kızılay koordinatları
@@ -213,6 +214,7 @@
         map.invalidateSize();  // Harita boyutlarını günceller
     });
 </script>
+
 
 <!-- Boşluk ve Çizgi -->
 <div style="margin: 40px 0;">

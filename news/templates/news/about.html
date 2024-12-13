@@ -1,25 +1,43 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<!-- Kurucu Detayları Bölümü -->
-<div class="founder-detail-container">
-    <div class="founder-detail-content">
-        <h1 class="founder-name text-center">{{ founder.first_name }} {{ founder.last_name }}</h1>
-        <div class="founder-detail-row">
-            <div class="founder-photo-col">
-                <!-- Fotoğraf -->
-                <img src="{{ founder.photo.url }}" alt="{{ founder.first_name }} {{ founder.last_name }}" class="founder-photo">
-            </div>
-            <div class="founder-info-col">
-                <!-- Kurucunun Bilgileri -->
-                <h3 class="founder-position">{{ founder.position }}</h3>
-                <p><strong>Biyografi:</strong></p>
-                <p class="founder-bio">{{ founder.bio }}</p>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="{% url 'founders' %}" class="back-btn btn btn-success">Tüm Kuruculara Geri Dön</a>
-        </div>
+<div class="about-page">
+    <div class="about-header">
+        <h1>Bizi Tanıyın</h1>
+        <p>Hayatı güzelleştiren küçük detaylara önem veren bir ekibiz. Amacımız, sizin için ilham verici bir deneyim sunmak.</p>
+    </div>
+
+    <div class="about-section">
+        <h2>Hikayemiz</h2>
+        <p>Bu yolculuk 2020 yılında küçük bir ekip olarak başladığımız bir projeydi. Bugün, yüzlerce kişiye ulaşan bir topluluk haline geldik. İlk günden beri yenilikçi ve sürdürülebilir çözümler sunmayı hedefliyoruz.</p>
+    </div>
+
+    <div class="about-section">
+        <h2>Misyonumuz</h2>
+        <p>Amacımız, her insana değer katan ürün ve hizmetler sunmak. Yenilikçi yaklaşımlarımızla, müşterilerimize en iyi deneyimi yaşatmayı hedefliyoruz.</p>
+    </div>
+
+    <div class="about-section">
+        <h2>Değerlerimiz</h2>
+        <ul>
+            <li>Takım çalışması</li>
+            <li>Dürüstlük</li>
+            <li>Müşteri memnuniyeti</li>
+            <li>Yenilikçilik</li>
+        </ul>
+    </div>
+
+    <div class="about-team">
+        <h2>Ekibimiz</h2>
+        <p>
+            Harika projelere imza atan, birbirinden yetenekli ekip üyelerimizle gurur duyuyoruz.
+            <a href="{% url 'founders' %}" class="team-link">Ekibimizi Keşfedin</a>
+        </p>
+    </div>
+
+    <div class="about-contact">
+        <h2>Bizimle İletişime Geçin</h2>
+        <p>Eğer bizimle ilgili daha fazla bilgi almak isterseniz, <a href="/#contact">İletişim İçin Tıklayın</a>ziyaret edebilirsiniz!</p>
     </div>
 </div>
 <!-- Footer Başlangıcı -->

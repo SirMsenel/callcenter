@@ -193,7 +193,7 @@ def delete_comment(request, comment_id):
 
 # Hakkımızda sayfası
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'news/about.html')
 
 def founders(request):
     founders_list = Founder.objects.all()  # Tüm kurucuları veritabanından al
